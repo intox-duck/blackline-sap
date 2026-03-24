@@ -92,6 +92,10 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 .stat .lbl{font-size:var(--fs-meta);font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
 .stat .val{font-size:1.65rem;font-weight:800;letter-spacing:-.03em}
 .stat .delta{font-size:var(--fs-label);margin-top:3px;font-weight:500}
+.metric-tag{display:inline-flex;align-items:center;justify-content:center;padding:4px 10px;border-radius:999px;font-size:var(--fs-meta);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.metric-tag-tam{background:var(--surface);border:1px solid var(--border);color:var(--text-2)}
+.metric-tag-ttd{background:var(--accent-bg);border:1px solid var(--accent-bd);color:var(--accent)}
+.metric-note{margin-top:6px;font-size:var(--fs-body);color:var(--text-2);line-height:1.5}
 .up{color:var(--teal)}.down{color:var(--coral)}.neutral{color:var(--text-3)}
 
 /* Tables */
@@ -255,19 +259,21 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 <!-- ====================== OVERVIEW ====================== -->
 <div class="panel active" id="panel-overview">
   <div class="g4" style="margin-bottom:24px">
-    <div class="stat"><div class="lbl">Addressable market</div><div class="val">1,038</div><div class="delta neutral">S/4HANA · ABAP · Fiori</div></div>
+    <div class="stat"><div class="lbl">Target Talent Density</div><div class="val">1,038</div><div class="delta neutral">S/4HANA · ABAP · Fiori target-fit subset</div></div>
     <div class="stat"><div class="lbl">Open positions</div><div class="val">163</div><div class="delta up">+55% YoY industry-wide</div></div>
     <div class="stat"><div class="lbl">Hiring demand</div><div class="val" style="color:var(--coral)">Very High</div><div class="delta down">90+ days avg time-to-fill</div></div>
     <div class="stat"><div class="lbl">Gender split</div><div class="val">26%<span style="color:var(--text-3);font-size:var(--fs-label)"> F</span> · 74%<span style="color:var(--text-3);font-size:var(--fs-label)"> M</span></div><div class="delta neutral">2.7yr median tenure</div></div>
   </div>
+  <div class="callout callout-accent" style="margin-bottom:24px"><strong>TAM vs TTD:</strong> TAM is the broad SAP talent pool in each market. TTD is the narrower BlackLine-relevant subset already concentrated in <strong>S/4HANA + ABAP + Fiori</strong>, which is the more realistic target hiring density.</div>
   <div class="sl">Regional Talent Pools</div>
   <div class="g3" style="margin-bottom:24px">
     <div class="card rc" style="border-top:3px solid var(--teal)">
       <div style="font-size:var(--fs-meta);font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">India · South Asia</div>
       <div style="font-size:1.1rem;font-weight:700">Mumbai Metropolitan</div>
+      <div class="metric-tag metric-tag-tam">TAM</div>
       <div class="pool" style="color:var(--teal)">4,201</div>
-      <div style="font-size:var(--fs-label);color:var(--text-3)">LinkedIn professionals (broad SAP)</div>
-      <div style="margin-top:6px;font-size:var(--fs-body)"><strong>827</strong> <span style="color:var(--text-3)">S/4HANA + ABAP + Fiori</span></div>
+      <div style="font-size:var(--fs-label);color:var(--text-3)">Broad SAP professionals in-market</div>
+      <div class="metric-note"><span class="metric-tag metric-tag-ttd" style="margin-bottom:0;margin-right:8px">TTD</span> <strong>827</strong> <span style="color:var(--text-3)">S/4HANA + ABAP + Fiori target-fit density</span></div>
       <div class="meta-row">
         <div class="mi"><div class="ml">Demand</div><div class="mv"><span class="pulse" style="background:var(--coral)"></span>Very high</div></div>
         <div class="mi"><div class="ml">Posts</div><div class="mv">109</div></div>
@@ -278,9 +284,10 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
     <div class="card rc" style="border-top:3px solid var(--accent)">
       <div style="font-size:var(--fs-meta);font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">United Kingdom · EMEA</div>
       <div style="font-size:1.1rem;font-weight:700">London Area</div>
+      <div class="metric-tag metric-tag-tam">TAM</div>
       <div class="pool" style="color:var(--accent)">788</div>
-      <div style="font-size:var(--fs-label);color:var(--text-3)">LinkedIn professionals (broad SAP)</div>
-      <div style="margin-top:6px;font-size:var(--fs-body)"><strong>169</strong> <span style="color:var(--text-3)">S/4HANA + ABAP + Fiori</span></div>
+      <div style="font-size:var(--fs-label);color:var(--text-3)">Broad SAP professionals in-market</div>
+      <div class="metric-note"><span class="metric-tag metric-tag-ttd" style="margin-bottom:0;margin-right:8px">TTD</span> <strong>169</strong> <span style="color:var(--text-3)">S/4HANA + ABAP + Fiori target-fit density</span></div>
       <div class="meta-row">
         <div class="mi"><div class="ml">Demand</div><div class="mv"><span class="pulse" style="background:var(--coral)"></span>Very high</div></div>
         <div class="mi"><div class="ml">Posts</div><div class="mv">30</div></div>
@@ -291,9 +298,10 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
     <div class="card rc" style="border-top:3px solid var(--purple)">
       <div style="font-size:var(--fs-meta);font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Poland · CEE</div>
       <div style="font-size:1.1rem;font-weight:700">Kraków Metropolitan</div>
+      <div class="metric-tag metric-tag-tam">TAM</div>
       <div class="pool" style="color:var(--purple)">136</div>
-      <div style="font-size:var(--fs-label);color:var(--text-3)">LinkedIn professionals (broad SAP)</div>
-      <div style="margin-top:6px;font-size:var(--fs-body)"><strong>42</strong> <span style="color:var(--text-3)">S/4HANA + ABAP + Fiori</span></div>
+      <div style="font-size:var(--fs-label);color:var(--text-3)">Broad SAP professionals in-market</div>
+      <div class="metric-note"><span class="metric-tag metric-tag-ttd" style="margin-bottom:0;margin-right:8px">TTD</span> <strong>42</strong> <span style="color:var(--text-3)">S/4HANA + ABAP + Fiori target-fit density</span></div>
       <div class="meta-row">
         <div class="mi"><div class="ml">Demand</div><div class="mv"><span class="pulse" style="background:var(--coral)"></span>Very high</div></div>
         <div class="mi"><div class="ml">Posts</div><div class="mv">24</div></div>
