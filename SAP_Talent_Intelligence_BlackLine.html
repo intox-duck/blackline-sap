@@ -47,7 +47,9 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 /* Header with logo */
 .hdr{display:flex;justify-content:space-between;align-items:center;padding-bottom:24px;margin-bottom:28px;border-bottom:1px solid var(--border)}
 .hdr-logo{display:flex;align-items:flex-end;gap:12px;flex-wrap:nowrap}
-.hdr-logo img{height:36px;width:auto;display:block;image-rendering:auto;flex:0 0 auto}
+.hdr-logo img{width:auto;display:block;image-rendering:auto;flex:0 0 auto}
+.hdr-logo .logo-blackline,.hdr-logo .logo-x{height:36px}
+.hdr-logo .logo-c2{height:30.6px}
 .hdr-meta{text-align:right;font-size:.75rem;color:var(--text-3)}
 .hdr-title{font-size:1.5rem;font-weight:700;letter-spacing:-.03em;color:var(--text);margin-bottom:2px}
 .hdr-title span{color:var(--accent)}
@@ -210,7 +212,7 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 <!-- HEADER WITH LOGO -->
 <div class="hdr">
   <div>
-    <div class="hdr-logo"><img src="blackline.png" alt="BlackLine"><img src="x.png" alt="" aria-hidden="true"><img src="C2 - Talent Intelligence -G.png" alt="Chapter 2 Talent Intelligence"></div>
+    <div class="hdr-logo"><img src="blackline.png" alt="BlackLine" class="logo-blackline"><img src="x.png" alt="" aria-hidden="true" class="logo-x"><img src="C2 - Talent Intelligence -G.png" alt="Chapter 2 Talent Intelligence" class="logo-c2"></div>
     <p class="hdr-sub" style="margin-top:8px">SAP engineering talent market intelligence across Mumbai, London &amp; Kraków.</p>
   </div>
   <div class="hdr-meta">
@@ -524,8 +526,8 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
   <div class="card source-shell">
     <div class="source-toolbar">
       <div>
-        <div class="ct">Unified Research Library</div>
-        <div class="cs" style="margin-bottom:0">58 unique sources compiled from the core research and expanded salary addendum, deduplicated by URL and grouped by theme.</div>
+        <div class="ct">Research Source Index</div>
+        <div class="cs" style="margin-bottom:0">A combined reference register from the core research and salary addendum, deduplicated by URL and organized by topic.</div>
       </div>
       <div class="source-search-wrap">
         <label class="source-label" for="sourceSearch">Search all sources</label>
@@ -533,7 +535,7 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
       </div>
     </div>
     <div class="source-summary">
-      <div id="sourceSearchStatus">58 unique sources across 5 categories.</div>
+      <div id="sourceSearchStatus">Browse 58 unique sources across 5 research themes.</div>
       <div class="source-legend"><span class="badge badge-teal">Core research</span><span class="badge badge-purple">Addendum</span></div>
     </div>
   </div>
@@ -662,7 +664,7 @@ function renderSourceLibrary(query=''){
     return `<section class="card source-group"><div class="source-group-head"><div><div class="ct" style="margin-bottom:4px">${escapeHtml(category)}</div><div class="cs" style="margin-bottom:0">${items.length} deduplicated reference${items.length===1?'':'s'} relevant to this theme.</div></div><span class="badge badge-accent source-count">${items.length} source${items.length===1?'':'s'}</span></div>${items.map((item,index)=>`<div class="si source-item"><span class="sn">${String(index+1).padStart(2,'0')}</span><div class="source-main"><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(item.title)}</a><div class="sp">${escapeHtml(item.source)}</div><div class="source-meta"><span class="source-url">${escapeHtml(item.url)}</span><div class="source-badges">${item.docs.map(doc=>`<span class="badge ${doc==='Addendum'?'badge-purple':'badge-teal'}">${escapeHtml(doc)}</span>`).join('')}</div></div></div></div>`).join('')}</section>`;
   }).join('');
   root.innerHTML=markup;
-  status.textContent=q?`${visibleItems} matching source${visibleItems===1?'':'s'} across ${visibleGroups} categor${visibleGroups===1?'y':'ies'}.`:`${sourceLibraryData.length} unique sources across ${sourceCategories.length} categories.`;
+  status.textContent=q?`${visibleItems} matching source${visibleItems===1?'':'s'} across ${visibleGroups} research theme${visibleGroups===1?'':'s'}.`:`Browse ${sourceLibraryData.length} unique sources across ${sourceCategories.length} research themes.`;
   empty.hidden=visibleItems!==0;
 }
 
