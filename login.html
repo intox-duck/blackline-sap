@@ -8,7 +8,9 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Figtree',system-ui,sans-serif;background:#F8F8FA;min-height:100vh;display:flex;align-items:center;justify-content:center}
-.card{background:#fff;border:1px solid #E2E2E8;border-radius:16px;padding:40px;width:100%;max-width:400px;box-shadow:0 1px 3px rgba(0,0,0,.04),0 0 0 1px rgba(0,0,0,.03)}
+.card{background:#fff;border:1px solid #E2E2E8;border-radius:16px;padding:40px;width:100%;max-width:460px;box-shadow:0 1px 3px rgba(0,0,0,.04),0 0 0 1px rgba(0,0,0,.03)}
+.brand-lockup{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:nowrap;margin-bottom:24px}
+.brand-lockup img{height:40px;width:auto;display:block;flex:0 0 auto}
 h1{font-size:22px;font-weight:700;color:#1A1A2E;margin-bottom:6px}
 p.sub{font-size:14px;color:#8E8EA0;margin-bottom:28px}
 label{display:block;font-size:13px;font-weight:600;color:#4A4A62;margin-bottom:6px}
@@ -23,6 +25,11 @@ button:disabled{opacity:.6;cursor:not-allowed}
 </head>
 <body>
 <div class="card">
+  <div class="brand-lockup">
+    <img src="blackline.png" alt="BlackLine">
+    <img src="x.png" alt="" aria-hidden="true">
+    <img src="chapter2.png" alt="Chapter 2 Talent Intelligence">
+  </div>
   <h1>Sign in</h1>
   <p class="sub">Enter your credentials to continue.</p>
   <form id="loginForm">
