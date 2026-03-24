@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAP Talent Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root{
+  --bg:#F8F8FA;--white:#FFF;--surface:#F1F1F4;--border:#E2E2E8;--border-s:#CCCCD4;
+  --text:#1A1A2E;--text-2:#4A4A62;--text-3:#8E8EA0;--text-4:#B5B5C3;
+  --accent:#2563EB;--accent-bg:#EFF6FF;--accent-bd:#BFDBFE;
+  --teal:#0F766E;--teal-bg:#F0FDFA;--teal-bd:#99F6E4;
+  --amber:#B45309;--amber-bg:#FFFBEB;--amber-bd:#FDE68A;
+  --coral:#DC2626;--coral-bg:#FEF2F2;--coral-bd:#FECACA;
+  --purple:#6D28D9;--purple-bg:#F5F3FF;--purple-bd:#DDD6FE;
+  --green:#15803D;
+  --sc:0 1px 3px rgba(0,0,0,.04),0 0 0 1px rgba(0,0,0,.03);
+  --sch:0 2px 12px rgba(0,0,0,.06),0 0 0 1px rgba(0,0,0,.04);
+  --shov:0 4px 20px rgba(0,0,0,.08),0 0 0 1px rgba(0,0,0,.05);
+  --r:10px;--rl:14px
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:15px}
+body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1360px;margin:0 auto;padding:32px 28px 80px}
+
+/* Header with logo */
+.hdr{display:flex;justify-content:space-between;align-items:center;padding-bottom:24px;margin-bottom:28px;border-bottom:1px solid var(--border)}
+.hdr-logo img{height:44px;display:block}
+.hdr-meta{text-align:right;font-size:.75rem;color:var(--text-3)}
+.hdr-title{font-size:1.5rem;font-weight:700;letter-spacing:-.03em;color:var(--text);margin-bottom:2px}
+.hdr-title span{color:var(--accent)}
+.hdr-sub{color:var(--text-3);font-size:.8rem;max-width:560px}
+
+/* Primary tabs */
+.ptabs{display:flex;gap:2px;background:var(--surface);border-radius:var(--r);padding:3px;margin-bottom:24px;border:1px solid var(--border)}
+.ptab{padding:10px 24px;border-radius:calc(var(--r) - 2px);font-size:.82rem;font-weight:600;color:var(--text-3);cursor:pointer;transition:all .15s;border:none;background:transparent;font-family:inherit;white-space:nowrap}
+.ptab:hover{color:var(--text-2)}
+.ptab.active{background:var(--white);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.06)}
+
+/* Region sub-tabs */
+.rtabs{display:flex;gap:6px;margin-bottom:24px;justify-content:center}
+.rtab{padding:7px 18px;border-radius:var(--r);font-size:.78rem;font-weight:600;color:var(--text-3);cursor:pointer;transition:all .15s;border:1px solid transparent;background:transparent;font-family:inherit}
+.rtab:hover{color:var(--text-2);background:var(--surface)}
+.rtab.active{background:var(--accent-bg);color:var(--accent);border-color:var(--accent-bd)}
+.rtab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:middle}
+
+/* Cards */
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:28px;box-shadow:var(--sc);transition:box-shadow .2s}
+.card:hover{box-shadow:var(--shov)}
+.cc{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:28px;box-shadow:var(--sch);transition:box-shadow .2s}
+.cc:hover{box-shadow:var(--shov)}
+
+/* Card titles — more pronounced */
+.ct{font-size:1rem;font-weight:700;color:var(--text);letter-spacing:-.02em;margin-bottom:6px}
+.cs{font-size:.75rem;color:var(--text-3);margin-bottom:18px}
+
+/* Grids */
+.g1{display:grid;grid-template-columns:1fr;gap:16px}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+
+/* Stat cards — centred */
+.stat{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:20px;box-shadow:var(--sc);text-align:center}
+.stat .lbl{font-size:.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.stat .val{font-size:1.65rem;font-weight:800;letter-spacing:-.03em}
+.stat .delta{font-size:.73rem;margin-top:3px;font-weight:500}
+.up{color:var(--teal)}.down{color:var(--coral)}.neutral{color:var(--text-3)}
+
+/* Tables */
+.tbl{width:100%;border-collapse:collapse;font-size:.82rem}
+.tbl th{text-align:left;font-size:.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;padding:10px 14px;border-bottom:2px solid var(--border);background:var(--surface)}
+.tbl th:first-child{border-radius:var(--r) 0 0 0}.tbl th:last-child{border-radius:0 var(--r) 0 0}
+.tbl td{padding:11px 14px;border-bottom:1px solid var(--border)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:rgba(37,99,235,.015)}
+
+/* Badges */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:var(--r);font-size:.72rem;font-weight:600}
+.badge-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bd)}
+.badge-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bd)}
+.badge-coral{background:var(--coral-bg);color:var(--coral);border:1px solid var(--coral-bd)}
+.badge-accent{background:var(--accent-bg);color:var(--accent);border:1px solid var(--accent-bd)}
+.badge-purple{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-bd)}
+
+/* Callout */
+.callout{border-radius:var(--r);padding:16px 20px;font-size:.82rem;line-height:1.6;color:var(--text-2)}
+.callout strong{color:var(--text)}
+.callout-accent{background:var(--accent-bg);border:1px solid var(--accent-bd)}
+.callout-amber{background:var(--amber-bg);border:1px solid var(--amber-bd)}
+.callout-teal{background:var(--teal-bg);border:1px solid var(--teal-bd)}
+
+/* Cost bars */
+.cost-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.cost-lbl{width:90px;font-size:.78rem;color:var(--text-2);text-align:right;flex-shrink:0}
+.cost-track{flex:1;height:30px;background:var(--surface);border-radius:var(--rl);overflow:hidden;border:1px solid var(--border)}
+.cost-fill{height:100%;border-radius:var(--rl);display:flex;align-items:center;padding-left:12px;font-size:.72rem;font-weight:600;color:#fff}
+
+/* Chart wrapper */
+.cw{position:relative;width:100%}
+
+/* Chips */
+.chip{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:var(--r);font-size:.75rem;font-weight:500;background:var(--surface);border:1px solid var(--border);margin:2px;color:var(--text-2)}
+.chip .pct{color:var(--text-3);font-size:.68rem;font-variant-numeric:tabular-nums}
+.chip-hl{background:var(--accent-bg);border-color:var(--accent-bd);color:var(--accent)}
+
+/* Pros/cons */
+.pc{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pros{padding:20px;border-radius:var(--r);background:var(--teal-bg);border:1px solid var(--teal-bd);font-size:.82rem}
+.cons{padding:20px;border-radius:var(--r);background:var(--coral-bg);border:1px solid var(--coral-bd);font-size:.82rem}
+.pros h4{color:var(--teal);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;font-weight:700}
+.cons h4{color:var(--coral);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;font-weight:700}
+.pros li,.cons li{color:var(--text-2);line-height:1.55;margin-bottom:6px;padding-left:16px;position:relative;list-style:none}
+.pros li::before{content:'+';position:absolute;left:0;font-weight:700;color:var(--teal)}
+.cons li::before{content:'–';position:absolute;left:0;font-weight:700;color:var(--coral)}
+
+/* Sentiment */
+.sent-score{font-size:2.4rem;font-weight:800;letter-spacing:-.04em;text-align:center}
+.sent-bar{height:5px;border-radius:3px;background:var(--surface);overflow:hidden;margin:10px 0 14px}
+.sent-fill{height:100%;border-radius:3px}
+.factor{display:flex;justify-content:space-between;font-size:.78rem;padding:4px 0}
+.factor-name{color:var(--text-3)}.factor-val{font-weight:600;font-variant-numeric:tabular-nums}
+
+/* Section label */
+.sl{font-size:.7rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;text-align:center}
+
+/* Region card centred content */
+.rc{text-align:center}
+.rc .pool{font-size:2.6rem;font-weight:800;letter-spacing:-.04em;margin:8px 0}
+.rc .meta-row{display:flex;gap:16px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border);justify-content:center;flex-wrap:wrap}
+.rc .mi{text-align:center}
+.rc .mi .ml{font-size:.65rem;color:var(--text-4);text-transform:uppercase;letter-spacing:.06em}
+.rc .mi .mv{font-size:.82rem;font-weight:600;margin-top:2px}
+.pulse{width:8px;height:8px;border-radius:50%;display:inline-block;animation:pulse 2s ease-in-out infinite;vertical-align:middle;margin-right:4px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* Sources */
+.si{display:flex;gap:8px;padding:10px 0;border-bottom:1px solid var(--border);font-size:.8rem}
+.si:last-child{border-bottom:none}
+.sn{color:var(--text-4);font-variant-numeric:tabular-nums;min-width:24px;font-size:.72rem;padding-top:2px}
+.si a{color:var(--accent);text-decoration:none;font-weight:500}
+.si a:hover{text-decoration:underline}
+.sp{color:var(--text-3);font-size:.72rem}
+
+/* Panels */
+.panel{display:none}.panel.active{display:block}
+
+/* Company rows */
+.cr{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);font-size:.82rem}
+.cr.crh{font-size:.68rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;font-weight:600;padding-bottom:10px}
+
+@media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}.g2{grid-template-columns:1fr}.pc{grid-template-columns:1fr}.ptabs{overflow-x:auto}}
+@media(max-width:600px){.g3,.g4,.g2{grid-template-columns:1fr}.wrap{padding:20px 16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER WITH LOGO -->
+<div class="hdr">
+  <div>
+    <div class="hdr-logo"><img src="data:image/png;base64,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" alt="BlackLine × Chapter 2 Talent Intelligence"></div>
+    <p class="hdr-sub" style="margin-top:8px">SAP engineering talent market intelligence across Mumbai, London &amp; Kraków.</p>
+  </div>
+  <div class="hdr-meta">
+    <div style="font-weight:600;color:var(--text-2);font-size:.82rem">March 2026</div>
+    <div>Chapter 2 · Talent Advisory</div>
+  </div>
+</div>
+
+<!-- PRIMARY TABS -->
+<nav class="ptabs" id="pt">
+  <button class="ptab active" data-tab="overview">Overview</button>
+  <button class="ptab" data-tab="salary">Salary Benchmarks</button>
+  <button class="ptab" data-tab="competitive">Competitive Landscape</button>
+  <button class="ptab" data-tab="insights">Insights</button>
+  <button class="ptab" data-tab="sources">Sources</button>
+</nav>
+
+<!-- ====================== OVERVIEW ====================== -->
+<div class="panel active" id="panel-overview">
+  <div class="g4" style="margin-bottom:24px">
+    <div class="stat"><div class="lbl">Addressable market</div><div class="val">1,038</div><div class="delta neutral">S/4HANA · ABAP · Fiori</div></div>
+    <div class="stat"><div class="lbl">Open positions</div><div class="val">163</div><div class="delta up">+55% YoY industry-wide</div></div>
+    <div class="stat"><div class="lbl">Hiring demand</div><div class="val" style="color:var(--coral)">Very High</div><div class="delta down">90+ days avg time-to-fill</div></div>
+    <div class="stat"><div class="lbl">Gender split</div><div class="val">26%<span style="color:var(--text-3);font-size:.82rem"> F</span> · 74%<span style="color:var(--text-3);font-size:.82rem"> M</span></div><div class="delta neutral">2.7yr median tenure</div></div>
+  </div>
+  <div class="sl">Regional talent pools</div>
+  <div class="g3" style="margin-bottom:24px">
+    <div class="card rc" style="border-top:3px solid var(--teal)">
+      <div style="font-size:.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">India · South Asia</div>
+      <div style="font-size:1.1rem;font-weight:700">Mumbai Metropolitan</div>
+      <div class="pool" style="color:var(--teal)">4,201</div>
+      <div style="font-size:.78rem;color:var(--text-3)">LinkedIn professionals (broad SAP)</div>
+      <div style="margin-top:6px;font-size:.85rem"><strong>827</strong> <span style="color:var(--text-3)">S/4HANA + ABAP + Fiori</span></div>
+      <div class="meta-row">
+        <div class="mi"><div class="ml">Demand</div><div class="mv"><span class="pulse" style="background:var(--coral)"></span>Very high</div></div>
+        <div class="mi"><div class="ml">Posts</div><div class="mv">109</div></div>
+        <div class="mi"><div class="ml">1Y growth</div><div class="mv up">+1.1%</div></div>
+        <div class="mi"><div class="ml">Gender</div><div class="mv">75M / 25F</div></div>
+      </div>
+    </div>
+    <div class="card rc" style="border-top:3px solid var(--accent)">
+      <div style="font-size:.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">United Kingdom · EMEA</div>
+      <div style="font-size:1.1rem;font-weight:700">London Area</div>
+      <div class="pool" style="color:var(--accent)">788</div>
+      <div style="font-size:.78rem;color:var(--text-3)">LinkedIn professionals (broad SAP)</div>
+      <div style="margin-top:6px;font-size:.85rem"><strong>169</strong> <span style="color:var(--text-3)">S/4HANA + ABAP + Fiori</span></div>
+      <div class="meta-row">
+        <div class="mi"><div class="ml">Demand</div><div class="mv"><span class="pulse" style="background:var(--coral)"></span>Very high</div></div>
+        <div class="mi"><div class="ml">Posts</div><div class="mv">30</div></div>
+        <div class="mi"><div class="ml">1Y growth</div><div class="mv down">-2.3%</div></div>
+        <div class="mi"><div class="ml">Gender</div><div class="mv">68M / 32F</div></div>
+      </div>
+    </div>
+    <div class="card rc" style="border-top:3px solid var(--purple)">
+      <div style="font-size:.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Poland · CEE</div>
+      <div style="font-size:1.1rem;font-weight:700">Kraków Metropolitan</div>
+      <div class="pool" style="color:var(--purple)">136</div>
+      <div style="font-size:.78rem;color:var(--text-3)">LinkedIn professionals (broad SAP)</div>
+      <div style="margin-top:6px;font-size:.85rem"><strong>42</strong> <span style="color:var(--text-3)">S/4HANA + ABAP + Fiori</span></div>
+      <div class="meta-row">
+        <div class="mi"><div class="ml">Demand</div><div class="mv"><span class="pulse" style="background:var(--coral)"></span>Very high</div></div>
+        <div class="mi"><div class="ml">Posts</div><div class="mv">24</div></div>
+        <div class="mi"><div class="ml">1Y growth</div><div class="mv up">+10.5%</div></div>
+        <div class="mi"><div class="ml">Gender</div><div class="mv">N/A</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="callout callout-accent" style="margin-bottom:24px">
+    <strong>Pool density:</strong> Mumbai commands ~80% of the addressable market but shows only +1.1% growth — saturated and contested. Kraków, despite being 20× smaller, is growing at 10.5% YoY with the best job-to-professional ratio (17.6%), making it the most competitive hiring market per capita.
+  </div>
+  <div class="sl">Hiring favourability</div>
+  <div class="g3">
+    <div class="card" style="border-top:3px solid var(--teal);text-align:center">
+      <div style="font-size:.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">Mumbai</div>
+      <div class="sent-score" style="color:var(--teal)">7.8<span style="font-size:.85rem;color:var(--text-3);font-weight:400">/10</span></div>
+      <div class="sent-bar"><div class="sent-fill" style="width:78%;background:var(--teal)"></div></div>
+      <div style="text-align:left"><div class="factor"><span class="factor-name">Pool depth</span><span class="factor-val" style="color:var(--teal)">9.2</span></div><div class="factor"><span class="factor-name">Cost efficiency</span><span class="factor-val" style="color:var(--teal)">9.5</span></div><div class="factor"><span class="factor-name">Quality signal</span><span class="factor-val" style="color:var(--amber)">6.8</span></div><div class="factor"><span class="factor-name">Retention risk</span><span class="factor-val" style="color:var(--coral)">5.4</span></div><div class="factor"><span class="factor-name">Timezone overlap</span><span class="factor-val" style="color:var(--coral)">4.0</span></div></div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent);text-align:center">
+      <div style="font-size:.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">London</div>
+      <div class="sent-score" style="color:var(--accent)">6.2<span style="font-size:.85rem;color:var(--text-3);font-weight:400">/10</span></div>
+      <div class="sent-bar"><div class="sent-fill" style="width:62%;background:var(--accent)"></div></div>
+      <div style="text-align:left"><div class="factor"><span class="factor-name">Pool depth</span><span class="factor-val" style="color:var(--amber)">5.5</span></div><div class="factor"><span class="factor-name">Cost efficiency</span><span class="factor-val" style="color:var(--coral)">3.8</span></div><div class="factor"><span class="factor-name">Quality signal</span><span class="factor-val" style="color:var(--teal)">8.5</span></div><div class="factor"><span class="factor-name">Retention risk</span><span class="factor-val" style="color:var(--teal)">7.2</span></div><div class="factor"><span class="factor-name">Timezone overlap</span><span class="factor-val" style="color:var(--teal)">9.0</span></div></div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--purple);text-align:center">
+      <div style="font-size:.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">Kraków</div>
+      <div class="sent-score" style="color:var(--purple)">8.1<span style="font-size:.85rem;color:var(--text-3);font-weight:400">/10</span></div>
+      <div class="sent-bar"><div class="sent-fill" style="width:81%;background:var(--purple)"></div></div>
+      <div style="text-align:left"><div class="factor"><span class="factor-name">Pool depth</span><span class="factor-val" style="color:var(--coral)">3.2</span></div><div class="factor"><span class="factor-name">Cost efficiency</span><span class="factor-val" style="color:var(--teal)">7.8</span></div><div class="factor"><span class="factor-name">Quality signal</span><span class="factor-val" style="color:var(--teal)">9.0</span></div><div class="factor"><span class="factor-name">Retention risk</span><span class="factor-val" style="color:var(--teal)">8.5</span></div><div class="factor"><span class="factor-name">Timezone overlap</span><span class="factor-val" style="color:var(--teal)">8.5</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== SALARY ====================== -->
+<div class="panel" id="panel-salary">
+  <div class="rtabs" id="stabs"><button class="rtab active" data-region="all"><span class="dot" style="background:var(--text-3)"></span>All regions</button><button class="rtab" data-region="mumbai"><span class="dot" style="background:var(--teal)"></span>Mumbai</button><button class="rtab" data-region="london"><span class="dot" style="background:var(--accent)"></span>London</button><button class="rtab" data-region="krakow"><span class="dot" style="background:var(--purple)"></span>Kraków</button></div>
+  <div class="sr active" data-salary="all">
+    <div class="cc" style="margin-bottom:16px;overflow-x:auto"><div class="ct">Senior SAP ABAP / S/4HANA compensation</div><div class="cs">Permanent roles across all regions. GBP-equivalent median for comparison.</div>
+      <table class="tbl"><thead><tr><th>Region</th><th>Type</th><th>P25</th><th>Median</th><th>P75+</th><th>GBP equiv.</th><th>vs London</th></tr></thead><tbody>
+      <tr><td><strong>London</strong></td><td><span class="badge badge-accent">Perm</span></td><td>£65k–£70k</td><td style="font-weight:700">£75k–£85k</td><td>£90k–£110k</td><td style="font-weight:700;font-variant-numeric:tabular-nums">£80,000</td><td style="font-variant-numeric:tabular-nums">1.00×</td></tr>
+      <tr><td><strong>London</strong></td><td><span class="badge badge-amber">Contract</span></td><td>£450–£500/d</td><td style="font-weight:700">£500–£600/d</td><td>£625–£750+/d</td><td style="font-weight:700;font-variant-numeric:tabular-nums">~£132,000</td><td style="font-variant-numeric:tabular-nums;color:var(--amber)">1.65×</td></tr>
+      <tr><td><strong>Kraków</strong></td><td><span class="badge badge-purple">UoP</span></td><td>17–20k PLN/mo</td><td style="font-weight:700">23–26.5k PLN/mo</td><td>29–32k PLN/mo</td><td style="font-weight:700;font-variant-numeric:tabular-nums">~£56,000</td><td style="font-variant-numeric:tabular-nums;color:var(--teal)">0.70×</td></tr>
+      <tr><td><strong>Kraków</strong></td><td><span class="badge badge-purple">B2B</span></td><td>22.5–24k PLN/mo</td><td style="font-weight:700">27–29k PLN/mo</td><td>30–36k PLN/mo</td><td style="font-weight:700;font-variant-numeric:tabular-nums">~£67,000</td><td style="font-variant-numeric:tabular-nums;color:var(--teal)">0.84×</td></tr>
+      <tr><td><strong>Mumbai</strong></td><td><span class="badge badge-teal">IT Services</span></td><td>₹12–15 LPA</td><td style="font-weight:700">₹16–20 LPA</td><td>₹22–25 LPA</td><td style="font-weight:700;font-variant-numeric:tabular-nums">~£17,000</td><td style="font-variant-numeric:tabular-nums;color:var(--teal)">0.21×</td></tr>
+      <tr><td><strong>Mumbai</strong></td><td><span class="badge badge-teal">Product/MNC</span></td><td>₹22–25 LPA</td><td style="font-weight:700">₹28–32 LPA</td><td>₹35–40+ LPA</td><td style="font-weight:700;font-variant-numeric:tabular-nums">~£29,000</td><td style="font-variant-numeric:tabular-nums;color:var(--teal)">0.36×</td></tr>
+      </tbody></table></div>
+    <div class="g2"><div class="cc"><div class="ct">Cost efficiency index</div><div class="cs">GBP-equivalent annual median, senior S/4HANA (perm)</div>
+      <div class="cost-row"><div class="cost-lbl">London</div><div class="cost-track"><div class="cost-fill" style="width:100%;background:var(--accent)">£80,000</div></div></div>
+      <div class="cost-row"><div class="cost-lbl">Kraków B2B</div><div class="cost-track"><div class="cost-fill" style="width:84%;background:var(--purple)">£67,000</div></div></div>
+      <div class="cost-row"><div class="cost-lbl">Kraków UoP</div><div class="cost-track"><div class="cost-fill" style="width:70%;background:rgba(109,40,217,.55)">£56,000</div></div></div>
+      <div class="cost-row"><div class="cost-lbl">Mumbai MNC</div><div class="cost-track"><div class="cost-fill" style="width:36%;background:var(--teal)">£29,000</div></div></div>
+      <div class="cost-row"><div class="cost-lbl">Mumbai Svc</div><div class="cost-track"><div class="cost-fill" style="width:21%;background:rgba(15,118,110,.5)">£17,000</div></div></div>
+    </div><div class="cc"><div class="ct">S/4HANA premium over base ABAP</div><div class="cs">GBP-equivalent median comparison</div><div class="cw" style="height:210px"><canvas id="premiumChart"></canvas></div></div></div>
+  </div>
+  <div class="sr" data-salary="mumbai"><div class="cc" style="margin-bottom:16px"><div class="ct">Mumbai — salary by employer segment</div><div class="cs">Annual in LPA. S/4HANA + Fiori premium adds 20–30% above base ABAP.</div><table class="tbl"><thead><tr><th>Employer type</th><th>P25</th><th>Median</th><th>P75+</th><th>GBP equiv.</th></tr></thead><tbody><tr><td>IT Services (TCS, Infosys, Wipro)</td><td>₹12–15 LPA</td><td style="font-weight:700">₹16–20 LPA</td><td>₹22–25 LPA</td><td>~£17k</td></tr><tr><td>Mid-tier consulting / SIs</td><td>₹16–18 LPA</td><td style="font-weight:700">₹20–24 LPA</td><td>₹26–30 LPA</td><td>~£21k</td></tr><tr><td>Big 4 (Deloitte, PwC, EY, KPMG)</td><td>₹18–20 LPA</td><td style="font-weight:700">₹22–26 LPA</td><td>₹28–32 LPA</td><td>~£23k</td></tr><tr><td style="font-weight:600">Product / MNCs / SAP</td><td>₹22–25 LPA</td><td style="font-weight:700">₹28–32 LPA</td><td>₹35–40+ LPA</td><td style="font-weight:600">~£29k</td></tr></tbody></table></div><div class="callout callout-amber"><strong>Key context:</strong> Mass-market aggregators (Glassdoor, AmbitionBox) understate senior SAP salaries. Mumbai commands a 5–8% premium over India-wide averages.</div></div>
+  <div class="sr" data-salary="london"><div class="cc" style="margin-bottom:16px"><div class="ct">London — permanent &amp; contract markets</div><div class="cs">S/4HANA + Fiori premium adds 10–15%. IT Jobs Watch reports +11.1% YoY median growth.</div><table class="tbl"><thead><tr><th>Channel</th><th>P25</th><th>Median</th><th>P75+</th><th>Key source</th></tr></thead><tbody><tr><td><span class="badge badge-accent">Permanent</span></td><td>£65k–£70k</td><td style="font-weight:700">£75k–£85k</td><td>£90k–£110k</td><td style="font-size:.75rem;color:var(--text-3)">IT Jobs Watch, ERI</td></tr><tr><td><span class="badge badge-amber">Contract</span></td><td>£450–£500/d</td><td style="font-weight:700">£500–£600/d</td><td>£625–£750+/d</td><td style="font-size:.75rem;color:var(--text-3)">IT Jobs Watch — £604 median</td></tr></tbody></table></div><div class="callout callout-accent"><strong>Market note:</strong> Contracting pays 30–50% more on pure-cash basis. Current S/4HANA listings range £80k–£120k.</div></div>
+  <div class="sr" data-salary="krakow"><div class="cc" style="margin-bottom:16px"><div class="ct">Kraków — employment vs B2B</div><div class="cs">B2B rates run 20–40% higher. SAP/S4HANA classified Tier A by ITCompare.pl.</div><table class="tbl"><thead><tr><th>Type</th><th>P25</th><th>Median</th><th>P75+</th><th>Annual PLN</th></tr></thead><tbody><tr><td><span class="badge badge-purple">UoP</span></td><td>17–20k/mo</td><td style="font-weight:700">23–26.5k/mo</td><td>29–32k/mo</td><td>276k–318k</td></tr><tr><td><span class="badge badge-purple">B2B</span></td><td>22.5–24k/mo</td><td style="font-weight:700">27–29k/mo</td><td>30–36k/mo</td><td>324k–348k</td></tr></tbody></table></div><div class="callout callout-teal"><strong>Fiori premium:</strong> 8–10% above base ABAP. 79% of employers planned salary increases in 2025.</div></div>
+</div>
+
+<!-- ====================== COMPETITIVE ====================== -->
+<div class="panel" id="panel-competitive">
+  <div class="rtabs" id="ctabs"><button class="rtab active" data-region="all"><span class="dot" style="background:var(--text-3)"></span>All employers</button><button class="rtab" data-region="skills"><span class="dot" style="background:var(--purple)"></span>Skills profile</button><button class="rtab" data-region="blackline"><span class="dot" style="background:var(--teal)"></span>BlackLine position</button></div>
+  <div class="cr2 active" data-comp="all">
+    <div class="cc" style="margin-bottom:16px;overflow-x:auto"><div class="ct">Top employers competing for this talent pool</div><div class="cs">Across all 3 regions — ranked by headcount.</div>
+      <table class="tbl"><thead><tr><th>Company</th><th>Headcount</th><th>1Y growth</th><th>Posts</th><th>Attrition</th></tr></thead><tbody>
+      <tr><td style="font-weight:600">Deloitte</td><td>65</td><td class="up">+10.2%</td><td>3</td><td><span class="badge badge-teal">3.2%</span></td></tr>
+      <tr><td style="font-weight:600">Capgemini</td><td>57</td><td class="up">+5.6%</td><td>0</td><td><span class="badge badge-amber">10.8%</span></td></tr>
+      <tr><td style="font-weight:600">TCS</td><td>51</td><td class="down">-12.1%</td><td>10</td><td><span class="badge badge-coral">14.7%</span></td></tr>
+      <tr><td style="font-weight:600">Intellect Bizware</td><td>48</td><td class="down">-4.0%</td><td>2</td><td><span class="badge badge-coral">14.3%</span></td></tr>
+      <tr><td style="font-weight:600">IBM</td><td>25</td><td class="up">+8.7%</td><td>7</td><td><span class="badge badge-coral">16.7%</span></td></tr>
+      <tr><td style="font-weight:600">Accenture</td><td>17</td><td class="down">-15.0%</td><td>1</td><td><span class="badge badge-teal">5.4%</span></td></tr>
+      <tr><td style="font-weight:600">EY</td><td>15</td><td class="neutral">0.0%</td><td>3</td><td><span class="badge badge-coral">20.0%</span></td></tr>
+      <tr><td style="font-weight:600">LTIMindtree</td><td>19</td><td class="down">-20.8%</td><td>0</td><td><span class="badge badge-coral">27.9%</span></td></tr>
+      </tbody></table></div>
+    <div class="g2"><div class="cc"><div class="ct">Employer headcount</div><div class="cs">Top 10 by SAP professional count</div><div class="cw" style="height:260px"><canvas id="employerChart"></canvas></div></div>
+    <div class="cc"><div class="ct">Growth vs attrition</div><div class="cs">Bubble size = headcount. Top-left = growing &amp; retaining.</div><div class="cw" style="height:260px"><canvas id="scatterChart"></canvas></div></div></div>
+  </div>
+  <div class="cr2" data-comp="skills">
+    <div class="g2"><div class="card"><div class="ct">Skills penetration</div><div class="cs">% of 1,038 professionals</div><div>
+      <span class="chip">ABAP <span class="pct">97%</span></span><span class="chip">SAP HANA <span class="pct">95%</span></span><span class="chip">SAP Implementation <span class="pct">94%</span></span><span class="chip">SAP FICO <span class="pct">93%</span></span><span class="chip">OOABAP <span class="pct">92%</span></span><span class="chip">SAP BW <span class="pct">87%</span></span><span class="chip">SAP NetWeaver <span class="pct">82%</span></span><span class="chip">Web Dynpro <span class="pct">81%</span></span><span class="chip">SAP SD <span class="pct">80%</span></span>
+      <span class="chip chip-hl">SAP Fiori <span class="pct">69%</span></span><span class="chip chip-hl">OData <span class="pct">57%</span></span><span class="chip chip-hl">SAP S/4HANA <span class="pct">32%</span></span><span class="chip chip-hl">SAPUI5 <span class="pct">29%</span></span><span class="chip chip-hl">SAP Cloud Platform <span class="pct">25%</span></span>
+    </div><div class="callout callout-amber" style="margin-top:16px"><strong>Skills gap:</strong> Only 32% have S/4HANA and 29% have SAPUI5 — the two most critical skills for BlackLine's Kraków role.</div></div>
+    <div class="card"><div class="ct">Title distribution</div><div class="cs">Seniority mix across all regions</div><div class="cw" style="height:260px"><canvas id="titleChart"></canvas></div><div style="margin-top:12px;font-size:.78rem;color:var(--text-2)"><strong style="color:var(--amber)">Mid-seniority gap confirmed:</strong> Senior ABAP Consultants (+10.6% YoY) and Technical Consultants (+8.8%) growing fastest.</div></div></div>
+  </div>
+  <div class="cr2" data-comp="blackline">
+    <div class="card" style="margin-bottom:16px"><div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;justify-content:center"><div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:var(--r);padding:10px 16px;font-weight:800;color:var(--accent);font-size:1.1rem">BL</div><div style="text-align:left"><div style="font-weight:700;font-size:1rem">BlackLine (NASDAQ: BL)</div><div style="font-size:.78rem;color:var(--text-3)">$700.4M revenue (+7.2% YoY) · ~1,800 employees · SAP Platinum Partner</div></div></div>
+    <div class="pc"><div class="pros"><h4>Attractors</h4><ul><li>Exclusive SAP Solution Extension partner (1 of &lt;30)</li><li>Product company stability vs consulting churn</li><li>ESPP + public equity upside</li><li>Direct SAP financial close ecosystem exposure</li><li>Kraków office established</li><li>New CRO with decade of SAP leadership</li></ul></div><div class="cons"><h4>Headwinds</h4><ul><li>Glassdoor 3.6/5 — cultural transition post-founder</li><li>Revenue growth decelerating (10.7% → 7.2%)</li><li>Culture scores 2.8–3.0/5</li><li>Offshoring + RTO friction</li><li>Narrower career path vs Big 4</li><li>Competing against Deloitte, Capgemini, TCS</li></ul></div></div></div>
+  </div>
+</div>
+
+<!-- ====================== INSIGHTS ====================== -->
+<div class="panel" id="panel-insights">
+  <div class="rtabs" id="itabs"><button class="rtab active" data-region="crisis"><span class="dot" style="background:var(--coral)"></span>Talent crisis</button><button class="rtab" data-region="recs"><span class="dot" style="background:var(--teal)"></span>Recommendations</button><button class="rtab" data-region="blrole"><span class="dot" style="background:var(--purple)"></span>Role analysis</button></div>
+  <div class="ir active" data-insight="crisis">
+    <div class="g3" style="margin-bottom:20px">
+      <div class="stat" style="border-top:3px solid var(--coral)"><div class="lbl">Still to migrate</div><div class="val">~27,000</div><div class="delta down">Only 14% live on S/4</div></div>
+      <div class="stat" style="border-top:3px solid var(--amber)"><div class="lbl">ECC end of support</div><div class="val">Dec 2027</div><div class="delta down">18–24mo migration cycles</div></div>
+      <div class="stat" style="border-top:3px solid var(--purple)"><div class="lbl">SAP attrition</div><div class="val">31%</div><div class="delta down">~2× consulting norm</div></div>
+    </div>
+    <div class="g2"><div class="card"><div class="ct">Why the shortage is structural</div><div style="display:flex;flex-direction:column;gap:10px;font-size:.82rem;color:var(--text-2)">
+      <div style="display:flex;gap:10px"><span style="color:var(--coral);font-weight:700;min-width:22px">01</span><span>Dual-skill requirement: legacy ECC + S/4HANA narrows the pool</span></div>
+      <div style="display:flex;gap:10px"><span style="color:var(--coral);font-weight:700;min-width:22px">02</span><span>Original SAP wave talent retiring</span></div>
+      <div style="display:flex;gap:10px"><span style="color:var(--coral);font-weight:700;min-width:22px">03</span><span>Mid-seniority gap: demand at 5–8 yrs; supply at junior or expensive senior</span></div>
+      <div style="display:flex;gap:10px"><span style="color:var(--coral);font-weight:700;min-width:22px">04</span><span>Cross-industry competition: federal, aerospace, manufacturing, finance</span></div>
+      <div style="display:flex;gap:10px"><span style="color:var(--coral);font-weight:700;min-width:22px">05</span><span>BTP at 50% adoption compounds demand on same pool</span></div>
+    </div></div>
+    <div class="card"><div class="ct">BTP adoption surge</div><div style="display:flex;flex-direction:column;gap:8px;font-size:.82rem;color:var(--text-2)">
+      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Using BTP services</span><span style="font-weight:700">50%</span></div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Planning to leverage BTP</span><span style="font-weight:700">61%</span></div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Integration Suite adoption</span><span style="font-weight:700">46% <span style="color:var(--teal);font-size:.72rem">(+13pp YoY)</span></span></div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Lack of expertise — #1 barrier</span><span style="font-weight:700;color:var(--coral)">46%</span></div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0"><span>Development complexity</span><span style="font-weight:700;color:var(--amber)">43%</span></div>
+    </div></div></div>
+  </div>
+  <div class="ir" data-insight="recs">
+    <div class="g2" style="margin-bottom:16px">
+      <div class="card" style="border-top:3px solid var(--purple);border-left:3px solid var(--purple)"><div class="ct" style="color:var(--purple)">Primary: Kraków-first</div><div style="display:flex;flex-direction:column;gap:10px;font-size:.82rem;color:var(--text-2)">
+        <div><strong style="color:var(--text)">Highest ROI region.</strong> 30% savings vs London, Tier A quality, CET timezone, EU alignment, 10.5% growth.</div>
+        <div><strong style="color:var(--text)">Existing presence.</strong> Leverage Kraków office as primary SAP hub.</div>
+        <div><strong style="color:var(--text)">B2B fast-start.</strong> ~£67k GBP equiv while building perm headcount.</div>
+        <div><strong style="color:var(--text)">Compete on product.</strong> Lead with Platinum Partner, ESPP, stability.</div>
+      </div></div>
+      <div class="card" style="border-top:3px solid var(--teal);border-left:3px solid var(--teal)"><div class="ct" style="color:var(--teal)">Secondary: Mumbai for scale</div><div style="display:flex;flex-direction:column;gap:10px;font-size:.82rem;color:var(--text-2)">
+        <div><strong style="color:var(--text)">Volume play.</strong> 827 qualified at 64–79% cost reduction.</div>
+        <div><strong style="color:var(--text)">Target product cos.</strong> IT services = 12–15% attrition. Budget ₹28–32 LPA.</div>
+        <div><strong style="color:var(--text)">Mitigate attrition.</strong> ESPP, growth paths, avoid offshoring optics.</div>
+        <div><strong style="color:var(--text)">London for strategic only.</strong> Senior architects at £80k+ with shrinking pool.</div>
+      </div></div>
+    </div>
+    <div class="callout callout-accent"><strong>Bottom line:</strong> Once-in-a-decade seller's market through 2027. Kraków = best composite. Mumbai = depth. London = prestige. 90+ day fill times mean decisive action is critical.</div>
+  </div>
+  <div class="ir" data-insight="blrole">
+    <div class="card"><div class="ct" style="text-align:center">Senior Software Engineer SAP — Kraków</div><div class="cs" style="text-align:center">BlackLine role alignment analysis</div>
+    <div class="g2" style="gap:24px;margin-top:16px"><div><div style="font-size:.72rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Requirements</div><div style="font-size:.82rem;color:var(--text-2);line-height:1.6"><p style="margin-bottom:8px">8+ years ABAP. S/4HANA + ECC6.0. ABAP OO with Eclipse/ADT. Fiori UI. SAP FI/CO + SD/MM.</p><p style="margin-bottom:8px">Product mindset — SOLID, service-model architecture, ABAP Unit Testing, UML.</p><p>Hybrid, Kraków office.</p></div></div>
+    <div><div style="font-size:.72rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Market alignment</div><div style="font-size:.82rem;color:var(--text-2);line-height:1.6"><p style="margin-bottom:8px"><span class="badge badge-teal">Strong fit</span> 8+ yr requirement targets the sweet spot of highest demand.</p><p style="margin-bottom:8px"><span class="badge badge-amber">Comp pressure</span> Must land at P50+ (23–26.5k PLN/mo UoP). B2B critical.</p><p><span class="badge badge-accent">Differentiator</span> "Advancement beyond ABAP" is a strong retention hook.</p></div></div></div></div>
+  </div>
+</div>
+
+<!-- ====================== SOURCES ====================== -->
+<div class="panel" id="panel-sources">
+  <div class="rtabs" id="srtabs"><button class="rtab active" data-region="salary-src"><span class="dot" style="background:var(--accent)"></span>Salary &amp; market</button><button class="rtab" data-region="crisis-src"><span class="dot" style="background:var(--coral)"></span>Talent crisis</button><button class="rtab" data-region="bl-src"><span class="dot" style="background:var(--teal)"></span>BlackLine</button></div>
+  <div class="src active" data-source="salary-src"><div class="card"><div class="ct">Salary &amp; market data sources</div>
+    <div class="si"><span class="sn">1</span><div><a href="https://itselecta.com/software-engineer-salaries-in-poland-in-2025/" target="_blank">Software Engineer Salaries in Poland in 2025</a><div class="sp">ITSELECTA</div></div></div>
+    <div class="si"><span class="sn">2</span><div><a href="https://itentio.com/blog/sap-developer-salary-in-poland/" target="_blank">SAP Developer Salary in Poland</a><div class="sp">Itentio — 691 active SAP postings</div></div></div>
+    <div class="si"><span class="sn">3</span><div><a href="https://gra.pl/polski-rynek-pracy-w-it-i-nie-tylko-kogo-szukaja-firmy-i-ile-placa-sprawdz/ar/c12p2-26933585" target="_blank">Polski rynek pracy w IT — Kogo szukają firmy i ile płacą?</a><div class="sp">GRA.PL / Hays</div></div></div>
+    <div class="si"><span class="sn">4</span><div><a href="https://itcompare.pl/en-us/articles/87/the-highestpaid-salaries-in-it-in-2026" target="_blank">The Highest-Paid Salaries in IT in 2026</a><div class="sp">ITCompare.pl</div></div></div>
+    <div class="si"><span class="sn">5</span><div><a href="https://veritahr.com/poland-salary-guide-2025-what-you-need-to-know/" target="_blank">Poland Salary Guide 2025</a><div class="sp">Verita HR</div></div></div>
+    <div class="si"><span class="sn">6</span><div><a href="https://optiveum.com/articles/justjoinit-salary-report-2025/" target="_blank">JustJoinIT Salary Report 2025</a><div class="sp">Optiveum</div></div></div>
+    <div class="si"><span class="sn">7</span><div><a href="https://www.itjobswatch.co.uk/jobs/uk/abap%20developer.do" target="_blank">ABAP Developer Job Trends &amp; Salaries</a><div class="sp">IT Jobs Watch</div></div></div>
+    <div class="si"><span class="sn">8</span><div><a href="https://www.salaryexpert.com/salary/job/sap-abap-developer/united-kingdom" target="_blank">SAP ABAP Developer Salary UK (2025)</a><div class="sp">ERI SalaryExpert</div></div></div>
+    <div class="si"><span class="sn">9</span><div><a href="https://www.itjobboard.co.uk/blog/220/sap-jobs-uk-2025-careers-skills-salary-guide-for-sap-professionals" target="_blank">SAP Jobs UK 2025 — Salary Guide</a><div class="sp">IT Job Board UK</div></div></div>
+    <div class="si"><span class="sn">10</span><div><a href="https://www.morganmckinley.com/uk/salary-guide/data/abap-developer/london" target="_blank">ABAP Developer Salaries in London</a><div class="sp">Morgan McKinley 2025</div></div></div>
+    <div class="si"><span class="sn">11</span><div><a href="https://www.glassdoor.co.uk/Job/united-kingdom-sap-abap-jobs-SRCH_IL.0,14_IN2_KO15,23.htm" target="_blank">SAP ABAP Jobs UK, March 2026</a><div class="sp">Glassdoor UK</div></div></div>
+    <div class="si"><span class="sn">12</span><div><a href="https://www.glassdoor.co.uk/Salary/SAP-Senior-SAP-Developer-ABAP-Salaries-E10471_D_KO4,29.htm" target="_blank">SAP Senior Developer ABAP Salaries</a><div class="sp">Glassdoor UK</div></div></div>
+    <div class="si"><span class="sn">13</span><div><a href="https://softat.co.in/sap-fiori-developer-salary/" target="_blank">SAP Fiori Developer Salary</a><div class="sp">Softat</div></div></div>
+    <div class="si"><span class="sn">14</span><div><a href="https://www.itjobswatch.co.uk/contracts/uk/abap%20developer.do" target="_blank">ABAP Developer Contract Rates</a><div class="sp">IT Jobs Watch</div></div></div>
+    <div class="si"><span class="sn">15</span><div><a href="https://www.salaryexpert.com/salary/job/sap-abap-developer/india/mumbai" target="_blank">SAP ABAP Developer Salary Mumbai</a><div class="sp">ERI SalaryExpert</div></div></div>
+    <div class="si"><span class="sn">16</span><div><a href="https://www.erpvits.com/blog/sap-consultant-salary" target="_blank">SAP Consultant Salary Guide 2026</a><div class="sp">ERPVITS</div></div></div>
+    <div class="si"><span class="sn">17</span><div><a href="https://mytrainingwala.com/sap-consultant-salary-guide-2025/" target="_blank">SAP Consultant Salary 2025</a><div class="sp">myTrainingwala</div></div></div>
+    <div class="si"><span class="sn">18</span><div><a href="https://www.glassdoor.co.in/Salary/Accenture-Senior-SAP-ABAP-Developer-Salaries-E4138_D_KO10,35.htm" target="_blank">Accenture Senior SAP ABAP Salaries</a><div class="sp">Glassdoor India</div></div></div>
+    <div class="si"><span class="sn">19</span><div><a href="https://www.glassdoor.co.in/Salaries/sap-abap-developer-salary-SRCH_KO0,18.htm" target="_blank">SAP ABAP Developer Salary (Jan 2026)</a><div class="sp">Glassdoor India</div></div></div>
+    <div class="si"><span class="sn">20</span><div><a href="https://www.whitehallresources.com/2025/12/sap-consultant-salary-trends-germany-dach/" target="_blank">SAP Salary Trends DACH</a><div class="sp">Whitehall Resources</div></div></div>
+  </div></div>
+  <div class="src" data-source="crisis-src"><div class="card"><div class="ct">Talent crisis &amp; migration sources</div>
+    <div class="si"><span class="sn">1</span><div><a href="https://www.basistechnologies.com/unpacking-the-sap-skills-shortage-with-jon-brewer/" target="_blank">Unpacking the SAP Skills Shortage</a><div class="sp">Basis Technologies</div></div></div>
+    <div class="si"><span class="sn">2</span><div><a href="https://www.nextnow.ca/is-sap-still-in-demand-in-2025-market-trends-job-outlook/" target="_blank">SAP Demand in 2025: Market Trends</a><div class="sp">Nextnow</div></div></div>
+    <div class="si"><span class="sn">3</span><div><a href="https://www.whitehallresources.com/2025/10/sap-s-4hana-adoption-dach-region/" target="_blank">S/4HANA Adoption in DACH</a><div class="sp">Whitehall Resources</div></div></div>
+    <div class="si"><span class="sn">4</span><div><a href="https://baergroup.com/blog/every-sap-s-4hana-ecosystem-and-staffing-trend-you-need-to-know-for-2025/" target="_blank">S/4HANA Ecosystem &amp; Staffing Trends 2025</a><div class="sp">The Baer Group</div></div></div>
+    <div class="si"><span class="sn">5</span><div><a href="https://itbrief.co.uk/story/eu-faces-growing-shortage-of-sap-s-4hana-specialists" target="_blank">EU Faces Growing S/4HANA Specialist Shortage</a><div class="sp">IT Brief UK</div></div></div>
+    <div class="si"><span class="sn">6</span><div><a href="https://www.e-solutionsinc.com/blog/sap-recruitment-in-2025" target="_blank">SAP Recruitment in 2025</a><div class="sp">E-Solutions Inc.</div></div></div>
+    <div class="si"><span class="sn">7</span><div><a href="https://www.precisely.com/sap-automation/2026-trends-in-sap-automation-modernization-and-btp-adoption/" target="_blank">2026 Trends in SAP Automation</a><div class="sp">Precisely</div></div></div>
+    <div class="si"><span class="sn">8</span><div><a href="https://19523792.fs1.hubspotusercontent-na1.net/hubfs/19523792/2025%20Research%20Report/SAPinsider%20-%202025-02%20SAP%20S4HANA%20Migration%20-%20Detailed%20Findings.pdf" target="_blank">S/4HANA Migration Benchmark 2025</a><div class="sp">SAPinsider</div></div></div>
+    <div class="si"><span class="sn">9</span><div><a href="https://ignitesap.com/what-sap-consultants-can-expect-in-2025/" target="_blank">What SAP Consultants Can Expect in 2025</a><div class="sp">IgniteSAP</div></div></div>
+    <div class="si"><span class="sn">10</span><div><a href="https://www.neptune-software.com/resources/sap-fiori-app-development/" target="_blank">SAP Fiori App Development</a><div class="sp">Neptune Software</div></div></div>
+    <div class="si"><span class="sn">11</span><div><a href="https://www.stocktitan.net/news/III/u-k-sap-market-sees-strong-demand-for-s-4hana-f9f5h689blx7.html" target="_blank">UK SAP Market S/4HANA Skills Shortage</a><div class="sp">Stock Titan</div></div></div>
+    <div class="si"><span class="sn">12</span><div><a href="https://www.comparably.com/companies/deloitte/retention" target="_blank">Deloitte Retention Score</a><div class="sp">Comparably</div></div></div>
+    <div class="si"><span class="sn">13</span><div><a href="https://www.business-standard.com/companies/news/tcs-headcount-down-by-over-5-000-in-q3-attrition-within-comfort-zone-125010901249_1.html" target="_blank">TCS Headcount &amp; Attrition Q3</a><div class="sp">Business Standard</div></div></div>
+    <div class="si"><span class="sn">14</span><div><a href="https://www.hrkatha.com/hiring-firing/tcs-attrition-rate-rises-slightly-11000-hired-in-first-half-of-2024-25/" target="_blank">TCS Attrition Rate H1</a><div class="sp">HR Katha</div></div></div>
+    <div class="si"><span class="sn">15</span><div><a href="https://www.tcs.com/who-we-are/newsroom/press-release/tcs-posts-strong-annual-performance-solid-fourth-quarter-crowns" target="_blank">TCS Annual Performance</a><div class="sp">TCS</div></div></div>
+    <div class="si"><span class="sn">16</span><div><a href="https://flevy.com/topic/talent-management/question/consulting-firm-average-employee-tenure-key-insights-revealed" target="_blank">Consulting Firm Average Tenure</a><div class="sp">Flevy</div></div></div>
+    <div class="si"><span class="sn">17</span><div><a href="https://www.consultancy.uk/news/19569/how-consulting-leaders-can-tackle-the-retention-problem-of-juniors" target="_blank">Consulting Retention Problem</a><div class="sp">Consultancy.uk</div></div></div>
+    <div class="si"><span class="sn">18</span><div><a href="https://pyramidci.com/casestudy/minimizing-sap-talent-attrition-and-costs-for-a-global-professional-services-firm/" target="_blank">Minimizing SAP Talent Attrition</a><div class="sp">Pyramid Consulting</div></div></div>
+  </div></div>
+  <div class="src" data-source="bl-src"><div class="card"><div class="ct">BlackLine &amp; employer intelligence</div>
+    <div class="si"><span class="sn">1</span><div><a href="https://www.blackline.com/sap/" target="_blank">BlackLine Solutions for SAP</a><div class="sp">BlackLine</div></div></div>
+    <div class="si"><span class="sn">2</span><div><a href="https://community.sap.com/t5/enterprise-resource-planning-blog-posts-by-sap/sap-blackline-improving-the-end-to-end-financial-close-process-together/ba-p/13554693" target="_blank">SAP &amp; BlackLine: Financial Close Process</a><div class="sp">SAP Community</div></div></div>
+    <div class="si"><span class="sn">3</span><div><a href="https://www.blackline.com/campaign/sap/lb/" target="_blank">SAP &amp; BlackLine: Gold Standard for R2R</a><div class="sp">BlackLine</div></div></div>
+    <div class="si"><span class="sn">4</span><div><a href="https://pitchbook.com/profiles/company/58453-75" target="_blank">BlackLine 2025 Company Profile</a><div class="sp">PitchBook</div></div></div>
+    <div class="si"><span class="sn">5</span><div><a href="https://stockanalysis.com/stocks/bl/revenue/" target="_blank">BlackLine Revenue 2014–2025</a><div class="sp">StockAnalysis</div></div></div>
+    <div class="si"><span class="sn">6</span><div><a href="https://www.wallstreetzen.com/stocks/us/nasdaq/bl/revenue" target="_blank">BlackLine Annual Revenue</a><div class="sp">WallStreetZen</div></div></div>
+    <div class="si"><span class="sn">7</span><div><a href="https://www.sec.gov/Archives/edgar/data/0001666134/000117184325000196/exh_991.htm" target="_blank">BlackLine SEC Filing Q4 2024</a><div class="sp">SEC.gov</div></div></div>
+    <div class="si"><span class="sn">8</span><div><a href="https://www.glassdoor.com/Reviews/BlackLine-Reviews-E389699.htm" target="_blank">BlackLine Reviews (574)</a><div class="sp">Glassdoor</div></div></div>
+  </div></div>
+</div>
+
+<div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:.72rem;color:var(--text-4)">
+  <div>Data: LinkedIn Talent Insights · IT Jobs Watch · Itentio · ERI SalaryExpert · Glassdoor · ERPVITS · Precisely · SAPinsider</div>
+  <div>Chapter 2 · Talent Advisory · March 2026</div>
+</div>
+</div>
+
+<script>
+function setupTabs(id,panelAttr){const c=document.getElementById(id);if(!c)return;c.addEventListener('click',e=>{const b=e.target.closest('[data-tab],[data-region]');if(!b)return;const k=b.dataset.tab||b.dataset.region;c.querySelectorAll('.ptab,.rtab').forEach(t=>t.classList.remove('active'));b.classList.add('active');if(b.dataset.tab){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));const t=document.getElementById('panel-'+k);if(t)t.classList.add('active')}if(b.dataset.region&&panelAttr){const p=c.closest('.panel')||document.body;p.querySelectorAll('[data-'+panelAttr+']').forEach(r=>r.classList.remove('active'));const t=p.querySelector('[data-'+panelAttr+'="'+k+'"]');if(t)t.classList.add('active')}})}
+setupTabs('pt',null);setupTabs('stabs','salary');setupTabs('ctabs','comp');setupTabs('itabs','insight');setupTabs('srtabs','source');
+
+Chart.defaults.color='#8E8EA0';Chart.defaults.borderColor='#E2E2E8';Chart.defaults.font.family="'Figtree',system-ui,sans-serif";Chart.defaults.font.size=12;
+
+new Chart(document.getElementById('premiumChart'),{type:'bar',data:{labels:['London','Kraków','Mumbai'],datasets:[{label:'Base ABAP',data:[67.5,48,18],backgroundColor:'#E2E2E8',borderRadius:6,borderSkipped:false},{label:'S/4HANA + Fiori',data:[80,56,25],backgroundColor:'#2563EB',borderRadius:6,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:10,boxHeight:10,useBorderRadius:true,borderRadius:2,padding:14,font:{weight:'600'}}}},scales:{x:{grid:{display:false}},y:{grid:{color:'#F1F1F4'},ticks:{callback:v=>'£'+v+'k'}}}}});
+
+new Chart(document.getElementById('employerChart'),{type:'bar',data:{labels:['Deloitte','Capgemini','TCS','Intellect','IBM','Expound','LTIMindtree','Accenture','Cognitus','EY'],datasets:[{data:[65,57,51,48,25,23,19,17,17,15],backgroundColor:['#2563EB','#0F766E','#B45309','#6D28D9','#DC2626','#D1D1D6','#D1D1D6','#D1D1D6','#D1D1D6','#D1D1D6'],borderRadius:6,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{y:{grid:{display:false},ticks:{font:{size:11,weight:'500'}}},x:{grid:{color:'#F1F1F4'}}}}});
+
+new Chart(document.getElementById('scatterChart'),{type:'bubble',data:{datasets:[{data:[{x:10.2,y:3.2,r:13},{x:5.6,y:10.8,r:12},{x:-12.1,y:14.7,r:10},{x:-4,y:14.3,r:10},{x:8.7,y:16.7,r:7},{x:-15,y:5.4,r:6},{x:0,y:20,r:5},{x:-20.8,y:27.9,r:6}],backgroundColor:['rgba(37,99,235,.55)','rgba(15,118,110,.55)','rgba(180,83,9,.55)','rgba(109,40,217,.55)','rgba(220,38,38,.55)','rgba(200,200,200,.35)','rgba(200,200,200,.35)','rgba(220,38,38,.25)']}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{const n=['Deloitte','Capgemini','TCS','Intellect','IBM','Accenture','EY','LTIMindtree'];return n[c.dataIndex]+': '+c.raw.x+'% growth, '+c.raw.y+'% attrition'}}}},scales:{x:{title:{display:true,text:'1Y Growth %',color:'#A1A1AA',font:{size:10,weight:'600'}},grid:{color:'#F1F1F4'},min:-25,max:15},y:{title:{display:true,text:'Attrition %',color:'#A1A1AA',font:{size:10,weight:'600'}},grid:{color:'#F1F1F4'},min:0,max:32}}}});
+
+new Chart(document.getElementById('titleChart'),{type:'doughnut',data:{labels:['ABAP Consultant','SAP Consultant','ABAP Developer','Sr. SAP Consultant','Technical Consultant','Sr. ABAP Consultant','Other'],datasets:[{data:[310,248,130,111,62,52,125],backgroundColor:['#2563EB','#0F766E','#B45309','#6D28D9','#DC2626','rgba(109,40,217,.4)','#E2E2E8'],borderWidth:0,hoverOffset:4}]},options:{responsive:true,maintainAspectRatio:false,cutout:'62%',plugins:{legend:{position:'right',labels:{boxWidth:10,boxHeight:10,padding:8,font:{size:11,weight:'500'},useBorderRadius:true,borderRadius:2}}}}});
+</script>
+</body>
+</html>
