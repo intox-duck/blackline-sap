@@ -192,8 +192,9 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 .source-empty{margin-top:16px}
 
 /* Panels */
-.panel{display:none}.panel.active{display:block}
-.sr,.cr2,.ir,.src{display:none}.sr.active,.cr2.active,.ir.active,.src.active{display:block}
+.panel{display:none}.panel.active{display:block;animation:panelIn .32s ease both}
+.sr,.cr2,.ir,.src{display:none}.sr.active,.cr2.active,.ir.active,.src.active{display:block;animation:panelIn .32s ease both}
+@keyframes panelIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
 /* Company rows */
 .cr{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);font-size:.82rem}
@@ -567,7 +568,7 @@ function setupTabs(id,panelAttr){
       const t=p.querySelector('[data-'+panelAttr+'="'+k+'"]');
       if(t)t.classList.add('active');
     }
-    initVisibleCharts();
+    requestAnimationFrame(()=>syncVisibleCharts(true));
   });
 }
 
@@ -715,15 +716,19 @@ function ensureChart(id){
   }
 }
 
-function initVisibleCharts(){
+function syncVisibleCharts(replay=false){
   document.querySelectorAll('.panel.active canvas').forEach(canvas=>{
     const gatedContainer=canvas.closest('.cr2,.ir,.src,.sr');
     if(gatedContainer && !gatedContainer.classList.contains('active')) return;
+    if(replay && chartInstances[canvas.id]){
+      chartInstances[canvas.id].destroy();
+      delete chartInstances[canvas.id];
+    }
     ensureChart(canvas.id);
   });
 }
 
-requestAnimationFrame(initVisibleCharts);
+requestAnimationFrame(()=>syncVisibleCharts(false));
 </script>
 </body>
 </html>
