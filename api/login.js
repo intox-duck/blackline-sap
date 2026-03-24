@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import { createSessionToken, isAllowedLogin } from '../lib/auth.js';
 
 export default function handler(req, res) {
   if (req.method !== 'POST') {
@@ -7,14 +7,8 @@ export default function handler(req, res) {
 
   const { email, password } = req.body;
 
-  if (
-    email === process.env.AUTH_EMAIL &&
-    password === process.env.AUTH_PASSWORD
-  ) {
-    const token = crypto
-      .createHmac('sha256', process.env.AUTH_SECRET)
-      .update(email)
-      .digest('hex');
+  if (isAllowedLogin(email, password)) {
+    const token = createSessionToken(email);
 
     res.setHeader('Set-Cookie', [
       `auth_session=${token}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=86400`,

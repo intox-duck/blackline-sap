@@ -1,16 +1,11 @@
-import crypto from 'crypto';
+import { isValidSessionToken } from '../lib/auth.js';
 
 export default function handler(req, res) {
   const cookies = req.headers.cookie || '';
   const match = cookies.match(/auth_session=([^;]+)/);
   const token = match ? match[1] : null;
 
-  const expected = crypto
-    .createHmac('sha256', process.env.AUTH_SECRET)
-    .update(process.env.AUTH_EMAIL)
-    .digest('hex');
-
-  if (token === expected) {
+  if (isValidSessionToken(token)) {
     return res.status(200).json({ authenticated: true });
   }
 
