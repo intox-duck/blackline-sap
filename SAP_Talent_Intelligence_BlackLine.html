@@ -86,6 +86,7 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 .g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.g5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
 
 /* Stat cards — centred */
 .stat{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:20px;box-shadow:var(--sc);text-align:center}
@@ -232,8 +233,8 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 .tip::before{content:'';position:absolute;left:50%;bottom:calc(100% + 4px);transform:translateX(-50%) translateY(4px);border:6px solid transparent;border-top-color:#111827;opacity:0;transition:opacity .15s,transform .15s;pointer-events:none;z-index:19}
 .tip:hover::after,.tip:hover::before,.tip:focus-visible::after,.tip:focus-visible::before{opacity:1;transform:translateX(-50%) translateY(0)}
 
-@media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}.g2,.takeaway-grid{grid-template-columns:1fr}.pc{grid-template-columns:1fr}.ptabs,.rtabs{overflow-x:auto;flex-wrap:nowrap}.takeaway-head,.source-toolbar,.source-summary,.source-meta{flex-direction:column;align-items:stretch}.source-search-wrap{min-width:0;flex-basis:auto}}
-@media(max-width:600px){.g3,.g4,.g2{grid-template-columns:1fr}.wrap{padding:20px 16px}.hdr{align-items:flex-start;gap:16px;flex-direction:column}.hdr-meta{text-align:left}}
+@media(max-width:900px){.g5{grid-template-columns:repeat(2,1fr)}.g3,.g4{grid-template-columns:repeat(2,1fr)}.g2,.takeaway-grid{grid-template-columns:1fr}.pc{grid-template-columns:1fr}.ptabs,.rtabs{overflow-x:auto;flex-wrap:nowrap}.takeaway-head,.source-toolbar,.source-summary,.source-meta{flex-direction:column;align-items:stretch}.source-search-wrap{min-width:0;flex-basis:auto}}
+@media(max-width:600px){.g5,.g3,.g4,.g2{grid-template-columns:1fr}.wrap{padding:20px 16px}.hdr{align-items:flex-start;gap:16px;flex-direction:column}.hdr-meta{text-align:left}}
 </style>
 </head>
 <body>
