@@ -192,7 +192,9 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 .source-label{display:block;font-size:var(--fs-meta);font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
 .source-search{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:var(--r);background:var(--white);color:var(--text);font:inherit;outline:none;transition:border-color .15s,box-shadow .15s}
 .source-search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
-.source-summary{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:18px;font-size:var(--fs-label);color:var(--text-3)}
+.source-summary{display:flex;justify-content:flex-end;align-items:center;gap:14px;margin-top:18px;font-size:var(--fs-label);color:var(--text-3)}
+.source-summary #sourceSearchStatus:not(:empty){margin-right:auto}
+.source-summary #sourceSearchStatus:empty{display:none}
 .source-legend,.source-badges{display:flex;gap:8px;flex-wrap:wrap}
 .source-group{margin-top:16px}
 .source-group-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:4px}
@@ -569,7 +571,7 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
       </div>
     </div>
     <div class="source-summary">
-      <div id="sourceSearchStatus">This consolidated register integrates 58 sources, blending LinkedIn Insights data on talent flows and target talent density with findings from various deep research tools.</div>
+      <div id="sourceSearchStatus" aria-live="polite"></div>
       <div class="source-legend"><span class="badge badge-teal">Core research</span><span class="badge badge-purple">Addendum</span></div>
     </div>
   </div>
