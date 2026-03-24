@@ -179,6 +179,20 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 .si a{color:var(--accent);text-decoration:none;font-weight:500}
 .si a:hover{text-decoration:underline}
 .sp{color:var(--text-3);font-size:.78rem}
+.source-shell{margin-bottom:16px}
+.source-toolbar{display:flex;justify-content:space-between;align-items:flex-end;gap:18px}
+.source-search-wrap{min-width:min(420px,100%);flex:0 1 420px}
+.source-label{display:block;font-size:.76rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.source-search{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:var(--r);background:var(--white);color:var(--text);font:inherit;outline:none;transition:border-color .15s,box-shadow .15s}
+.source-search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.source-summary{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:18px;font-size:.78rem;color:var(--text-3)}
+.source-legend,.source-badges{display:flex;gap:8px;flex-wrap:wrap}
+.source-group{margin-top:16px}
+.source-group-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:4px}
+.source-main{min-width:0;flex:1}
+.source-meta{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-top:8px}
+.source-url{display:block;color:var(--text-4);font-size:.74rem;word-break:break-all}
+.source-empty{margin-top:16px}
 
 /* Panels */
 .panel{display:none}.panel.active{display:block}
@@ -188,7 +202,7 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 .cr{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);font-size:.82rem}
 .cr.crh{font-size:.76rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;font-weight:600;padding-bottom:10px}
 
-@media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}.g2,.takeaway-grid{grid-template-columns:1fr}.pc{grid-template-columns:1fr}.ptabs,.rtabs{overflow-x:auto;flex-wrap:nowrap}.takeaway-head{flex-direction:column}}
+@media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}.g2,.takeaway-grid{grid-template-columns:1fr}.pc{grid-template-columns:1fr}.ptabs,.rtabs{overflow-x:auto;flex-wrap:nowrap}.takeaway-head,.source-toolbar,.source-summary,.source-meta{flex-direction:column;align-items:stretch}.source-search-wrap{min-width:0;flex-basis:auto}}
 @media(max-width:600px){.g3,.g4,.g2{grid-template-columns:1fr}.wrap{padding:20px 16px}.hdr{align-items:flex-start;gap:16px;flex-direction:column}.hdr-meta{text-align:left}}
 </style>
 </head>
@@ -509,59 +523,24 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 
 <!-- ====================== SOURCES ====================== -->
 <div class="panel" id="panel-sources">
-  <div class="rtabs" id="srtabs"><button class="rtab active" data-region="salary-src"><span class="dot" style="background:var(--accent)"></span>Salary &amp; market</button><button class="rtab" data-region="crisis-src"><span class="dot" style="background:var(--coral)"></span>Talent crisis</button><button class="rtab" data-region="bl-src"><span class="dot" style="background:var(--teal)"></span>BlackLine</button></div>
-  <div class="src active" data-source="salary-src"><div class="card"><div class="ct">Salary &amp; market data sources</div>
-    <div class="si"><span class="sn">1</span><div><a href="https://itselecta.com/software-engineer-salaries-in-poland-in-2025/" target="_blank">Software Engineer Salaries in Poland in 2025</a><div class="sp">ITSELECTA</div></div></div>
-    <div class="si"><span class="sn">2</span><div><a href="https://itentio.com/blog/sap-developer-salary-in-poland/" target="_blank">SAP Developer Salary in Poland</a><div class="sp">Itentio — 691 active SAP postings</div></div></div>
-    <div class="si"><span class="sn">3</span><div><a href="https://gra.pl/polski-rynek-pracy-w-it-i-nie-tylko-kogo-szukaja-firmy-i-ile-placa-sprawdz/ar/c12p2-26933585" target="_blank">Polski rynek pracy w IT — Kogo szukają firmy i ile płacą?</a><div class="sp">GRA.PL / Hays</div></div></div>
-    <div class="si"><span class="sn">4</span><div><a href="https://itcompare.pl/en-us/articles/87/the-highestpaid-salaries-in-it-in-2026" target="_blank">The Highest-Paid Salaries in IT in 2026</a><div class="sp">ITCompare.pl</div></div></div>
-    <div class="si"><span class="sn">5</span><div><a href="https://veritahr.com/poland-salary-guide-2025-what-you-need-to-know/" target="_blank">Poland Salary Guide 2025</a><div class="sp">Verita HR</div></div></div>
-    <div class="si"><span class="sn">6</span><div><a href="https://optiveum.com/articles/justjoinit-salary-report-2025/" target="_blank">JustJoinIT Salary Report 2025</a><div class="sp">Optiveum</div></div></div>
-    <div class="si"><span class="sn">7</span><div><a href="https://www.itjobswatch.co.uk/jobs/uk/abap%20developer.do" target="_blank">ABAP Developer Job Trends &amp; Salaries</a><div class="sp">IT Jobs Watch</div></div></div>
-    <div class="si"><span class="sn">8</span><div><a href="https://www.salaryexpert.com/salary/job/sap-abap-developer/united-kingdom" target="_blank">SAP ABAP Developer Salary UK (2025)</a><div class="sp">ERI SalaryExpert</div></div></div>
-    <div class="si"><span class="sn">9</span><div><a href="https://www.itjobboard.co.uk/blog/220/sap-jobs-uk-2025-careers-skills-salary-guide-for-sap-professionals" target="_blank">SAP Jobs UK 2025 — Salary Guide</a><div class="sp">IT Job Board UK</div></div></div>
-    <div class="si"><span class="sn">10</span><div><a href="https://www.morganmckinley.com/uk/salary-guide/data/abap-developer/london" target="_blank">ABAP Developer Salaries in London</a><div class="sp">Morgan McKinley 2025</div></div></div>
-    <div class="si"><span class="sn">11</span><div><a href="https://www.glassdoor.co.uk/Job/united-kingdom-sap-abap-jobs-SRCH_IL.0,14_IN2_KO15,23.htm" target="_blank">SAP ABAP Jobs UK, March 2026</a><div class="sp">Glassdoor UK</div></div></div>
-    <div class="si"><span class="sn">12</span><div><a href="https://www.glassdoor.co.uk/Salary/SAP-Senior-SAP-Developer-ABAP-Salaries-E10471_D_KO4,29.htm" target="_blank">SAP Senior Developer ABAP Salaries</a><div class="sp">Glassdoor UK</div></div></div>
-    <div class="si"><span class="sn">13</span><div><a href="https://softat.co.in/sap-fiori-developer-salary/" target="_blank">SAP Fiori Developer Salary</a><div class="sp">Softat</div></div></div>
-    <div class="si"><span class="sn">14</span><div><a href="https://www.itjobswatch.co.uk/contracts/uk/abap%20developer.do" target="_blank">ABAP Developer Contract Rates</a><div class="sp">IT Jobs Watch</div></div></div>
-    <div class="si"><span class="sn">15</span><div><a href="https://www.salaryexpert.com/salary/job/sap-abap-developer/india/mumbai" target="_blank">SAP ABAP Developer Salary Mumbai</a><div class="sp">ERI SalaryExpert</div></div></div>
-    <div class="si"><span class="sn">16</span><div><a href="https://www.erpvits.com/blog/sap-consultant-salary" target="_blank">SAP Consultant Salary Guide 2026</a><div class="sp">ERPVITS</div></div></div>
-    <div class="si"><span class="sn">17</span><div><a href="https://mytrainingwala.com/sap-consultant-salary-guide-2025/" target="_blank">SAP Consultant Salary 2025</a><div class="sp">myTrainingwala</div></div></div>
-    <div class="si"><span class="sn">18</span><div><a href="https://www.glassdoor.co.in/Salary/Accenture-Senior-SAP-ABAP-Developer-Salaries-E4138_D_KO10,35.htm" target="_blank">Accenture Senior SAP ABAP Salaries</a><div class="sp">Glassdoor India</div></div></div>
-    <div class="si"><span class="sn">19</span><div><a href="https://www.glassdoor.co.in/Salaries/sap-abap-developer-salary-SRCH_KO0,18.htm" target="_blank">SAP ABAP Developer Salary (Jan 2026)</a><div class="sp">Glassdoor India</div></div></div>
-    <div class="si"><span class="sn">20</span><div><a href="https://www.whitehallresources.com/2025/12/sap-consultant-salary-trends-germany-dach/" target="_blank">SAP Salary Trends DACH</a><div class="sp">Whitehall Resources</div></div></div>
-  </div></div>
-  <div class="src" data-source="crisis-src"><div class="card"><div class="ct">Talent crisis &amp; migration sources</div>
-    <div class="si"><span class="sn">1</span><div><a href="https://www.basistechnologies.com/unpacking-the-sap-skills-shortage-with-jon-brewer/" target="_blank">Unpacking the SAP Skills Shortage</a><div class="sp">Basis Technologies</div></div></div>
-    <div class="si"><span class="sn">2</span><div><a href="https://www.nextnow.ca/is-sap-still-in-demand-in-2025-market-trends-job-outlook/" target="_blank">SAP Demand in 2025: Market Trends</a><div class="sp">Nextnow</div></div></div>
-    <div class="si"><span class="sn">3</span><div><a href="https://www.whitehallresources.com/2025/10/sap-s-4hana-adoption-dach-region/" target="_blank">S/4HANA Adoption in DACH</a><div class="sp">Whitehall Resources</div></div></div>
-    <div class="si"><span class="sn">4</span><div><a href="https://baergroup.com/blog/every-sap-s-4hana-ecosystem-and-staffing-trend-you-need-to-know-for-2025/" target="_blank">S/4HANA Ecosystem &amp; Staffing Trends 2025</a><div class="sp">The Baer Group</div></div></div>
-    <div class="si"><span class="sn">5</span><div><a href="https://itbrief.co.uk/story/eu-faces-growing-shortage-of-sap-s-4hana-specialists" target="_blank">EU Faces Growing S/4HANA Specialist Shortage</a><div class="sp">IT Brief UK</div></div></div>
-    <div class="si"><span class="sn">6</span><div><a href="https://www.e-solutionsinc.com/blog/sap-recruitment-in-2025" target="_blank">SAP Recruitment in 2025</a><div class="sp">E-Solutions Inc.</div></div></div>
-    <div class="si"><span class="sn">7</span><div><a href="https://www.precisely.com/sap-automation/2026-trends-in-sap-automation-modernization-and-btp-adoption/" target="_blank">2026 Trends in SAP Automation</a><div class="sp">Precisely</div></div></div>
-    <div class="si"><span class="sn">8</span><div><a href="https://19523792.fs1.hubspotusercontent-na1.net/hubfs/19523792/2025%20Research%20Report/SAPinsider%20-%202025-02%20SAP%20S4HANA%20Migration%20-%20Detailed%20Findings.pdf" target="_blank">S/4HANA Migration Benchmark 2025</a><div class="sp">SAPinsider</div></div></div>
-    <div class="si"><span class="sn">9</span><div><a href="https://ignitesap.com/what-sap-consultants-can-expect-in-2025/" target="_blank">What SAP Consultants Can Expect in 2025</a><div class="sp">IgniteSAP</div></div></div>
-    <div class="si"><span class="sn">10</span><div><a href="https://www.neptune-software.com/resources/sap-fiori-app-development/" target="_blank">SAP Fiori App Development</a><div class="sp">Neptune Software</div></div></div>
-    <div class="si"><span class="sn">11</span><div><a href="https://www.stocktitan.net/news/III/u-k-sap-market-sees-strong-demand-for-s-4hana-f9f5h689blx7.html" target="_blank">UK SAP Market S/4HANA Skills Shortage</a><div class="sp">Stock Titan</div></div></div>
-    <div class="si"><span class="sn">12</span><div><a href="https://www.comparably.com/companies/deloitte/retention" target="_blank">Deloitte Retention Score</a><div class="sp">Comparably</div></div></div>
-    <div class="si"><span class="sn">13</span><div><a href="https://www.business-standard.com/companies/news/tcs-headcount-down-by-over-5-000-in-q3-attrition-within-comfort-zone-125010901249_1.html" target="_blank">TCS Headcount &amp; Attrition Q3</a><div class="sp">Business Standard</div></div></div>
-    <div class="si"><span class="sn">14</span><div><a href="https://www.hrkatha.com/hiring-firing/tcs-attrition-rate-rises-slightly-11000-hired-in-first-half-of-2024-25/" target="_blank">TCS Attrition Rate H1</a><div class="sp">HR Katha</div></div></div>
-    <div class="si"><span class="sn">15</span><div><a href="https://www.tcs.com/who-we-are/newsroom/press-release/tcs-posts-strong-annual-performance-solid-fourth-quarter-crowns" target="_blank">TCS Annual Performance</a><div class="sp">TCS</div></div></div>
-    <div class="si"><span class="sn">16</span><div><a href="https://flevy.com/topic/talent-management/question/consulting-firm-average-employee-tenure-key-insights-revealed" target="_blank">Consulting Firm Average Tenure</a><div class="sp">Flevy</div></div></div>
-    <div class="si"><span class="sn">17</span><div><a href="https://www.consultancy.uk/news/19569/how-consulting-leaders-can-tackle-the-retention-problem-of-juniors" target="_blank">Consulting Retention Problem</a><div class="sp">Consultancy.uk</div></div></div>
-    <div class="si"><span class="sn">18</span><div><a href="https://pyramidci.com/casestudy/minimizing-sap-talent-attrition-and-costs-for-a-global-professional-services-firm/" target="_blank">Minimizing SAP Talent Attrition</a><div class="sp">Pyramid Consulting</div></div></div>
-  </div></div>
-  <div class="src" data-source="bl-src"><div class="card"><div class="ct">BlackLine &amp; employer intelligence</div>
-    <div class="si"><span class="sn">1</span><div><a href="https://www.blackline.com/sap/" target="_blank">BlackLine Solutions for SAP</a><div class="sp">BlackLine</div></div></div>
-    <div class="si"><span class="sn">2</span><div><a href="https://community.sap.com/t5/enterprise-resource-planning-blog-posts-by-sap/sap-blackline-improving-the-end-to-end-financial-close-process-together/ba-p/13554693" target="_blank">SAP &amp; BlackLine: Financial Close Process</a><div class="sp">SAP Community</div></div></div>
-    <div class="si"><span class="sn">3</span><div><a href="https://www.blackline.com/campaign/sap/lb/" target="_blank">SAP &amp; BlackLine: Gold Standard for R2R</a><div class="sp">BlackLine</div></div></div>
-    <div class="si"><span class="sn">4</span><div><a href="https://pitchbook.com/profiles/company/58453-75" target="_blank">BlackLine 2025 Company Profile</a><div class="sp">PitchBook</div></div></div>
-    <div class="si"><span class="sn">5</span><div><a href="https://stockanalysis.com/stocks/bl/revenue/" target="_blank">BlackLine Revenue 2014–2025</a><div class="sp">StockAnalysis</div></div></div>
-    <div class="si"><span class="sn">6</span><div><a href="https://www.wallstreetzen.com/stocks/us/nasdaq/bl/revenue" target="_blank">BlackLine Annual Revenue</a><div class="sp">WallStreetZen</div></div></div>
-    <div class="si"><span class="sn">7</span><div><a href="https://www.sec.gov/Archives/edgar/data/0001666134/000117184325000196/exh_991.htm" target="_blank">BlackLine SEC Filing Q4 2024</a><div class="sp">SEC.gov</div></div></div>
-    <div class="si"><span class="sn">8</span><div><a href="https://www.glassdoor.com/Reviews/BlackLine-Reviews-E389699.htm" target="_blank">BlackLine Reviews (574)</a><div class="sp">Glassdoor</div></div></div>
-  </div></div>
+  <div class="card source-shell">
+    <div class="source-toolbar">
+      <div>
+        <div class="ct">Unified Research Library</div>
+        <div class="cs" style="margin-bottom:0">58 unique sources compiled from the core research and expanded salary addendum, deduplicated by URL and grouped by theme.</div>
+      </div>
+      <div class="source-search-wrap">
+        <label class="source-label" for="sourceSearch">Search all sources</label>
+        <input id="sourceSearch" class="source-search" type="search" placeholder="Search by title, publisher, category, doc pack, or URL">
+      </div>
+    </div>
+    <div class="source-summary">
+      <div id="sourceSearchStatus">58 unique sources across 5 categories.</div>
+      <div class="source-legend"><span class="badge badge-teal">Core research</span><span class="badge badge-purple">Addendum</span></div>
+    </div>
+  </div>
+  <div id="sourceSearchEmpty" class="card source-empty" hidden><div class="ct" style="margin-bottom:6px">No matching sources</div><div class="cs" style="margin-bottom:0">Try a broader keyword like <strong>salary</strong>, <strong>Fiori</strong>, <strong>attrition</strong>, <strong>BlackLine</strong>, or <strong>Poland</strong>.</div></div>
+  <div id="sourceLibrary"></div>
 </div>
 
 <div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:.78rem;color:var(--text-4)">
@@ -598,7 +577,102 @@ function setupTabs(id,panelAttr){
 setupTabs('pt',null);
 setupTabs('ctabs','comp');
 setupTabs('itabs','insight');
-setupTabs('srtabs','source');
+
+const sourceCategories=['Salary & Compensation','Skills & Specialisations','Talent Demand, Shortage & Migration','Retention, Attrition & Employer Signals','BlackLine & SAP Ecosystem'];
+const sourceLibraryData = [
+  {title:"BlackLine (BL) Revenue 2014–2025",url:"https://stockanalysis.com/stocks/bl/revenue/",source:"StockAnalysis",category:"BlackLine & SAP Ecosystem",docs:["Core research"]},
+  {title:"BlackLine 2025 Company Profile",url:"https://pitchbook.com/profiles/company/58453-75",source:"PitchBook",category:"BlackLine & SAP Ecosystem",docs:["Core research"]},
+  {title:"BlackLine Revenue: 2014–2026 Annual Revenue",url:"https://www.wallstreetzen.com/stocks/us/nasdaq/bl/revenue",source:"WallStreetZen",category:"BlackLine & SAP Ecosystem",docs:["Core research"]},
+  {title:"BlackLine Reviews",url:"https://www.glassdoor.com/Reviews/BlackLine-Reviews-E389699.htm",source:"Glassdoor",category:"BlackLine & SAP Ecosystem",docs:["Core research"]},
+  {title:"BlackLine SEC Filing — Q4 2024 Earnings",url:"https://www.sec.gov/Archives/edgar/data/0001666134/000117184325000196/exh_991.htm",source:"SEC",category:"BlackLine & SAP Ecosystem",docs:["Core research"]},
+  {title:"BlackLine Solutions for SAP",url:"https://www.blackline.com/sap/",source:"BlackLine",category:"BlackLine & SAP Ecosystem",docs:["Core research"]},
+  {title:"SAP & BlackLine Deliver the Gold Standard for R2R",url:"https://www.blackline.com/campaign/sap/lb/",source:"BlackLine",category:"BlackLine & SAP Ecosystem",docs:["Core research"]},
+  {title:"SAP & BlackLine: Improving the End-To-End Financial Close Process",url:"https://community.sap.com/t5/enterprise-resource-planning-blog-posts-by-sap/sap-blackline-improving-the-end-to-end-financial-close-process-together/ba-p/13554693",source:"SAP Community",category:"BlackLine & SAP Ecosystem",docs:["Core research"]},
+  {title:"Consulting Firm Average Employee Tenure",url:"https://flevy.com/topic/talent-management/question/consulting-firm-average-employee-tenure-key-insights-revealed",source:"Flevy",category:"Retention, Attrition & Employer Signals",docs:["Core research"]},
+  {title:"Deloitte Retention Score",url:"https://www.comparably.com/companies/deloitte/retention",source:"Comparably",category:"Retention, Attrition & Employer Signals",docs:["Core research"]},
+  {title:"How Consulting Leaders Can Tackle the Retention Problem",url:"https://www.consultancy.uk/news/19569/how-consulting-leaders-can-tackle-the-retention-problem-of-juniors",source:"Consultancy.uk",category:"Retention, Attrition & Employer Signals",docs:["Core research"]},
+  {title:"Minimizing SAP Talent Attrition and Costs",url:"https://pyramidci.com/casestudy/minimizing-sap-talent-attrition-and-costs-for-a-global-professional-services-firm/",source:"Pyramid Consulting",category:"Retention, Attrition & Employer Signals",docs:["Core research"]},
+  {title:"TCS Attrition Rate Rises Slightly; 11,000 Hired in H1 2024–25",url:"https://www.hrkatha.com/hiring-firing/tcs-attrition-rate-rises-slightly-11000-hired-in-first-half-of-2024-25/",source:"HR Katha",category:"Retention, Attrition & Employer Signals",docs:["Core research"]},
+  {title:"TCS FY2025 Annual Performance",url:"https://www.tcs.com/who-we-are/newsroom/press-release/tcs-posts-strong-annual-performance-solid-fourth-quarter-crowns",source:"TCS",category:"Retention, Attrition & Employer Signals",docs:["Core research"]},
+  {title:"TCS Headcount & Attrition Q3 FY2025",url:"https://www.business-standard.com/companies/news/tcs-headcount-down-by-over-5-000-in-q3-attrition-within-comfort-zone-125010901249_1.html",source:"Business Standard",category:"Retention, Attrition & Employer Signals",docs:["Core research"]},
+  {title:"ABAP Developer Contract Job Trends & Contractor Rates",url:"https://www.itjobswatch.co.uk/contracts/uk/abap%20developer.do",source:"IT Jobs Watch",category:"Salary & Compensation",docs:["Core research"]},
+  {title:"ABAP Developer Job Trends, Salaries & Skill Sets",url:"https://www.itjobswatch.co.uk/jobs/uk/abap%20developer.do",source:"IT Jobs Watch",category:"Salary & Compensation",docs:["Core research"]},
+  {title:"ABAP Developer Salaries in London",url:"https://www.morganmckinley.com/uk/salary-guide/data/abap-developer/london",source:"Morgan McKinley 2025 Salary Guide",category:"Salary & Compensation",docs:["Core research","Addendum"]},
+  {title:"Accenture Senior SAP ABAP Developer Salaries",url:"https://www.glassdoor.co.in/Salary/Accenture-Senior-SAP-ABAP-Developer-Salaries-E4138_D_KO10,35.htm",source:"Glassdoor India",category:"Salary & Compensation",docs:["Core research"]},
+  {title:"BIIT Recruitment — Latest SAP Salary Data for 2025 in the UK",url:"https://biit.co.uk/the-power-of-personal-self-compassion/",source:"BIIT Recruitment",category:"Salary & Compensation",docs:["Addendum"]},
+  {title:"JustJoinIT Salary Report 2025: A Market at a Turning Point",url:"https://optiveum.com/articles/justjoinit-salary-report-2025/",source:"Optiveum",category:"Salary & Compensation",docs:["Core research"]},
+  {title:"Poland Salary Guide 2025 — What You Need to Know",url:"https://veritahr.com/poland-salary-guide-2025-what-you-need-to-know/",source:"Verita HR",category:"Salary & Compensation",docs:["Core research"]},
+  {title:"SAP ABAP Career Path and Salary Guide",url:"https://gtracademy.org/sap-abap-career-path-and-salary/",source:"GTR Academy",category:"Salary & Compensation",docs:["Addendum"]},
+  {title:"SAP ABAP Developer Salary (January 2026)",url:"https://www.glassdoor.co.in/Salaries/sap-abap-developer-salary-SRCH_KO0,18.htm",source:"Glassdoor India",category:"Salary & Compensation",docs:["Core research"]},
+  {title:"SAP ABAP Developer Salary Bangalore",url:"https://www.salaryexpert.com/salary/job/sap-abap-developer/india/bangalore",source:"ERI SalaryExpert",category:"Salary & Compensation",docs:["Addendum"]},
+  {title:"SAP ABAP Developer Salary in Mumbai, India (2025)",url:"https://www.salaryexpert.com/salary/job/sap-abap-developer/india/mumbai",source:"Salary Expert",category:"Salary & Compensation",docs:["Core research"]},
+  {title:"SAP ABAP Developer Salary in United Kingdom (2025)",url:"https://www.salaryexpert.com/salary/job/sap-abap-developer/united-kingdom",source:"Salary Expert",category:"Salary & Compensation",docs:["Core research","Addendum"]},
+  {title:"SAP ABAP Developer Salary Poland",url:"https://www.salaryexpert.com/salary/job/sap-abap-developer/poland",source:"ERI SalaryExpert",category:"Salary & Compensation",docs:["Addendum"]},
+  {title:"SAP ABAP Programmer Salary UK",url:"https://www.payscale.com/research/UK/Job=SAP_ABAP_Programmer/Salary",source:"PayScale",category:"Salary & Compensation",docs:["Addendum"]},
+  {title:"SAP BTP Consultant Salary India",url:"https://www.glassdoor.co.in/Salaries/sap-btp-consultant-salary-SRCH_KO0,18.htm",source:"Glassdoor India",category:"Salary & Compensation",docs:["Addendum"]},
+  {title:"SAP BTP Salary UK",url:"https://www.glassdoor.co.uk/Salaries/sap-btp-salary-SRCH_KO0,7.htm",source:"Glassdoor UK",category:"Salary & Compensation",docs:["Addendum"]},
+  {title:"SAP Consultant Salary Guide 2026: Complete Breakdown",url:"https://www.erpvits.com/blog/sap-consultant-salary",source:"ERPVITS",category:"Salary & Compensation",docs:["Core research"]},
+  {title:"SAP Consultant Salary in 2025: India & Abroad",url:"https://mytrainingwala.com/sap-consultant-salary-guide-2025/",source:"myTrainingwala",category:"Salary & Compensation",docs:["Core research"]},
+  {title:"SAP Consultant Salary London",url:"https://www.payscale.com/research/UK/Job=SAP_Consultant/Salary/05f96042/London",source:"PayScale",category:"Salary & Compensation",docs:["Addendum"]},
+  {title:"SAP Developer Salary in Poland",url:"https://itentio.com/blog/sap-developer-salary-in-poland/",source:"Itentio",category:"Salary & Compensation",docs:["Core research","Addendum"]},
+  {title:"SAP FI/CO Consultant Job Trends & Salaries",url:"https://www.itjobswatch.co.uk/jobs/uk/sap%20fi/co%20consultant.do",source:"IT Jobs Watch",category:"Salary & Compensation",docs:["Addendum"]},
+  {title:"SAP FICO Consultant Salaries London",url:"https://www.morganmckinley.com/uk/salary-guide/data/sap-fico-consultant/london",source:"Morgan McKinley 2025",category:"Salary & Compensation",docs:["Addendum"]},
+  {title:"SAP Fiori Developer Salary",url:"https://softat.co.in/sap-fiori-developer-salary/",source:"Softat",category:"Salary & Compensation",docs:["Core research"]},
+  {title:"SAP Jobs UK 2025 — Careers, Skills & Salary Guide",url:"https://www.itjobboard.co.uk/blog/220/sap-jobs-uk-2025-careers-skills-salary-guide-for-sap-professionals",source:"IT Job Board UK",category:"Salary & Compensation",docs:["Core research","Addendum"]},
+  {title:"SAP Salary Trends for Germany, Austria & Switzerland",url:"https://www.whitehallresources.com/2025/12/sap-consultant-salary-trends-germany-dach/",source:"Whitehall Resources",category:"Salary & Compensation",docs:["Core research"]},
+  {title:"SAP Senior SAP Developer ABAP Salaries",url:"https://www.glassdoor.co.uk/Salary/SAP-Senior-SAP-Developer-ABAP-Salaries-E10471_D_KO4,29.htm",source:"Glassdoor UK",category:"Salary & Compensation",docs:["Core research"]},
+  {title:"Software Engineer Salaries in Poland in 2025",url:"https://itselecta.com/software-engineer-salaries-in-poland-in-2025/",source:"ITSELECTA",category:"Salary & Compensation",docs:["Core research"]},
+  {title:"The Highest-Paid Salaries in IT in 2026",url:"https://itcompare.pl/en-us/articles/87/the-highestpaid-salaries-in-it-in-2026",source:"ITCompare.pl",category:"Salary & Compensation",docs:["Core research"]},
+  {title:"2026 Trends in SAP® Automation & Modernization",url:"https://www.precisely.com/sap-automation/2026-trends-in-sap-automation-modernization-and-btp-adoption/",source:"Precisely",category:"Skills & Specialisations",docs:["Core research"]},
+  {title:"EU Faces Growing Shortage of SAP S/4HANA Specialists",url:"https://itbrief.co.uk/story/eu-faces-growing-shortage-of-sap-s-4hana-specialists",source:"IT Brief UK",category:"Skills & Specialisations",docs:["Core research"]},
+  {title:"SAP Fiori App Development",url:"https://www.neptune-software.com/resources/sap-fiori-app-development/",source:"Neptune Software",category:"Skills & Specialisations",docs:["Core research"]},
+  {title:"SAP Recruitment in 2025: Tech Skills, Flexibility, Global Talent Demand",url:"https://www.e-solutionsinc.com/blog/sap-recruitment-in-2025",source:"E-Solutions Inc.",category:"Skills & Specialisations",docs:["Core research"]},
+  {title:"UK SAP Market Faces Critical S/4HANA Skills Shortage",url:"https://www.stocktitan.net/news/III/u-k-sap-market-sees-strong-demand-for-s-4hana-f9f5h689blx7.html",source:"Stock Titan / III",category:"Skills & Specialisations",docs:["Core research"]},
+  {title:"Unpacking the SAP Skills Shortage with Jon Brewer",url:"https://www.basistechnologies.com/unpacking-the-sap-skills-shortage-with-jon-brewer/",source:"Basis Technologies",category:"Skills & Specialisations",docs:["Core research"]},
+  {title:"Every SAP S/4HANA Ecosystem and Staffing Trend for 2025",url:"https://baergroup.com/blog/every-sap-s-4hana-ecosystem-and-staffing-trend-you-need-to-know-for-2025/",source:"The Baer Group",category:"Talent Demand, Shortage & Migration",docs:["Core research"]},
+  {title:"Polski rynek pracy w IT — Kogo szukają firmy i ile płacą?",url:"https://gra.pl/polski-rynek-pracy-w-it-i-nie-tylko-kogo-szukaja-firmy-i-ile-placa-sprawdz/ar/c12p2-26933585",source:"GRA.PL",category:"Talent Demand, Shortage & Migration",docs:["Core research"]},
+  {title:"SAP ABAP Jobs in United Kingdom, March 2026",url:"https://www.glassdoor.co.uk/Job/united-kingdom-sap-abap-jobs-SRCH_IL.0,14_IN2_KO15,23.htm",source:"Glassdoor UK",category:"Talent Demand, Shortage & Migration",docs:["Core research"]},
+  {title:"SAP Demand in 2025: Market Trends & Career Outlook",url:"https://www.nextnow.ca/is-sap-still-in-demand-in-2025-market-trends-job-outlook/",source:"Nextnow",category:"Talent Demand, Shortage & Migration",docs:["Core research"]},
+  {title:"SAP Recruitment Poland",url:"https://eursap.eu/sap-recruitment/poland",source:"Eursap",category:"Talent Demand, Shortage & Migration",docs:["Addendum"]},
+  {title:"SAP S/4HANA Adoption in the DACH Region",url:"https://www.whitehallresources.com/2025/10/sap-s-4hana-adoption-dach-region/",source:"Whitehall Resources",category:"Talent Demand, Shortage & Migration",docs:["Core research"]},
+  {title:"SAPinsider SAP S/4HANA Migration Benchmark Report 2025",url:"https://19523792.fs1.hubspotusercontent-na1.net/hubfs/19523792/2025%20Research%20Report/SAPinsider%20-%202025-02%20SAP%20S4HANA%20Migration%20-%20Detailed%20Findings.pdf",source:"SAPinsider",category:"Talent Demand, Shortage & Migration",docs:["Core research"]},
+  {title:"TCS Q1 FY2025 Financial Results",url:"https://www.tcs.com/who-we-are/newsroom/press-release/tcs-financial-results-q1-fy-2025",source:"TCS",category:"Talent Demand, Shortage & Migration",docs:["Core research"]},
+  {title:"What SAP Consultants Can Expect in 2025",url:"https://ignitesap.com/what-sap-consultants-can-expect-in-2025/",source:"IgniteSAP",category:"Talent Demand, Shortage & Migration",docs:["Core research"]}
+];
+
+function escapeHtml(value){
+  return String(value).replace(/[&<>"']/g,ch=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[ch]));
+}
+
+function renderSourceLibrary(query=''){
+  const root=document.getElementById('sourceLibrary');
+  const status=document.getElementById('sourceSearchStatus');
+  const empty=document.getElementById('sourceSearchEmpty');
+  if(!root||!status||!empty)return;
+  const q=query.trim().toLowerCase();
+  let visibleItems=0;
+  let visibleGroups=0;
+  const markup=sourceCategories.map(category=>{
+    const items=sourceLibraryData.filter(item=>{
+      if(item.category!==category)return false;
+      const haystack=[item.title,item.source,item.url,item.category,...item.docs].join(' ').toLowerCase();
+      return !q || haystack.includes(q);
+    });
+    if(!items.length)return '';
+    visibleItems+=items.length;
+    visibleGroups+=1;
+    return `<section class="card source-group"><div class="source-group-head"><div><div class="ct" style="margin-bottom:4px">${escapeHtml(category)}</div><div class="cs" style="margin-bottom:0">${items.length} deduplicated reference${items.length===1?'':'s'} relevant to this theme.</div></div><span class="badge badge-accent source-count">${items.length} source${items.length===1?'':'s'}</span></div>${items.map((item,index)=>`<div class="si source-item"><span class="sn">${String(index+1).padStart(2,'0')}</span><div class="source-main"><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(item.title)}</a><div class="sp">${escapeHtml(item.source)}</div><div class="source-meta"><span class="source-url">${escapeHtml(item.url)}</span><div class="source-badges">${item.docs.map(doc=>`<span class="badge ${doc==='Addendum'?'badge-purple':'badge-teal'}">${escapeHtml(doc)}</span>`).join('')}</div></div></div></div>`).join('')}</section>`;
+  }).join('');
+  root.innerHTML=markup;
+  status.textContent=q?`${visibleItems} matching source${visibleItems===1?'':'s'} across ${visibleGroups} categor${visibleGroups===1?'y':'ies'}.`:`${sourceLibraryData.length} unique sources across ${sourceCategories.length} categories.`;
+  empty.hidden=visibleItems!==0;
+}
+
+const sourceSearchInput=document.getElementById('sourceSearch');
+if(sourceSearchInput){
+  sourceSearchInput.addEventListener('input',e=>renderSourceLibrary(e.target.value));
+  renderSourceLibrary('');
+}
 
 Chart.defaults.color='#8E8EA0';
 Chart.defaults.borderColor='#E2E2E8';
