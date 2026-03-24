@@ -6,23 +6,24 @@
 <title>Sign In — BlackLine</title>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+:root{--fs-meta:.8125rem;--fs-body:.9375rem;--fs-title:1.5rem}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Figtree',system-ui,sans-serif;background:#F8F8FA;min-height:100vh;display:flex;align-items:center;justify-content:center}
+body{font-family:'Figtree',system-ui,sans-serif;background:#F8F8FA;min-height:100vh;display:flex;align-items:center;justify-content:center;line-height:1.5}
 .card{background:#fff;border:1px solid #E2E2E8;border-radius:16px;padding:40px;width:100%;max-width:460px;box-shadow:0 1px 3px rgba(0,0,0,.04),0 0 0 1px rgba(0,0,0,.03)}
 .brand-lockup{display:flex;align-items:flex-end;justify-content:center;gap:12px;flex-wrap:nowrap;margin-bottom:24px}
 .brand-lockup img{width:auto;display:block;flex:0 0 auto}
 .brand-lockup .logo-blackline,.brand-lockup .logo-x{height:40px}
 .brand-lockup .logo-c2{height:34px}
-h1{font-size:22px;font-weight:700;color:#1A1A2E;margin-bottom:6px}
-p.sub{font-size:14px;color:#8E8EA0;margin-bottom:28px}
-label{display:block;font-size:13px;font-weight:600;color:#4A4A62;margin-bottom:6px}
-input{width:100%;padding:10px 14px;border:1px solid #E2E2E8;border-radius:10px;font-size:14px;font-family:inherit;outline:none;transition:border .15s}
+h1{font-size:var(--fs-title);font-weight:700;color:#1A1A2E;margin-bottom:6px;letter-spacing:-.02em}
+p.sub{font-size:var(--fs-body);color:#8E8EA0;margin-bottom:28px}
+label{display:block;font-size:var(--fs-meta);font-weight:600;color:#4A4A62;margin-bottom:6px}
+input{width:100%;padding:10px 14px;border:1px solid #E2E2E8;border-radius:10px;font-size:var(--fs-body);font-family:inherit;outline:none;transition:border .15s}
 input:focus{border-color:#2563EB;box-shadow:0 0 0 3px rgba(37,99,235,.1)}
 .field{margin-bottom:18px}
-button{width:100%;padding:12px;background:#2563EB;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;transition:background .15s}
+button{width:100%;padding:12px;background:#2563EB;color:#fff;border:none;border-radius:10px;font-size:var(--fs-body);font-weight:600;font-family:inherit;cursor:pointer;transition:background .15s}
 button:hover{background:#1d4ed8}
 button:disabled{opacity:.6;cursor:not-allowed}
-.error{color:#DC2626;font-size:13px;margin-top:12px;display:none}
+.error{color:#DC2626;font-size:var(--fs-meta);margin-top:12px;display:none}
 </style>
 </head>
 <body>

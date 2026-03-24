@@ -37,7 +37,10 @@ fetch('/api/check').then(function(r){if(!r.ok)throw 0;document.documentElement.s
   --sc:0 1px 3px rgba(0,0,0,.04),0 0 0 1px rgba(0,0,0,.03);
   --sch:0 2px 12px rgba(0,0,0,.06),0 0 0 1px rgba(0,0,0,.04);
   --shov:0 4px 20px rgba(0,0,0,.08),0 0 0 1px rgba(0,0,0,.05);
-  --r:10px;--rl:14px
+  --r:10px;--rl:14px;
+  --fs-meta:.76rem;
+  --fs-label:.8rem;
+  --fs-body:.84rem
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{font-size:15px}
@@ -50,20 +53,20 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 .hdr-logo img{width:auto;display:block;image-rendering:auto;flex:0 0 auto}
 .hdr-logo .logo-blackline,.hdr-logo .logo-x{height:36px}
 .hdr-logo .logo-c2{height:30.6px}
-.hdr-meta{text-align:right;font-size:.75rem;color:var(--text-3)}
+.hdr-meta{text-align:right;font-size:var(--fs-meta);color:var(--text-3)}
 .hdr-title{font-size:1.5rem;font-weight:700;letter-spacing:-.03em;color:var(--text);margin-bottom:2px}
 .hdr-title span{color:var(--accent)}
-.hdr-sub{color:var(--text-3);font-size:.8rem;max-width:560px}
+.hdr-sub{color:var(--text-3);font-size:var(--fs-body);max-width:560px}
 
 /* Primary tabs */
 .ptabs{display:flex;gap:2px;background:var(--surface);border-radius:var(--r);padding:3px;margin-bottom:24px;border:1px solid var(--border)}
-.ptab{padding:10px 24px;border-radius:calc(var(--r) - 2px);font-size:.82rem;font-weight:600;color:var(--text-3);cursor:pointer;transition:all .15s;border:none;background:transparent;font-family:inherit;white-space:nowrap}
+.ptab{padding:10px 24px;border-radius:calc(var(--r) - 2px);font-size:var(--fs-label);font-weight:600;color:var(--text-3);cursor:pointer;transition:all .15s;border:none;background:transparent;font-family:inherit;white-space:nowrap}
 .ptab:hover{color:var(--text-2)}
 .ptab.active{background:var(--white);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.06)}
 
 /* Region sub-tabs */
 .rtabs{display:flex;gap:6px;margin-bottom:24px;justify-content:center}
-.rtab{padding:7px 18px;border-radius:var(--r);font-size:.78rem;font-weight:600;color:var(--text-3);cursor:pointer;transition:all .15s;border:1px solid transparent;background:transparent;font-family:inherit}
+.rtab{padding:7px 18px;border-radius:var(--r);font-size:var(--fs-label);font-weight:600;color:var(--text-3);cursor:pointer;transition:all .15s;border:1px solid transparent;background:transparent;font-family:inherit}
 .rtab:hover{color:var(--text-2);background:var(--surface)}
 .rtab.active{background:var(--accent-bg);color:var(--accent);border-color:var(--accent-bd)}
 .rtab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:middle}
@@ -76,7 +79,7 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 
 /* Card titles — more pronounced */
 .ct{font-size:1rem;font-weight:700;color:var(--text);letter-spacing:-.02em;margin-bottom:6px}
-.cs{font-size:.75rem;color:var(--text-3);margin-bottom:18px}
+.cs{font-size:var(--fs-label);color:var(--text-3);margin-bottom:18px}
 
 /* Grids */
 .g1{display:grid;grid-template-columns:1fr;gap:16px}
@@ -86,21 +89,21 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 
 /* Stat cards — centred */
 .stat{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:20px;box-shadow:var(--sc);text-align:center}
-.stat .lbl{font-size:.76rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.stat .lbl{font-size:var(--fs-meta);font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
 .stat .val{font-size:1.65rem;font-weight:800;letter-spacing:-.03em}
-.stat .delta{font-size:.78rem;margin-top:3px;font-weight:500}
+.stat .delta{font-size:var(--fs-label);margin-top:3px;font-weight:500}
 .up{color:var(--teal)}.down{color:var(--coral)}.neutral{color:var(--text-3)}
 
 /* Tables */
-.tbl{width:100%;border-collapse:collapse;font-size:.82rem}
-.tbl th{text-align:left;font-size:.76rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;padding:10px 14px;border-bottom:2px solid var(--border);background:var(--surface)}
+.tbl{width:100%;border-collapse:collapse;font-size:var(--fs-body)}
+.tbl th{text-align:left;font-size:var(--fs-meta);font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;padding:10px 14px;border-bottom:2px solid var(--border);background:var(--surface)}
 .tbl th:first-child{border-radius:var(--r) 0 0 0}.tbl th:last-child{border-radius:0 var(--r) 0 0}
 .tbl td{padding:11px 14px;border-bottom:1px solid var(--border)}
 .tbl tr:last-child td{border-bottom:none}
 .tbl tr:hover td{background:rgba(37,99,235,.015)}
 
 /* Badges */
-.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:var(--r);font-size:.78rem;font-weight:600}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:var(--r);font-size:var(--fs-label);font-weight:600}
 .badge-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bd)}
 .badge-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bd)}
 .badge-coral{background:var(--coral-bg);color:var(--coral);border:1px solid var(--coral-bd)}
@@ -108,7 +111,7 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 .badge-purple{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-bd)}
 
 /* Callout */
-.callout{border-radius:var(--r);padding:16px 20px;font-size:.82rem;line-height:1.6;color:var(--text-2)}
+.callout{border-radius:var(--r);padding:16px 20px;font-size:var(--fs-body);line-height:1.6;color:var(--text-2)}
 .callout strong{color:var(--text)}
 .callout-accent{background:var(--accent-bg);border:1px solid var(--accent-bd)}
 .callout-amber{background:var(--amber-bg);border:1px solid var(--amber-bd)}
@@ -118,35 +121,35 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 .takeaway{padding:24px 24px 20px}
 .takeaway-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:18px}
 .takeaway-title{font-size:1.2rem;font-weight:800;letter-spacing:-.03em;color:var(--text);margin-bottom:8px}
-.takeaway-copy{font-size:.84rem;color:var(--text-2);max-width:760px}
-.takeaway-badge{display:inline-flex;align-items:center;padding:7px 12px;border-radius:999px;background:var(--purple-bg);border:1px solid var(--purple-bd);color:var(--purple);font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+.takeaway-copy{font-size:var(--fs-body);color:var(--text-2);max-width:760px}
+.takeaway-badge{display:inline-flex;align-items:center;padding:7px 12px;border-radius:999px;background:var(--purple-bg);border:1px solid var(--purple-bd);color:var(--purple);font-size:var(--fs-meta);font-weight:700;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
 .takeaway-grid{display:grid;grid-template-columns:1.15fr .85fr .85fr .95fr;gap:14px}
 .takeaway-block{border:1px solid var(--border);border-radius:var(--r);padding:16px 16px 14px;background:linear-gradient(180deg,#FFF 0%,#FBFBFD 100%)}
-.takeaway-block h4{font-size:.76rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.takeaway-block h4{font-size:var(--fs-meta);font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
 .takeaway-block ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-.takeaway-block li{font-size:.8rem;color:var(--text-2);line-height:1.55;padding-left:14px;position:relative}
+.takeaway-block li{font-size:var(--fs-body);color:var(--text-2);line-height:1.55;padding-left:14px;position:relative}
 .takeaway-block li::before{content:'•';position:absolute;left:0;color:var(--accent);font-weight:700}
 
 /* Cost bars */
 .cost-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.cost-lbl{width:90px;font-size:.78rem;color:var(--text-2);text-align:right;flex-shrink:0}
+.cost-lbl{width:90px;font-size:var(--fs-label);color:var(--text-2);text-align:right;flex-shrink:0}
 .cost-track{flex:1;height:30px;background:var(--surface);border-radius:var(--rl);overflow:hidden;border:1px solid var(--border)}
-.cost-fill{height:100%;border-radius:var(--rl);display:flex;align-items:center;padding-left:12px;font-size:.78rem;font-weight:600;color:#fff}
+.cost-fill{height:100%;border-radius:var(--rl);display:flex;align-items:center;padding-left:12px;font-size:var(--fs-label);font-weight:600;color:#fff}
 
 /* Chart wrapper */
 .cw{position:relative;width:100%}
 
 /* Chips */
-.chip{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:var(--r);font-size:.75rem;font-weight:500;background:var(--surface);border:1px solid var(--border);margin:2px;color:var(--text-2)}
-.chip .pct{color:var(--text-3);font-size:.73rem;font-variant-numeric:tabular-nums}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:var(--r);font-size:var(--fs-label);font-weight:500;background:var(--surface);border:1px solid var(--border);margin:2px;color:var(--text-2)}
+.chip .pct{color:var(--text-3);font-size:var(--fs-meta);font-variant-numeric:tabular-nums}
 .chip-hl{background:var(--accent-bg);border-color:var(--accent-bd);color:var(--accent)}
 
 /* Pros/cons */
 .pc{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.pros{padding:20px;border-radius:var(--r);background:var(--teal-bg);border:1px solid var(--teal-bd);font-size:.82rem}
-.cons{padding:20px;border-radius:var(--r);background:var(--coral-bg);border:1px solid var(--coral-bd);font-size:.82rem}
-.pros h4{color:var(--teal);font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;font-weight:700}
-.cons h4{color:var(--coral);font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;font-weight:700}
+.pros{padding:20px;border-radius:var(--r);background:var(--teal-bg);border:1px solid var(--teal-bd);font-size:var(--fs-body)}
+.cons{padding:20px;border-radius:var(--r);background:var(--coral-bg);border:1px solid var(--coral-bd);font-size:var(--fs-body)}
+.pros h4{color:var(--teal);font-size:var(--fs-meta);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;font-weight:700}
+.cons h4{color:var(--coral);font-size:var(--fs-meta);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;font-weight:700}
 .pros li,.cons li{color:var(--text-2);line-height:1.55;margin-bottom:6px;padding-left:16px;position:relative;list-style:none}
 .pros li::before{content:'+';position:absolute;left:0;font-weight:700;color:var(--teal)}
 .cons li::before{content:'–';position:absolute;left:0;font-weight:700;color:var(--coral)}
@@ -155,42 +158,42 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 .sent-score{font-size:2.4rem;font-weight:800;letter-spacing:-.04em;text-align:center}
 .sent-bar{height:5px;border-radius:3px;background:var(--surface);overflow:hidden;margin:10px 0 14px}
 .sent-fill{height:100%;border-radius:3px}
-.factor{display:flex;justify-content:space-between;font-size:.78rem;padding:4px 0}
+.factor{display:flex;justify-content:space-between;font-size:var(--fs-label);padding:4px 0}
 .factor-name{color:var(--text-3)}.factor-val{font-weight:600;font-variant-numeric:tabular-nums}
 
 /* Section label */
-.sl{font-size:.76rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;text-align:center}
+.sl{font-size:var(--fs-meta);font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;text-align:center}
 
 /* Region card centred content */
 .rc{text-align:center}
 .rc .pool{font-size:2.6rem;font-weight:800;letter-spacing:-.04em;margin:8px 0}
 .rc .meta-row{display:flex;gap:16px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border);justify-content:center;flex-wrap:wrap}
 .rc .mi{text-align:center}
-.rc .mi .ml{font-size:.73rem;color:var(--text-4);text-transform:uppercase;letter-spacing:.06em}
-.rc .mi .mv{font-size:.82rem;font-weight:600;margin-top:2px}
+.rc .mi .ml{font-size:var(--fs-meta);color:var(--text-4);text-transform:uppercase;letter-spacing:.06em}
+.rc .mi .mv{font-size:var(--fs-body);font-weight:600;margin-top:2px}
 .pulse{width:8px;height:8px;border-radius:50%;display:inline-block;animation:pulse 2s ease-in-out infinite;vertical-align:middle;margin-right:4px}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
 /* Sources */
-.si{display:flex;gap:8px;padding:10px 0;border-bottom:1px solid var(--border);font-size:.8rem}
+.si{display:flex;gap:8px;padding:10px 0;border-bottom:1px solid var(--border);font-size:var(--fs-body)}
 .si:last-child{border-bottom:none}
-.sn{color:var(--text-4);font-variant-numeric:tabular-nums;min-width:24px;font-size:.78rem;padding-top:2px}
+.sn{color:var(--text-4);font-variant-numeric:tabular-nums;min-width:24px;font-size:var(--fs-meta);padding-top:2px}
 .si a{color:var(--accent);text-decoration:none;font-weight:500}
 .si a:hover{text-decoration:underline}
-.sp{color:var(--text-3);font-size:.78rem}
+.sp{color:var(--text-3);font-size:var(--fs-label)}
 .source-shell{margin-bottom:16px}
 .source-toolbar{display:flex;justify-content:space-between;align-items:flex-end;gap:18px}
 .source-search-wrap{min-width:min(420px,100%);flex:0 1 420px}
-.source-label{display:block;font-size:.76rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.source-label{display:block;font-size:var(--fs-meta);font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
 .source-search{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:var(--r);background:var(--white);color:var(--text);font:inherit;outline:none;transition:border-color .15s,box-shadow .15s}
 .source-search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
-.source-summary{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:18px;font-size:.78rem;color:var(--text-3)}
+.source-summary{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:18px;font-size:var(--fs-label);color:var(--text-3)}
 .source-legend,.source-badges{display:flex;gap:8px;flex-wrap:wrap}
 .source-group{margin-top:16px}
 .source-group-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:4px}
 .source-main{min-width:0;flex:1}
 .source-meta{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-top:8px}
-.source-url{display:block;color:var(--text-4);font-size:.74rem;word-break:break-all}
+.source-url{display:block;color:var(--text-4);font-size:var(--fs-meta);word-break:break-all}
 .source-empty{margin-top:16px}
 
 /* Panels */
@@ -199,8 +202,8 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 @keyframes panelIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
 /* Company rows */
-.cr{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);font-size:.82rem}
-.cr.crh{font-size:.76rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;font-weight:600;padding-bottom:10px}
+.cr{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);font-size:var(--fs-body)}
+.cr.crh{font-size:var(--fs-meta);color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;font-weight:600;padding-bottom:10px}
 
 @media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}.g2,.takeaway-grid{grid-template-columns:1fr}.pc{grid-template-columns:1fr}.ptabs,.rtabs{overflow-x:auto;flex-wrap:nowrap}.takeaway-head,.source-toolbar,.source-summary,.source-meta{flex-direction:column;align-items:stretch}.source-search-wrap{min-width:0;flex-basis:auto}}
 @media(max-width:600px){.g3,.g4,.g2{grid-template-columns:1fr}.wrap{padding:20px 16px}.hdr{align-items:flex-start;gap:16px;flex-direction:column}.hdr-meta{text-align:left}}
@@ -216,7 +219,7 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
     <p class="hdr-sub" style="margin-top:8px">SAP engineering talent market intelligence across Mumbai, London &amp; Kraków.</p>
   </div>
   <div class="hdr-meta">
-    <div style="font-weight:600;color:var(--text-2);font-size:.82rem">March 2026</div>
+    <div style="font-weight:600;color:var(--text-2);font-size:var(--fs-label)">March 2026</div>
     <div>Chapter 2 · Talent Intelligence</div>
   </div>
 </div>
@@ -236,16 +239,16 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
     <div class="stat"><div class="lbl">Addressable market</div><div class="val">1,038</div><div class="delta neutral">S/4HANA · ABAP · Fiori</div></div>
     <div class="stat"><div class="lbl">Open positions</div><div class="val">163</div><div class="delta up">+55% YoY industry-wide</div></div>
     <div class="stat"><div class="lbl">Hiring demand</div><div class="val" style="color:var(--coral)">Very High</div><div class="delta down">90+ days avg time-to-fill</div></div>
-    <div class="stat"><div class="lbl">Gender split</div><div class="val">26%<span style="color:var(--text-3);font-size:.82rem"> F</span> · 74%<span style="color:var(--text-3);font-size:.82rem"> M</span></div><div class="delta neutral">2.7yr median tenure</div></div>
+    <div class="stat"><div class="lbl">Gender split</div><div class="val">26%<span style="color:var(--text-3);font-size:var(--fs-label)"> F</span> · 74%<span style="color:var(--text-3);font-size:var(--fs-label)"> M</span></div><div class="delta neutral">2.7yr median tenure</div></div>
   </div>
   <div class="sl">Regional talent pools</div>
   <div class="g3" style="margin-bottom:24px">
     <div class="card rc" style="border-top:3px solid var(--teal)">
-      <div style="font-size:.76rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">India · South Asia</div>
+      <div style="font-size:var(--fs-meta);font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">India · South Asia</div>
       <div style="font-size:1.1rem;font-weight:700">Mumbai Metropolitan</div>
       <div class="pool" style="color:var(--teal)">4,201</div>
-      <div style="font-size:.78rem;color:var(--text-3)">LinkedIn professionals (broad SAP)</div>
-      <div style="margin-top:6px;font-size:.85rem"><strong>827</strong> <span style="color:var(--text-3)">S/4HANA + ABAP + Fiori</span></div>
+      <div style="font-size:var(--fs-label);color:var(--text-3)">LinkedIn professionals (broad SAP)</div>
+      <div style="margin-top:6px;font-size:var(--fs-body)"><strong>827</strong> <span style="color:var(--text-3)">S/4HANA + ABAP + Fiori</span></div>
       <div class="meta-row">
         <div class="mi"><div class="ml">Demand</div><div class="mv"><span class="pulse" style="background:var(--coral)"></span>Very high</div></div>
         <div class="mi"><div class="ml">Posts</div><div class="mv">109</div></div>
@@ -254,11 +257,11 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
       </div>
     </div>
     <div class="card rc" style="border-top:3px solid var(--accent)">
-      <div style="font-size:.76rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">United Kingdom · EMEA</div>
+      <div style="font-size:var(--fs-meta);font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">United Kingdom · EMEA</div>
       <div style="font-size:1.1rem;font-weight:700">London Area</div>
       <div class="pool" style="color:var(--accent)">788</div>
-      <div style="font-size:.78rem;color:var(--text-3)">LinkedIn professionals (broad SAP)</div>
-      <div style="margin-top:6px;font-size:.85rem"><strong>169</strong> <span style="color:var(--text-3)">S/4HANA + ABAP + Fiori</span></div>
+      <div style="font-size:var(--fs-label);color:var(--text-3)">LinkedIn professionals (broad SAP)</div>
+      <div style="margin-top:6px;font-size:var(--fs-body)"><strong>169</strong> <span style="color:var(--text-3)">S/4HANA + ABAP + Fiori</span></div>
       <div class="meta-row">
         <div class="mi"><div class="ml">Demand</div><div class="mv"><span class="pulse" style="background:var(--coral)"></span>Very high</div></div>
         <div class="mi"><div class="ml">Posts</div><div class="mv">30</div></div>
@@ -267,11 +270,11 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
       </div>
     </div>
     <div class="card rc" style="border-top:3px solid var(--purple)">
-      <div style="font-size:.76rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Poland · CEE</div>
+      <div style="font-size:var(--fs-meta);font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Poland · CEE</div>
       <div style="font-size:1.1rem;font-weight:700">Kraków Metropolitan</div>
       <div class="pool" style="color:var(--purple)">136</div>
-      <div style="font-size:.78rem;color:var(--text-3)">LinkedIn professionals (broad SAP)</div>
-      <div style="margin-top:6px;font-size:.85rem"><strong>42</strong> <span style="color:var(--text-3)">S/4HANA + ABAP + Fiori</span></div>
+      <div style="font-size:var(--fs-label);color:var(--text-3)">LinkedIn professionals (broad SAP)</div>
+      <div style="margin-top:6px;font-size:var(--fs-body)"><strong>42</strong> <span style="color:var(--text-3)">S/4HANA + ABAP + Fiori</span></div>
       <div class="meta-row">
         <div class="mi"><div class="ml">Demand</div><div class="mv"><span class="pulse" style="background:var(--coral)"></span>Very high</div></div>
         <div class="mi"><div class="ml">Posts</div><div class="mv">24</div></div>
@@ -286,20 +289,20 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
   <div class="sl">Hiring favourability</div>
   <div class="g3">
     <div class="card" style="border-top:3px solid var(--teal);text-align:center">
-      <div style="font-size:.76rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">Mumbai</div>
-      <div class="sent-score" style="color:var(--teal)">7.8<span style="font-size:.85rem;color:var(--text-3);font-weight:400">/10</span></div>
+      <div style="font-size:var(--fs-meta);font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">Mumbai</div>
+      <div class="sent-score" style="color:var(--teal)">7.8<span style="font-size:var(--fs-label);color:var(--text-3);font-weight:400">/10</span></div>
       <div class="sent-bar"><div class="sent-fill" style="width:78%;background:var(--teal)"></div></div>
       <div style="text-align:left"><div class="factor"><span class="factor-name">Pool depth</span><span class="factor-val" style="color:var(--teal)">9.2</span></div><div class="factor"><span class="factor-name">Cost efficiency</span><span class="factor-val" style="color:var(--teal)">9.5</span></div><div class="factor"><span class="factor-name">Quality signal</span><span class="factor-val" style="color:var(--amber)">6.8</span></div><div class="factor"><span class="factor-name">Retention risk</span><span class="factor-val" style="color:var(--coral)">5.4</span></div><div class="factor"><span class="factor-name">Timezone overlap</span><span class="factor-val" style="color:var(--coral)">4.0</span></div></div>
     </div>
     <div class="card" style="border-top:3px solid var(--accent);text-align:center">
-      <div style="font-size:.76rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">London</div>
-      <div class="sent-score" style="color:var(--accent)">6.2<span style="font-size:.85rem;color:var(--text-3);font-weight:400">/10</span></div>
+      <div style="font-size:var(--fs-meta);font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">London</div>
+      <div class="sent-score" style="color:var(--accent)">6.2<span style="font-size:var(--fs-label);color:var(--text-3);font-weight:400">/10</span></div>
       <div class="sent-bar"><div class="sent-fill" style="width:62%;background:var(--accent)"></div></div>
       <div style="text-align:left"><div class="factor"><span class="factor-name">Pool depth</span><span class="factor-val" style="color:var(--amber)">5.5</span></div><div class="factor"><span class="factor-name">Cost efficiency</span><span class="factor-val" style="color:var(--coral)">3.8</span></div><div class="factor"><span class="factor-name">Quality signal</span><span class="factor-val" style="color:var(--teal)">8.5</span></div><div class="factor"><span class="factor-name">Retention risk</span><span class="factor-val" style="color:var(--teal)">7.2</span></div><div class="factor"><span class="factor-name">Timezone overlap</span><span class="factor-val" style="color:var(--teal)">9.0</span></div></div>
     </div>
     <div class="card" style="border-top:3px solid var(--purple);text-align:center">
-      <div style="font-size:.76rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">Kraków</div>
-      <div class="sent-score" style="color:var(--purple)">8.1<span style="font-size:.85rem;color:var(--text-3);font-weight:400">/10</span></div>
+      <div style="font-size:var(--fs-meta);font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">Kraków</div>
+      <div class="sent-score" style="color:var(--purple)">8.1<span style="font-size:var(--fs-label);color:var(--text-3);font-weight:400">/10</span></div>
       <div class="sent-bar"><div class="sent-fill" style="width:81%;background:var(--purple)"></div></div>
       <div style="text-align:left"><div class="factor"><span class="factor-name">Pool depth</span><span class="factor-val" style="color:var(--coral)">3.2</span></div><div class="factor"><span class="factor-name">Cost efficiency</span><span class="factor-val" style="color:var(--teal)">7.8</span></div><div class="factor"><span class="factor-name">Quality signal</span><span class="factor-val" style="color:var(--teal)">9.0</span></div><div class="factor"><span class="factor-name">Retention risk</span><span class="factor-val" style="color:var(--teal)">8.5</span></div><div class="factor"><span class="factor-name">Timezone overlap</span><span class="factor-val" style="color:var(--teal)">8.5</span></div></div>
     </div>
@@ -325,9 +328,9 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
     <div class="cost-row"><div class="cost-lbl">Mumbai Svc</div><div class="cost-track"><div class="cost-fill" style="width:21%;background:rgba(15,118,110,.5)">£17,000</div></div></div>
   </div><div class="cc"><div class="ct">S/4HANA premium over base ABAP</div><div class="cs">GBP-equivalent median comparison</div><div class="cw" style="height:210px"><canvas id="premiumChart"></canvas></div></div></div>
   <div class="g3" style="margin-bottom:24px">
-    <div class="card" style="border-top:3px solid var(--accent)"><div class="ct">London</div><div class="cs">Premium market for senior and stakeholder-facing hires</div><div style="font-size:.82rem;color:var(--text-2);line-height:1.6">BlackLine-equivalent 8–12 year talent sits at <strong>£85k–£120k</strong> permanent, with top contractor profiles landing at <strong>£600–£750+/day</strong>. Use selectively: quality and proximity are strong, but the pool is shrinking and cost is highest.</div></div>
-    <div class="card" style="border-top:3px solid var(--purple)"><div class="ct">Kraków</div><div class="cs">Best overall balance for BlackLine's core engineering build</div><div style="font-size:.82rem;color:var(--text-2);line-height:1.6">The 8–12 year target band is now <strong>25–32k PLN/month UoP</strong> or <strong>29–36k PLN/month B2B</strong>. Tier A SAP quality, CET overlap, and Kraków presence still make this the best composite option.</div></div>
-    <div class="card" style="border-top:3px solid var(--teal)"><div class="ct">Mumbai</div><div class="cs">Depth and cost advantage when BlackLine needs scale</div><div style="font-size:.82rem;color:var(--text-2);line-height:1.6">For 8–12 years' experience, BlackLine should benchmark against <strong>Product/MNC rates: ₹28–38 LPA</strong>, not IT services rates. The trade-off is higher attrition, heavier consulting competition, and weaker timezone overlap for Europe-centric collaboration.</div></div>
+    <div class="card" style="border-top:3px solid var(--accent)"><div class="ct">London</div><div class="cs">Premium market for senior and stakeholder-facing hires</div><div style="font-size:var(--fs-body);color:var(--text-2);line-height:1.6">BlackLine-equivalent 8–12 year talent sits at <strong>£85k–£120k</strong> permanent, with top contractor profiles landing at <strong>£600–£750+/day</strong>. Use selectively: quality and proximity are strong, but the pool is shrinking and cost is highest.</div></div>
+    <div class="card" style="border-top:3px solid var(--purple)"><div class="ct">Kraków</div><div class="cs">Best overall balance for BlackLine's core engineering build</div><div style="font-size:var(--fs-body);color:var(--text-2);line-height:1.6">The 8–12 year target band is now <strong>25–32k PLN/month UoP</strong> or <strong>29–36k PLN/month B2B</strong>. Tier A SAP quality, CET overlap, and Kraków presence still make this the best composite option.</div></div>
+    <div class="card" style="border-top:3px solid var(--teal)"><div class="ct">Mumbai</div><div class="cs">Depth and cost advantage when BlackLine needs scale</div><div style="font-size:var(--fs-body);color:var(--text-2);line-height:1.6">For 8–12 years' experience, BlackLine should benchmark against <strong>Product/MNC rates: ₹28–38 LPA</strong>, not IT services rates. The trade-off is higher attrition, heavier consulting competition, and weaker timezone overlap for Europe-centric collaboration.</div></div>
   </div>
   <div class="sl">Experience-tier benchmarks</div>
   <div class="g3" style="margin-bottom:24px">
@@ -421,10 +424,10 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
       <span class="chip">ABAP <span class="pct">97%</span></span><span class="chip">SAP HANA <span class="pct">95%</span></span><span class="chip">SAP Implementation <span class="pct">94%</span></span><span class="chip">SAP FICO <span class="pct">93%</span></span><span class="chip">OOABAP <span class="pct">92%</span></span><span class="chip">SAP BW <span class="pct">87%</span></span><span class="chip">SAP NetWeaver <span class="pct">82%</span></span><span class="chip">Web Dynpro <span class="pct">81%</span></span><span class="chip">SAP SD <span class="pct">80%</span></span>
       <span class="chip chip-hl">SAP Fiori <span class="pct">69%</span></span><span class="chip chip-hl">OData <span class="pct">57%</span></span><span class="chip chip-hl">SAP S/4HANA <span class="pct">32%</span></span><span class="chip chip-hl">SAPUI5 <span class="pct">29%</span></span><span class="chip chip-hl">SAP Cloud Platform <span class="pct">25%</span></span>
     </div><div class="callout callout-amber" style="margin-top:16px"><strong>Skills gap:</strong> Only 32% have S/4HANA and 29% have SAPUI5 — the two most critical skills for BlackLine's Kraków role.</div></div>
-    <div class="card"><div class="ct">Title distribution</div><div class="cs">Seniority mix across all regions</div><div class="cw" style="height:260px"><canvas id="titleChart"></canvas></div><div style="margin-top:12px;font-size:.78rem;color:var(--text-2)"><strong style="color:var(--amber)">Mid-seniority gap confirmed:</strong> Senior ABAP Consultants (+10.6% YoY) and Technical Consultants (+8.8%) growing fastest.</div></div></div>
+    <div class="card"><div class="ct">Title distribution</div><div class="cs">Seniority mix across all regions</div><div class="cw" style="height:260px"><canvas id="titleChart"></canvas></div><div style="margin-top:12px;font-size:var(--fs-label);color:var(--text-2)"><strong style="color:var(--amber)">Mid-seniority gap confirmed:</strong> Senior ABAP Consultants (+10.6% YoY) and Technical Consultants (+8.8%) growing fastest.</div></div></div>
   </div>
   <div class="cr2" data-comp="blackline">
-    <div class="card" style="margin-bottom:16px"><div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;justify-content:center"><div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:var(--r);padding:10px 16px;font-weight:800;color:var(--accent);font-size:1.1rem">BL</div><div style="text-align:left"><div style="font-weight:700;font-size:1rem">BlackLine (NASDAQ: BL)</div><div style="font-size:.78rem;color:var(--text-3)">$700.4M revenue (+7.2% YoY) · ~1,800 employees · SAP Platinum Partner</div></div></div>
+    <div class="card" style="margin-bottom:16px"><div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;justify-content:center"><div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:var(--r);padding:10px 16px;font-weight:800;color:var(--accent);font-size:1.1rem">BL</div><div style="text-align:left"><div style="font-weight:700;font-size:1rem">BlackLine (NASDAQ: BL)</div><div style="font-size:var(--fs-label);color:var(--text-3)">$700.4M revenue (+7.2% YoY) · ~1,800 employees · SAP Platinum Partner</div></div></div>
     <div class="pc"><div class="pros"><h4>Attractors</h4><ul><li>Exclusive SAP Solution Extension partner (1 of &lt;30)</li><li>Product company stability vs consulting churn</li><li>ESPP + public equity upside</li><li>Direct SAP financial close ecosystem exposure</li><li>Kraków office established</li><li>New CRO with decade of SAP leadership</li></ul></div><div class="cons"><h4>Headwinds</h4><ul><li>Glassdoor 3.6/5 — cultural transition post-founder</li><li>Revenue growth decelerating (10.7% → 7.2%)</li><li>Culture scores 2.8–3.0/5</li><li>Offshoring + RTO friction</li><li>Narrower career path vs Big 4</li><li>Competing against Deloitte, Capgemini, TCS</li></ul></div></div></div>
   </div>
 </div>
@@ -482,30 +485,30 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
       <div class="stat" style="border-top:3px solid var(--amber)"><div class="lbl">ECC end of support</div><div class="val">Dec 2027</div><div class="delta down">18–24mo migration cycles</div></div>
       <div class="stat" style="border-top:3px solid var(--purple)"><div class="lbl">SAP attrition</div><div class="val">31%</div><div class="delta down">~2× consulting norm</div></div>
     </div>
-    <div class="g2"><div class="card"><div class="ct">Why the shortage is structural</div><div style="display:flex;flex-direction:column;gap:10px;font-size:.82rem;color:var(--text-2)">
+    <div class="g2"><div class="card"><div class="ct">Why the shortage is structural</div><div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
       <div style="display:flex;gap:10px"><span style="color:var(--coral);font-weight:700;min-width:22px">01</span><span>Dual-skill requirement: legacy ECC + S/4HANA narrows the pool</span></div>
       <div style="display:flex;gap:10px"><span style="color:var(--coral);font-weight:700;min-width:22px">02</span><span>Original SAP wave talent retiring</span></div>
       <div style="display:flex;gap:10px"><span style="color:var(--coral);font-weight:700;min-width:22px">03</span><span>Mid-seniority gap: demand at 5–8 yrs; supply at junior or expensive senior</span></div>
       <div style="display:flex;gap:10px"><span style="color:var(--coral);font-weight:700;min-width:22px">04</span><span>Cross-industry competition: federal, aerospace, manufacturing, finance</span></div>
       <div style="display:flex;gap:10px"><span style="color:var(--coral);font-weight:700;min-width:22px">05</span><span>BTP at 50% adoption compounds demand on same pool</span></div>
     </div></div>
-    <div class="card"><div class="ct">BTP adoption surge</div><div style="display:flex;flex-direction:column;gap:8px;font-size:.82rem;color:var(--text-2)">
+    <div class="card"><div class="ct">BTP adoption surge</div><div style="display:flex;flex-direction:column;gap:8px;font-size:var(--fs-body);color:var(--text-2)">
       <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Using BTP services</span><span style="font-weight:700">50%</span></div>
       <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Planning to leverage BTP</span><span style="font-weight:700">61%</span></div>
-      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Integration Suite adoption</span><span style="font-weight:700">46% <span style="color:var(--teal);font-size:.78rem">(+13pp YoY)</span></span></div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Integration Suite adoption</span><span style="font-weight:700">46% <span style="color:var(--teal);font-size:var(--fs-label)">(+13pp YoY)</span></span></div>
       <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Lack of expertise — #1 barrier</span><span style="font-weight:700;color:var(--coral)">46%</span></div>
       <div style="display:flex;justify-content:space-between;padding:8px 0"><span>Development complexity</span><span style="font-weight:700;color:var(--amber)">43%</span></div>
     </div></div></div>
   </div>
   <div class="ir" data-insight="recs">
     <div class="g2" style="margin-bottom:16px">
-      <div class="card" style="border-top:3px solid var(--purple);border-left:3px solid var(--purple)"><div class="ct" style="color:var(--purple)">Primary: Kraków-first</div><div style="display:flex;flex-direction:column;gap:10px;font-size:.82rem;color:var(--text-2)">
+      <div class="card" style="border-top:3px solid var(--purple);border-left:3px solid var(--purple)"><div class="ct" style="color:var(--purple)">Primary: Kraków-first</div><div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
         <div><strong style="color:var(--text)">Highest ROI region.</strong> 30% savings vs London, Tier A quality, CET timezone, EU alignment, 10.5% growth.</div>
         <div><strong style="color:var(--text)">Existing presence.</strong> Leverage Kraków office as primary SAP hub.</div>
         <div><strong style="color:var(--text)">B2B fast-start.</strong> ~£67k GBP equiv while building perm headcount.</div>
         <div><strong style="color:var(--text)">Compete on product.</strong> Lead with Platinum Partner, ESPP, stability.</div>
       </div></div>
-      <div class="card" style="border-top:3px solid var(--teal);border-left:3px solid var(--teal)"><div class="ct" style="color:var(--teal)">Secondary: Mumbai for scale</div><div style="display:flex;flex-direction:column;gap:10px;font-size:.82rem;color:var(--text-2)">
+      <div class="card" style="border-top:3px solid var(--teal);border-left:3px solid var(--teal)"><div class="ct" style="color:var(--teal)">Secondary: Mumbai for scale</div><div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
         <div><strong style="color:var(--text)">Volume play.</strong> 827 qualified at 64–79% cost reduction.</div>
         <div><strong style="color:var(--text)">Target product cos.</strong> IT services = 12–15% attrition. Budget ₹28–32 LPA.</div>
         <div><strong style="color:var(--text)">Mitigate attrition.</strong> ESPP, growth paths, avoid offshoring optics.</div>
@@ -516,8 +519,8 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
   </div>
   <div class="ir" data-insight="blrole">
     <div class="card"><div class="ct" style="text-align:center">Senior Software Engineer SAP — Kraków</div><div class="cs" style="text-align:center">BlackLine role alignment analysis</div>
-    <div class="g2" style="gap:24px;margin-top:16px"><div><div style="font-size:.78rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Requirements</div><div style="font-size:.82rem;color:var(--text-2);line-height:1.6"><p style="margin-bottom:8px">8+ years ABAP. S/4HANA + ECC6.0. ABAP OO with Eclipse/ADT. Fiori UI. SAP FI/CO + SD/MM.</p><p style="margin-bottom:8px">Product mindset — SOLID, service-model architecture, ABAP Unit Testing, UML.</p><p>Hybrid, Kraków office.</p></div></div>
-    <div><div style="font-size:.78rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Market alignment</div><div style="font-size:.82rem;color:var(--text-2);line-height:1.6"><p style="margin-bottom:8px"><span class="badge badge-teal">Strong fit</span> 8+ yr requirement targets the sweet spot of highest demand.</p><p style="margin-bottom:8px"><span class="badge badge-amber">Comp pressure</span> Must land at P50+ (23–26.5k PLN/mo UoP). B2B critical.</p><p><span class="badge badge-accent">Differentiator</span> "Advancement beyond ABAP" is a strong retention hook.</p></div></div></div></div>
+    <div class="g2" style="gap:24px;margin-top:16px"><div><div style="font-size:var(--fs-meta);font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Requirements</div><div style="font-size:var(--fs-body);color:var(--text-2);line-height:1.6"><p style="margin-bottom:8px">8+ years ABAP. S/4HANA + ECC6.0. ABAP OO with Eclipse/ADT. Fiori UI. SAP FI/CO + SD/MM.</p><p style="margin-bottom:8px">Product mindset — SOLID, service-model architecture, ABAP Unit Testing, UML.</p><p>Hybrid, Kraków office.</p></div></div>
+    <div><div style="font-size:var(--fs-meta);font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Market alignment</div><div style="font-size:var(--fs-body);color:var(--text-2);line-height:1.6"><p style="margin-bottom:8px"><span class="badge badge-teal">Strong fit</span> 8+ yr requirement targets the sweet spot of highest demand.</p><p style="margin-bottom:8px"><span class="badge badge-amber">Comp pressure</span> Must land at P50+ (23–26.5k PLN/mo UoP). B2B critical.</p><p><span class="badge badge-accent">Differentiator</span> "Advancement beyond ABAP" is a strong retention hook.</p></div></div></div></div>
   </div>
 </div>
 
@@ -543,7 +546,7 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
   <div id="sourceLibrary"></div>
 </div>
 
-<div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:.78rem;color:var(--text-4)">
+<div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:var(--fs-label);color:var(--text-4)">
   <div>Data: LinkedIn Talent Insights · IT Jobs Watch · Itentio · ERI SalaryExpert · Glassdoor · ERPVITS · Precisely · SAPinsider</div>
   <div>Chapter 2 · Talent Intelligence · March 2026</div>
 </div>
