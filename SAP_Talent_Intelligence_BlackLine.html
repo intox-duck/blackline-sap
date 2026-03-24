@@ -205,6 +205,25 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 .cr{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);font-size:var(--fs-body)}
 .cr.crh{font-size:var(--fs-meta);color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;font-weight:600;padding-bottom:10px}
 
+/* Addendum content layout */
+.salary-grid{align-items:stretch}
+.salary-card{display:flex;flex-direction:column;height:100%;min-width:0}
+.salary-table-wrap{overflow-x:auto;flex:1}
+.salary-card .tbl{table-layout:fixed}
+.salary-card .tbl th,.salary-card .tbl td{vertical-align:top}
+.salary-card .callout.push-end{margin-top:auto}
+.salary-snapshot .cs{min-height:42px}
+.salary-snapshot-body{font-size:var(--fs-body);color:var(--text-2);line-height:1.6;flex:1}
+.salary-tier-card .cs,.salary-detail-card .cs{min-height:48px}
+.salary-callout-stack{display:flex;flex-direction:column;gap:12px;margin-top:auto}
+
+/* Lightweight info tooltips */
+.tip{position:relative;display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:999px;background:var(--surface);border:1px solid var(--border);color:var(--text-3);font-size:11px;font-weight:700;line-height:1;cursor:help;vertical-align:middle;flex:0 0 auto}
+.tip:hover,.tip:focus-visible{color:var(--accent);border-color:var(--accent-bd);background:var(--accent-bg);outline:none}
+.tip::after{content:attr(data-tip);position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%) translateY(4px);width:min(240px,70vw);padding:10px 12px;border-radius:10px;background:#111827;color:#fff;font-size:12px;line-height:1.45;box-shadow:0 10px 30px rgba(0,0,0,.18);opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;z-index:20;text-align:left;font-weight:500}
+.tip::before{content:'';position:absolute;left:50%;bottom:calc(100% + 4px);transform:translateX(-50%) translateY(4px);border:6px solid transparent;border-top-color:#111827;opacity:0;transition:opacity .15s,transform .15s;pointer-events:none;z-index:19}
+.tip:hover::after,.tip:hover::before,.tip:focus-visible::after,.tip:focus-visible::before{opacity:1;transform:translateX(-50%) translateY(0)}
+
 @media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}.g2,.takeaway-grid{grid-template-columns:1fr}.pc{grid-template-columns:1fr}.ptabs,.rtabs{overflow-x:auto;flex-wrap:nowrap}.takeaway-head,.source-toolbar,.source-summary,.source-meta{flex-direction:column;align-items:stretch}.source-search-wrap{min-width:0;flex-basis:auto}}
 @media(max-width:600px){.g3,.g4,.g2{grid-template-columns:1fr}.wrap{padding:20px 16px}.hdr{align-items:flex-start;gap:16px;flex-direction:column}.hdr-meta{text-align:left}}
 </style>
@@ -312,7 +331,7 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 <!-- ====================== SALARY ====================== -->
 <div class="panel" id="panel-salary">
   <div class="cc" style="margin-bottom:16px;overflow-x:auto"><div class="ct">Senior SAP ABAP / S/4HANA Compensation</div><div class="cs">Target 8+ year market snapshot across BlackLine's three priority regions. GBP-equivalent median shown for direct comparison.</div>
-    <table class="tbl"><thead><tr><th>Region</th><th>Type</th><th>P25</th><th>Median</th><th>P75+</th><th>GBP equiv.</th><th>vs London</th></tr></thead><tbody>
+    <table class="tbl"><thead><tr><th>Region</th><th>Type <span class="tip" tabindex="0" data-tip="Permanent reflects salaried employment. Contract, UoP, and B2B reflect the dominant engagement models used in each market.">i</span></th><th>P25</th><th>Median</th><th>P75+</th><th>GBP Equiv. <span class="tip" tabindex="0" data-tip="Approximate annualized comparison converted into GBP so London, Kraków, and Mumbai can be read on one basis.">i</span></th><th>Vs London <span class="tip" tabindex="0" data-tip="Cost ratio versus the London permanent median. A value below 1.00× means the market is cheaper than London at the benchmark midpoint.">i</span></th></tr></thead><tbody>
     <tr><td><strong>London</strong></td><td><span class="badge badge-accent">Perm</span></td><td>£65k–£70k</td><td style="font-weight:700">£75k–£85k</td><td>£90k–£110k</td><td style="font-weight:700;font-variant-numeric:tabular-nums">£80,000</td><td style="font-variant-numeric:tabular-nums">1.00×</td></tr>
     <tr><td><strong>London</strong></td><td><span class="badge badge-amber">Contract</span></td><td>£450–£500/d</td><td style="font-weight:700">£500–£600/d</td><td>£625–£750+/d</td><td style="font-weight:700;font-variant-numeric:tabular-nums">~£132,000</td><td style="font-variant-numeric:tabular-nums;color:var(--amber)">1.65×</td></tr>
     <tr><td><strong>Kraków</strong></td><td><span class="badge badge-purple">UoP</span></td><td>17–20k PLN/mo</td><td style="font-weight:700">23–26.5k PLN/mo</td><td>29–32k PLN/mo</td><td style="font-weight:700;font-variant-numeric:tabular-nums">~£56,000</td><td style="font-variant-numeric:tabular-nums;color:var(--teal)">0.70×</td></tr>
@@ -327,76 +346,78 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
     <div class="cost-row"><div class="cost-lbl">Mumbai MNC</div><div class="cost-track"><div class="cost-fill" style="width:36%;background:var(--teal)">£29,000</div></div></div>
     <div class="cost-row"><div class="cost-lbl">Mumbai Svc</div><div class="cost-track"><div class="cost-fill" style="width:21%;background:rgba(15,118,110,.5)">£17,000</div></div></div>
   </div><div class="cc"><div class="ct">S/4HANA Premium Over Base ABAP</div><div class="cs">GBP-equivalent median comparison</div><div class="cw" style="height:210px"><canvas id="premiumChart"></canvas></div></div></div>
-  <div class="g3" style="margin-bottom:24px">
-    <div class="card" style="border-top:3px solid var(--accent)"><div class="ct">London</div><div class="cs">Premium market for senior and stakeholder-facing hires</div><div style="font-size:var(--fs-body);color:var(--text-2);line-height:1.6">BlackLine-equivalent 8–12 year talent sits at <strong>£85k–£120k</strong> permanent, with top contractor profiles landing at <strong>£600–£750+/day</strong>. Use selectively: quality and proximity are strong, but the pool is shrinking and cost is highest.</div></div>
-    <div class="card" style="border-top:3px solid var(--purple)"><div class="ct">Kraków</div><div class="cs">Best overall balance for BlackLine's core engineering build</div><div style="font-size:var(--fs-body);color:var(--text-2);line-height:1.6">The 8–12 year target band is now <strong>25–32k PLN/month UoP</strong> or <strong>29–36k PLN/month B2B</strong>. Tier A SAP quality, CET overlap, and Kraków presence still make this the best composite option.</div></div>
-    <div class="card" style="border-top:3px solid var(--teal)"><div class="ct">Mumbai</div><div class="cs">Depth and cost advantage when BlackLine needs scale</div><div style="font-size:var(--fs-body);color:var(--text-2);line-height:1.6">For 8–12 years' experience, BlackLine should benchmark against <strong>Product/MNC rates: ₹28–38 LPA</strong>, not IT services rates. The trade-off is higher attrition, heavier consulting competition, and weaker timezone overlap for Europe-centric collaboration.</div></div>
+  <div class="g3 salary-grid" style="margin-bottom:24px">
+    <div class="card salary-card salary-snapshot" style="border-top:3px solid var(--accent)"><div class="ct">London</div><div class="cs">Premium market for senior and stakeholder-facing hires</div><div class="salary-snapshot-body">BlackLine-equivalent 8–12 year talent sits at <strong>£85k–£120k</strong> permanent, with top contractor profiles landing at <strong>£600–£750+/day</strong>. Use selectively: quality and proximity are strong, but the pool is shrinking and cost is highest.</div></div>
+    <div class="card salary-card salary-snapshot" style="border-top:3px solid var(--purple)"><div class="ct">Kraków</div><div class="cs">Best overall balance for BlackLine's core engineering build</div><div class="salary-snapshot-body">The 8–12 year target band is now <strong>25–32k PLN/month UoP</strong> or <strong>29–36k PLN/month B2B</strong>. Tier A SAP quality, CET overlap, and Kraków presence still make this the best composite option.</div></div>
+    <div class="card salary-card salary-snapshot" style="border-top:3px solid var(--teal)"><div class="ct">Mumbai</div><div class="cs">Depth and cost advantage when BlackLine needs scale</div><div class="salary-snapshot-body">For 8–12 years' experience, BlackLine should benchmark against <strong>Product/MNC rates: ₹28–38 LPA</strong>, not IT services rates. The trade-off is higher attrition, heavier consulting competition, and weaker timezone overlap for Europe-centric collaboration.</div></div>
   </div>
   <div class="sl">Experience-Tier Benchmarks</div>
-  <div class="g3" style="margin-bottom:24px">
-    <div class="card" style="overflow-x:auto">
+  <div class="g3 salary-grid" style="margin-bottom:24px">
+    <div class="card salary-card salary-tier-card">
       <div class="ct">London</div>
       <div class="cs">Permanent annual salary in GBP. S/4HANA + Fiori carries the clearest premium at every level.</div>
-      <table class="tbl"><thead><tr><th>Tier</th><th>Years</th><th>Base ABAP</th><th>S/4 + Fiori</th></tr></thead><tbody>
+      <div class="salary-table-wrap"><table class="tbl"><thead><tr><th>Tier</th><th>Years</th><th>Base ABAP</th><th>S/4 + Fiori <span class="tip" tabindex="0" data-tip="This column shows the uplift once the role combines base ABAP capability with in-demand S/4HANA and Fiori/UI5 delivery skills.">i</span></th></tr></thead><tbody>
         <tr><td>Junior</td><td>0–2</td><td>£30k–£45k</td><td>£35k–£50k</td></tr>
         <tr><td>Mid-level</td><td>3–5</td><td>£50k–£70k</td><td>£60k–£80k</td></tr>
         <tr><td>Senior</td><td>5–8</td><td>£65k–£85k</td><td>£75k–£100k</td></tr>
         <tr><td style="font-weight:600">Senior / Lead</td><td>8–12</td><td>£75k–£100k</td><td style="font-weight:700">£85k–£120k</td></tr>
         <tr><td>Principal / Architect</td><td>12+</td><td>£90k–£120k</td><td>£100k–£135k</td></tr>
-      </tbody></table>
-      <div class="callout callout-accent" style="margin-top:14px"><strong>Contract overlay:</strong> Mid-level runs at £350–£500/day, senior at £450–£600/day, and senior/lead at £600–£750+/day outside IR35.</div>
+      </tbody></table></div>
+      <div class="callout callout-accent push-end"><strong>Contract overlay:</strong> Mid-level runs at £350–£500/day, senior at £450–£600/day, and senior/lead at £600–£750+/day outside IR35.</div>
     </div>
-    <div class="card" style="overflow-x:auto">
+    <div class="card salary-card salary-tier-card">
       <div class="ct">Kraków</div>
       <div class="cs">Monthly market in PLN. B2B runs 20–40% above UoP and is often necessary for scarce 8+ year talent.</div>
-      <table class="tbl"><thead><tr><th>Tier</th><th>Years</th><th>UoP</th><th>B2B</th><th>GBP/yr</th></tr></thead><tbody>
+      <div class="salary-table-wrap"><table class="tbl"><thead><tr><th>Tier</th><th>Years</th><th>UoP <span class="tip" tabindex="0" data-tip="UoP is Umowa o Pracę, the standard Polish employment contract with salary, benefits, and employer-paid contributions.">i</span></th><th>B2B <span class="tip" tabindex="0" data-tip="B2B is the contractor model commonly used in Poland for higher take-home pay and faster hiring at senior levels.">i</span></th><th>GBP/Yr <span class="tip" tabindex="0" data-tip="Approximate annualized salary converted to GBP for easier cross-market comparison.">i</span></th></tr></thead><tbody>
         <tr><td>Junior</td><td>0–2</td><td>6k–12k</td><td>8k–15k</td><td>~£14k–£27k</td></tr>
         <tr><td>Mid-level</td><td>3–5</td><td>18.5k–25.1k</td><td>22k–28k</td><td>~£42k–£57k</td></tr>
         <tr><td>Senior</td><td>5–8</td><td>23.2k–29.2k</td><td>27k–33k</td><td>~£53k–£67k</td></tr>
         <tr><td style="font-weight:600">Senior</td><td>8–12</td><td style="font-weight:700">25k–32k</td><td style="font-weight:700">29k–36k</td><td>~£57k–£73k</td></tr>
         <tr><td>Lead</td><td>12+</td><td>30k–40.5k</td><td>35k–45k</td><td>~£69k–£93k</td></tr>
-      </tbody></table>
-      <div class="callout callout-teal" style="margin-top:14px"><strong>Poland signal:</strong> Fiori/UI5 pays 8–10% above base ABAP locally, and 79% of employers planned salary increases in 2025.</div>
+      </tbody></table></div>
+      <div class="callout callout-teal push-end"><strong>Poland signal:</strong> Fiori/UI5 pays 8–10% above base ABAP locally, and 79% of employers planned salary increases in 2025.</div>
     </div>
-    <div class="card" style="overflow-x:auto">
+    <div class="card salary-card salary-tier-card">
       <div class="ct">Mumbai</div>
       <div class="cs">Annual market in LPA. Employer type matters more than geography because product/MNC pay can exceed services pay by over 100%.</div>
-      <table class="tbl"><thead><tr><th>Tier</th><th>Years</th><th>Services</th><th>Big 4 / Mid</th><th>Product / MNC</th></tr></thead><tbody>
+      <div class="salary-table-wrap"><table class="tbl"><thead><tr><th>Tier</th><th>Years</th><th>Services</th><th>Big 4 / Mid</th><th>Product / MNC <span class="tip" tabindex="0" data-tip="This is the most relevant comparator for BlackLine: product companies and multinationals typically pay well above the IT services market.">i</span></th></tr></thead><tbody>
         <tr><td>Junior</td><td>0–2</td><td>₹3.5–6</td><td>₹5–8</td><td>₹6–10</td></tr>
         <tr><td>Mid-level</td><td>3–5</td><td>₹6–10</td><td>₹10–16</td><td>₹12–18</td></tr>
         <tr><td>Senior</td><td>5–8</td><td>₹10–18</td><td>₹16–24</td><td>₹18–28</td></tr>
         <tr><td style="font-weight:600">Senior</td><td>8–12</td><td>₹16–22</td><td>₹22–30</td><td style="font-weight:700">₹28–38</td></tr>
         <tr><td>Lead / Architect</td><td>12+</td><td>₹20–25</td><td>₹28–35</td><td>₹35–45+</td></tr>
-      </tbody></table>
-      <div class="callout callout-amber" style="margin-top:14px"><strong>Key correction:</strong> Mass-market salary sites skew toward IT services. For BlackLine, the relevant comparator is the Product / MNC column.</div>
+      </tbody></table></div>
+      <div class="callout callout-amber push-end"><strong>Key correction:</strong> Mass-market salary sites skew toward IT services. For BlackLine, the relevant comparator is the Product / MNC column.</div>
     </div>
   </div>
   <div class="sl">Skills &amp; Premiums</div>
-  <div class="g2">
-    <div class="card" style="overflow-x:auto">
-      <div class="ct">Skill Premium Matrix</div>
+  <div class="g2 salary-grid">
+    <div class="card salary-card salary-detail-card">
+      <div class="ct">Skill Premium Matrix <span class="tip" tabindex="0" data-tip="Premiums show the directional pay uplift attached to scarce SAP skills compared with general ABAP capability in the same market.">i</span></div>
       <div class="cs">Measured differentials from the addendum, mapped to the BlackLine Kraków role.</div>
-      <table class="tbl"><thead><tr><th>Skill</th><th>Premium</th><th>Market signal</th><th>BL role</th></tr></thead><tbody>
+      <div class="salary-table-wrap"><table class="tbl"><thead><tr><th>Skill</th><th>Premium <span class="tip" tabindex="0" data-tip="Directional pay uplift observed in the addendum research rather than a universal fixed bonus.">i</span></th><th>Market signal</th><th>BL role</th></tr></thead><tbody>
         <tr><td><strong>S/4HANA</strong></td><td>+10–30%</td><td>Largest premium driver across all three regions</td><td>Required</td></tr>
         <tr><td><strong>SAP Fiori / UI5</strong></td><td>+8–15%</td><td>Poland 24–28k vs 22–26k PLN; UK +10–15%</td><td>Required</td></tr>
         <tr><td><strong>FI/CO knowledge</strong></td><td>+5–15%</td><td>UK FICO median outruns general ABAP by ~15%</td><td>Required</td></tr>
         <tr><td><strong>SD/MM knowledge</strong></td><td>+3–8%</td><td>Cross-functional boost, but smaller than FICO</td><td>Required</td></tr>
         <tr><td><strong>SAP BTP / Cloud</strong></td><td>+15–25%</td><td>Emerging premium, especially in UK</td><td>Nice to have</td></tr>
         <tr><td><strong>Lead / Architect scope</strong></td><td>+25–40%</td><td>Lead band in Kraków and architect band in London</td><td>Future hires</td></tr>
-      </tbody></table>
+      </tbody></table></div>
     </div>
-    <div class="card" style="overflow-x:auto">
-      <div class="ct">BlackLine JD Cost &amp; Skill Signals</div>
+    <div class="card salary-card salary-detail-card">
+      <div class="ct">BlackLine JD Cost &amp; Skill Signals <span class="tip" tabindex="0" data-tip="This section combines the salary benchmark with the role-specific screening signals BlackLine should expect to compete on in-market.">i</span></div>
       <div class="cs">What the fully qualified 8+ year candidate costs, and which capabilities screen for quality versus pay.</div>
-      <table class="tbl"><thead><tr><th>Region</th><th>Contract type</th><th>Estimated range</th></tr></thead><tbody>
+      <div class="salary-table-wrap"><table class="tbl"><thead><tr><th>Region</th><th>Contract Type</th><th>Estimated Range</th></tr></thead><tbody>
         <tr><td><strong>Kraków</strong></td><td>UoP</td><td style="font-weight:700">26k–32k PLN/mo</td></tr>
         <tr><td><strong>Kraków</strong></td><td>B2B</td><td style="font-weight:700">30k–38k PLN/mo</td></tr>
         <tr><td><strong>London</strong></td><td>Permanent</td><td style="font-weight:700">£85k–£110k</td></tr>
         <tr><td><strong>London</strong></td><td>Contract</td><td style="font-weight:700">£550–£700/day</td></tr>
         <tr><td><strong>Mumbai</strong></td><td>Product / MNC</td><td style="font-weight:700">₹28–38 LPA</td></tr>
-      </tbody></table>
-      <div class="callout callout-accent" style="margin-top:14px"><strong>Screening signals, not separate premiums:</strong> ABAP OO, Eclipse/ADT, ABAP Unit Testing, SOLID, and UML are still worth testing for, but the addendum treats them as product-quality filters rather than standalone salary uplifts.</div>
-      <div class="callout callout-amber" style="margin-top:12px"><strong>Hiring reality:</strong> At the 8+ year band, expect 90+ days to fill and replacement costs of roughly 2–3× annual salary. That makes B2B flexibility, ESPP, product stability, and career path messaging part of the compensation package.</div>
+      </tbody></table></div>
+      <div class="salary-callout-stack">
+        <div class="callout callout-accent"><strong>Screening signals, not separate premiums:</strong> ABAP OO, Eclipse/ADT, ABAP Unit Testing, SOLID, and UML are still worth testing for, but the addendum treats them as product-quality filters rather than standalone salary uplifts.</div>
+        <div class="callout callout-amber"><strong>Hiring reality:</strong> At the 8+ year band, expect 90+ days to fill and replacement costs of roughly 2–3× annual salary. That makes B2B flexibility, ESPP, product stability, and career path messaging part of the compensation package.</div>
+      </div>
     </div>
   </div>
 </div>
