@@ -1,4 +1,9 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><title>Logo Preview</title>
+<script>
+(function(){document.documentElement.style.visibility='hidden';
+fetch('/api/check').then(function(r){if(!r.ok)throw 0;document.documentElement.style.visibility='visible';})
+.catch(function(){window.location.href='/login.html';});})();
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Figtree',system-ui,sans-serif;background:#e5e5ea}
 .b{padding:44px 40px;display:flex;flex-direction:column;align-items:center;gap:20px}

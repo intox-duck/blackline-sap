@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/SAP_Talent_Intelligence_BlackLine.html" }
+    { "source": "/", "destination": "/login.html" }
   ]
 }
