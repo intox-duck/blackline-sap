@@ -681,6 +681,8 @@ function renderSourceLibrary(query=''){
   const status=document.getElementById('sourceSearchStatus');
   const empty=document.getElementById('sourceSearchEmpty');
   if(!root||!status||!empty)return;
+  const defaultSourceSearchStatus=status.dataset.defaultStatus||status.textContent;
+  status.dataset.defaultStatus=defaultSourceSearchStatus;
   const q=query.trim().toLowerCase();
   let visibleItems=0;
   let visibleGroups=0;
@@ -696,7 +698,7 @@ function renderSourceLibrary(query=''){
     return `<section class="card source-group"><div class="source-group-head"><div><div class="ct" style="margin-bottom:4px">${escapeHtml(category)}</div><div class="cs" style="margin-bottom:0">${items.length} deduplicated reference${items.length===1?'':'s'} relevant to this theme.</div></div><span class="badge badge-accent source-count">${items.length} source${items.length===1?'':'s'}</span></div>${items.map((item,index)=>`<div class="si source-item"><span class="sn">${String(index+1).padStart(2,'0')}</span><div class="source-main"><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(item.title)}</a><div class="sp">${escapeHtml(item.source)}</div><div class="source-meta"><span class="source-url">${escapeHtml(item.url)}</span><div class="source-badges">${item.docs.map(doc=>`<span class="badge ${doc==='Addendum'?'badge-purple':'badge-teal'}">${escapeHtml(doc)}</span>`).join('')}</div></div></div></div>`).join('')}</section>`;
   }).join('');
   root.innerHTML=markup;
-  status.textContent=q?`${visibleItems} matching source${visibleItems===1?'':'s'} across ${visibleGroups} research theme${visibleGroups===1?'':'s'}.`:`Browse ${sourceLibraryData.length} unique sources across ${sourceCategories.length} research themes.`;
+  status.textContent=q?`${visibleItems} matching source${visibleItems===1?'':'s'} across ${visibleGroups} research theme${visibleGroups===1?'':'s'}.`:defaultSourceSearchStatus;
   empty.hidden=visibleItems!==0;
 }
 
