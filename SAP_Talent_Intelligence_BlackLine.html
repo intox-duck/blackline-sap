@@ -206,7 +206,7 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 
 /* Panels */
 .panel{display:none}.panel.active{display:block;animation:panelIn .32s ease both}
-.sr,.cr2,.ir,.src{display:none}.sr.active,.cr2.active,.ir.active,.src.active{display:block;animation:panelIn .32s ease both}
+.rf,.sr,.cr2,.ir,.src{display:none}.rf.active,.sr.active,.cr2.active,.ir.active,.src.active{display:block;animation:panelIn .32s ease both}
 @keyframes panelIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
 /* Company rows */
@@ -344,6 +344,8 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 
 <!-- ====================== SALARY ====================== -->
 <div class="panel" id="panel-salary">
+  <div class="rtabs region-bar" id="rbar-salary"><button class="rtab active" data-region="all"><span class="dot" style="background:var(--text-3)"></span>All Regions</button><button class="rtab" data-region="krakow"><span class="dot" style="background:var(--purple)"></span>Kraków</button><button class="rtab" data-region="mumbai"><span class="dot" style="background:var(--teal)"></span>Mumbai</button><button class="rtab" data-region="london"><span class="dot" style="background:var(--accent)"></span>London</button></div>
+  <div class="rf active" data-rfilter="all">
   <div class="cc" style="margin-bottom:16px;overflow-x:auto"><div class="ct"><span class="ct-line">Senior SAP ABAP / S/4HANA Compensation <span class="tip" tabindex="0" data-tip="This benchmark table summarizes the 8+ year market that BlackLine is most likely to compete in, with contract model differences retained where they materially shift the rate.">i</span></span></div><div class="cs">Target 8+ year market snapshot across BlackLine's three priority regions. GBP-equivalent median shown for direct comparison.</div>
     <table class="tbl"><thead><tr><th>Region</th><th>Type <span class="tip" tabindex="0" data-tip="Permanent reflects salaried employment. Contract, UoP, and B2B reflect the dominant engagement models used in each market.">i</span></th><th>P25</th><th>Median</th><th>P75+</th><th>GBP Equiv. <span class="tip" tabindex="0" data-tip="Approximate annualized comparison converted into GBP so London, Kraków, and Mumbai can be read on one basis.">i</span></th><th>Vs London <span class="tip" tabindex="0" data-tip="Cost ratio versus the London permanent median. A value below 1.00× means the market is cheaper than London at the benchmark midpoint.">i</span></th></tr></thead><tbody>
     <tr><td><strong>London</strong></td><td><span class="badge badge-accent">Perm</span></td><td>£65k–£70k</td><td style="font-weight:700">£75k–£85k</td><td>£90k–£110k</td><td style="font-weight:700;font-variant-numeric:tabular-nums">£80,000</td><td style="font-variant-numeric:tabular-nums">1.00×</td></tr>
@@ -434,10 +436,134 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
       </div>
     </div>
   </div>
+  </div><!-- /rf all -->
+
+  <div class="rf" data-rfilter="krakow">
+    <div class="g3" style="margin-bottom:16px">
+      <div class="stat" style="border-top:3px solid var(--purple)"><div class="lbl">Avg SAP Analyst</div><div class="val" style="color:var(--purple)">229,832 zł</div><div class="delta neutral">~£45,000 GBP equivalent</div></div>
+      <div class="stat" style="border-top:3px solid var(--purple)"><div class="lbl">5-Year Growth (Proj)</div><div class="val up">+51%</div><div class="delta up">Highest projected growth of the 3 regions</div></div>
+      <div class="stat" style="border-top:3px solid var(--purple)"><div class="lbl">B2B vs UoP Premium</div><div class="val" style="color:var(--amber)">+20–40%</div><div class="delta neutral">B2B take-home premium over employment</div></div>
+    </div>
+    <div class="g2" style="margin-bottom:16px">
+      <div class="cc">
+        <div class="ct">UoP vs B2B Contract Comparison</div>
+        <div class="cs">The two dominant engagement models in the Polish SAP market, with 2026 legislative context.</div>
+        <table class="tbl"><thead><tr><th>Factor</th><th>Employment (UoP)</th><th>B2B (Sole Trader)</th></tr></thead><tbody>
+          <tr><td><strong>Subordination</strong></td><td>Direct employer direction</td><td>High independence required</td></tr>
+          <tr><td><strong>Place &amp; Time</strong></td><td>Designated by employer</td><td>Full autonomy</td></tr>
+          <tr><td><strong>Statutory Protections</strong></td><td>Full (paid leave, sick pay)</td><td>None (contractual only)</td></tr>
+          <tr><td><strong>Social Security</strong></td><td>Employer-funded (PLN 5,652 base)</td><td>Contractor-funded</td></tr>
+          <tr><td><strong>Termination</strong></td><td>Strict notice periods</td><td>Easier to scale/end</td></tr>
+          <tr><td><strong>2026 Risk</strong></td><td><span class="badge badge-teal">Low</span></td><td><span class="badge badge-coral">High — PIP reclassification</span></td></tr>
+        </tbody></table>
+      </div>
+      <div class="cc">
+        <div class="ct">Tier Benchmarks — Kraków</div>
+        <div class="cs">Monthly market in PLN across seniority bands.</div>
+        <table class="tbl"><thead><tr><th>Tier</th><th>Years</th><th>UoP</th><th>B2B</th><th>GBP/Yr</th></tr></thead><tbody>
+          <tr><td>Junior</td><td>0–2</td><td>6k–12k</td><td>8k–15k</td><td>~£14k–£27k</td></tr>
+          <tr><td>Mid-level</td><td>3–5</td><td>18.5k–25.1k</td><td>22k–28k</td><td>~£42k–£57k</td></tr>
+          <tr><td>Senior</td><td>5–8</td><td>23.2k–29.2k</td><td>27k–33k</td><td>~£53k–£67k</td></tr>
+          <tr><td style="font-weight:600">Senior</td><td>8–12</td><td style="font-weight:700">25k–32k</td><td style="font-weight:700">29k–36k</td><td>~£57k–£73k</td></tr>
+          <tr><td>Lead</td><td>12+</td><td>30k–40.5k</td><td>35k–45k</td><td>~£69k–£93k</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+    <div class="callout callout-amber" style="margin-bottom:16px"><strong>2026 Legislative Alert:</strong> From January 2026, Poland's National Labour Inspectorate (PIP) can reclassify B2B contracts that resemble employment relationships (set hours, direct supervision) into full employment, with retroactive social security obligations and penalties. The cost advantage of B2B is eroding — UoP is now the more predictable model.</div>
+    <div class="callout callout-teal"><strong>Market signal:</strong> Fiori/UI5 pays 8–10% above base ABAP locally. 79% of Polish employers planned salary increases in 2025. Kraków is classified as Tier A by ITCompare.pl for SAP earning potential — a significant quality signal.</div>
+  </div>
+
+  <div class="rf" data-rfilter="mumbai">
+    <div class="g3" style="margin-bottom:16px">
+      <div class="stat" style="border-top:3px solid var(--teal)"><div class="lbl">SAP PM Average</div><div class="val" style="color:var(--teal)">₹18 LPA</div><div class="delta neutral">+ ~₹1.5L bonus</div></div>
+      <div class="stat" style="border-top:3px solid var(--teal)"><div class="lbl">5-Year Growth</div><div class="val neutral">+8%</div><div class="delta neutral">Slowest growth of the 3 regions</div></div>
+      <div class="stat" style="border-top:3px solid var(--teal)"><div class="lbl">Product/MNC Premium</div><div class="val up">+70–100%</div><div class="delta neutral">Over IT services rates</div></div>
+    </div>
+    <div class="g2" style="margin-bottom:16px">
+      <div class="cc">
+        <div class="ct">Salary by Employer Type</div>
+        <div class="cs">Annual compensation in LPA varies dramatically by company type — employer brand matters more than geography.</div>
+        <table class="tbl"><thead><tr><th>Tier</th><th>Years</th><th>IT Services</th><th>Big 4 / Mid</th><th>Product / MNC</th></tr></thead><tbody>
+          <tr><td>Junior</td><td>0–2</td><td>₹3.5–6</td><td>₹5–8</td><td>₹6–10</td></tr>
+          <tr><td>Mid-level</td><td>3–5</td><td>₹6–10</td><td>₹10–16</td><td>₹12–18</td></tr>
+          <tr><td>Senior</td><td>5–8</td><td>₹10–18</td><td>₹16–24</td><td>₹18–28</td></tr>
+          <tr><td style="font-weight:600">Senior</td><td>8–12</td><td>₹16–22</td><td>₹22–30</td><td style="font-weight:700">₹28–38</td></tr>
+          <tr><td>Lead / Architect</td><td>12+</td><td>₹20–25</td><td>₹28–35</td><td>₹35–45+</td></tr>
+        </tbody></table>
+      </div>
+      <div class="cc">
+        <div class="ct">Talent Shortage by Level</div>
+        <div class="cs">Mumbai's severe SAP talent shortage creates intense salary competition, particularly at entry and mid-level.</div>
+        <div style="display:flex;flex-direction:column;gap:12px;padding:8px 0">
+          <div class="cost-row"><div class="cost-lbl-wrap"><div class="cost-lbl">Entry-level</div></div><div class="cost-track"><div class="cost-fill" style="width:46.6%;background:var(--coral)">46.6% shortage</div></div></div>
+          <div class="cost-row"><div class="cost-lbl-wrap"><div class="cost-lbl">Mid-level</div></div><div class="cost-track"><div class="cost-fill" style="width:33.9%;background:var(--amber)">33.9% shortage</div></div></div>
+          <div class="cost-row"><div class="cost-lbl-wrap"><div class="cost-lbl">Senior</div></div><div class="cost-track"><div class="cost-fill" style="width:22%;background:var(--teal)">~22% shortage</div></div></div>
+        </div>
+        <div style="margin-top:12px;font-size:var(--fs-label);color:var(--text-2)"><strong style="color:var(--amber)">Note:</strong> Tech sector growth of 32.5% outpaces other local industries, intensifying competition.</div>
+      </div>
+    </div>
+    <div class="callout callout-amber" style="margin-bottom:16px"><strong>Key correction:</strong> Mass-market salary sites heavily skew toward IT services rates. For BlackLine, the relevant comparator is the Product/MNC column — benchmark against ₹28–38 LPA for the 8+ year profile.</div>
+    <div class="callout callout-teal"><strong>RTO trade-off:</strong> 80% of Mumbai companies lost talent to RTO mandates. SAP professionals in India are willing to sacrifice up to 25% of salary to maintain remote or hybrid arrangements — a critical lever for BlackLine's positioning.</div>
+  </div>
+
+  <div class="rf" data-rfilter="london">
+    <div class="g3" style="margin-bottom:16px">
+      <div class="stat" style="border-top:3px solid var(--accent)"><div class="lbl">Perm Median (Senior)</div><div class="val" style="color:var(--accent)">£75k–£85k</div><div class="delta neutral">With S/4HANA + Fiori</div></div>
+      <div class="stat" style="border-top:3px solid var(--accent)"><div class="lbl">5-Year Growth</div><div class="val neutral">+12%</div><div class="delta neutral">Moderate, constrained by NI changes</div></div>
+      <div class="stat" style="border-top:3px solid var(--accent)"><div class="lbl">General SAP Vacancies</div><div class="val down">-27.7%</div><div class="delta down">Economic headwinds &amp; NI changes</div></div>
+    </div>
+    <div class="g2" style="margin-bottom:16px">
+      <div class="cc">
+        <div class="ct">Contract Day Rates by Role</div>
+        <div class="cs">London's contractor market is uniquely shaped by IR35 rules and the premium/standard skill split.</div>
+        <table class="tbl"><thead><tr><th>Role Type</th><th>Median Day Rate</th><th>Premium Skill Rate</th><th>Perm Equivalent</th></tr></thead><tbody>
+          <tr><td><strong>S/4HANA Consultant</strong></td><td>£610/day</td><td>£800/day</td><td>£77,500/yr</td></tr>
+          <tr><td><strong>SAP Architect</strong></td><td>£700/day</td><td style="font-weight:700">£900+/day</td><td>£120,000+/yr</td></tr>
+          <tr><td><strong>Basis / HANA Admin</strong></td><td>£580/day</td><td>£750/day</td><td>£65,000/yr</td></tr>
+        </tbody></table>
+      </div>
+      <div class="cc">
+        <div class="ct">Sector SAP Demand — London 2025</div>
+        <div class="cs">Hiring concentrated in tech and retail; financial services softened pre-budget.</div>
+        <table class="tbl"><thead><tr><th>Sector</th><th>Demand Growth</th><th>Module Focus</th></tr></thead><tbody>
+          <tr><td><strong>Technology</strong></td><td class="up">+39.1%</td><td>BTP, Cloud Native, HANA</td></tr>
+          <tr><td><strong>Retail &amp; Consumer</strong></td><td class="up">+29.6%</td><td>Supply Chain, EWM, TM</td></tr>
+          <tr><td><strong>Accounting &amp; Consulting</strong></td><td class="up">+25.6%</td><td>S/4HANA Migration, GRC</td></tr>
+          <tr><td><strong>Financial Services</strong></td><td class="down">-13.0% (Q4)</td><td>ESG, CSRD, Finance</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:16px">
+      <div class="cc">
+        <div class="ct">Tier Benchmarks — London</div>
+        <div class="cs">Permanent annual salary in GBP. S/4HANA + Fiori carries the clearest premium at every level.</div>
+        <table class="tbl"><thead><tr><th>Tier</th><th>Years</th><th>Base ABAP</th><th>S/4 + Fiori</th></tr></thead><tbody>
+          <tr><td>Junior</td><td>0–2</td><td>£30k–£45k</td><td>£35k–£50k</td></tr>
+          <tr><td>Mid-level</td><td>3–5</td><td>£50k–£70k</td><td>£60k–£80k</td></tr>
+          <tr><td>Senior</td><td>5–8</td><td>£65k–£85k</td><td>£75k–£100k</td></tr>
+          <tr><td style="font-weight:600">Senior / Lead</td><td>8–12</td><td>£75k–£100k</td><td style="font-weight:700">£85k–£120k</td></tr>
+          <tr><td>Principal / Architect</td><td>12+</td><td>£90k–£120k</td><td>£100k–£135k</td></tr>
+        </tbody></table>
+      </div>
+      <div class="cc">
+        <div class="ct">IR35 &amp; Contractor Psychology</div>
+        <div class="cs">The London market's unique dynamic — Outside IR35 offers 20–30% more take-home pay.</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+          <div><strong style="color:var(--text)">Inside IR35 default.</strong> Most large clients blanket-determine "Inside" for risk mitigation, creating friction with experienced contractors who view it as a 25% pay cut versus Outside rates.</div>
+          <div><strong style="color:var(--text)">Perm "false security."</strong> Contractors note that perm roles have zero job security for the first two years and often involve a 25% pay cut compared to Inside contract rates.</div>
+          <div><strong style="color:var(--text)">BlackLine opportunity.</strong> Offering Outside IR35 contracts or high-stability permanent roles with a clear 2-year+ roadmap is essential to attract talent away from blanket Inside determinations at larger financial institutions.</div>
+        </div>
+      </div>
+    </div>
+    <div class="callout callout-accent" style="margin-bottom:16px"><strong>"Twilight of SAP ECC":</strong> Demand for SAP Specialists focused on legacy customization has fallen by 21.4%, while SAP Architects have surged +100.6%. London is pivoting from volume ABAP to premium architectural roles.</div>
+    <div class="callout callout-amber"><strong>EPAM &amp; KPMG surge:</strong> EPAM Systems saw +162.3% rise in SAP hiring due to its S/4HANA "conversion factory," and KPMG expanded roles by +98.8% through IBM and SAP PartnerEdge partnerships — both actively competing for the same London talent pool.</div>
+  </div>
 </div>
 
 <!-- ====================== COMPETITIVE ====================== -->
 <div class="panel" id="panel-competitive">
+  <div class="rtabs region-bar" id="rbar-competitive"><button class="rtab active" data-region="all"><span class="dot" style="background:var(--text-3)"></span>All Regions</button><button class="rtab" data-region="krakow"><span class="dot" style="background:var(--purple)"></span>Kraków</button><button class="rtab" data-region="mumbai"><span class="dot" style="background:var(--teal)"></span>Mumbai</button><button class="rtab" data-region="london"><span class="dot" style="background:var(--accent)"></span>London</button></div>
+  <div class="rf active" data-rfilter="all">
   <div class="rtabs" id="ctabs"><button class="rtab active" data-region="all"><span class="dot" style="background:var(--text-3)"></span>All employers</button><button class="rtab" data-region="skills"><span class="dot" style="background:var(--purple)"></span>Skills profile</button><button class="rtab" data-region="blackline"><span class="dot" style="background:var(--teal)"></span>BlackLine position</button></div>
   <div class="cr2 active" data-comp="all">
     <div class="cc" style="margin-bottom:16px;overflow-x:auto"><div class="ct">Top Employers Competing for This Talent Pool</div><div class="cs">Across all 3 regions — ranked by headcount.</div>
@@ -465,10 +591,151 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
     <div class="card" style="margin-bottom:16px"><div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;justify-content:center"><div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:var(--r);padding:10px 16px;font-weight:800;color:var(--accent);font-size:1.1rem">BL</div><div style="text-align:left"><div style="font-weight:700;font-size:1rem">BlackLine (NASDAQ: BL)</div><div style="font-size:var(--fs-label);color:var(--text-3)">$700.4M revenue (+7.2% YoY) · ~1,800 employees · SAP Platinum Partner</div></div></div>
     <div class="pc"><div class="pros"><h4>Attractors</h4><ul><li>Exclusive SAP Solution Extension partner (1 of &lt;30)</li><li>Product company stability vs consulting churn</li><li>ESPP + public equity upside</li><li>Direct SAP financial close ecosystem exposure</li><li>Kraków office established</li><li>New CRO with decade of SAP leadership</li></ul></div><div class="cons"><h4>Headwinds</h4><ul><li>Glassdoor 3.6/5 — cultural transition post-founder</li><li>Revenue growth decelerating (10.7% → 7.2%)</li><li>Culture scores 2.8–3.0/5</li><li>Offshoring + RTO friction</li><li>Narrower career path vs Big 4</li><li>Competing against Deloitte, Capgemini, TCS</li></ul></div></div></div>
   </div>
+  </div><!-- /rf all -->
+
+  <div class="rf" data-rfilter="krakow">
+    <div class="g3" style="margin-bottom:16px">
+      <div class="stat" style="border-top:3px solid var(--purple)"><div class="lbl">IT Specialists</div><div class="val" style="color:var(--purple)">60,000+</div><div class="delta neutral">Kraków total IT talent pool</div></div>
+      <div class="stat" style="border-top:3px solid var(--purple)"><div class="lbl">US Tech Dominance</div><div class="val" style="color:var(--purple)">33%+</div><div class="delta neutral">Share employed by US companies</div></div>
+      <div class="stat" style="border-top:3px solid var(--purple)"><div class="lbl">IT in Business Services</div><div class="val" style="color:var(--purple)">40%</div><div class="delta neutral">Business services roles dedicated to IT</div></div>
+    </div>
+    <div class="cc" style="margin-bottom:16px;overflow-x:auto">
+      <div class="ct">Largest IT Employers in Kraków</div>
+      <div class="cs">Dominated by US tech and financial services — these GBS centres are BlackLine's primary competition for SAP talent.</div>
+      <table class="tbl"><thead><tr><th>Company</th><th>IT Headcount</th><th>Industry</th><th>Women in IT</th><th>Key Signal</th></tr></thead><tbody>
+        <tr><td style="font-weight:600">HSBC</td><td>2,500</td><td>Financial Services</td><td>34.7%</td><td><span class="badge badge-accent">Largest IT employer</span></td></tr>
+        <tr><td style="font-weight:600">Comarch</td><td>2,300</td><td>Software (Polish)</td><td>—</td><td><span class="badge badge-teal">Local champion</span></td></tr>
+        <tr><td style="font-weight:600">Aptiv</td><td>2,200</td><td>Automotive / AI</td><td>30.0%</td><td><span class="badge badge-amber">AI/ML crossover</span></td></tr>
+        <tr><td style="font-weight:600">Cisco</td><td>1,800</td><td>Networking / Cloud</td><td>35–39%</td><td><span class="badge badge-teal">Strong diversity</span></td></tr>
+        <tr><td style="font-weight:600">Motorola Solutions</td><td>1,700</td><td>Telecomm</td><td>17.0%</td><td><span class="badge badge-amber">Low diversity</span></td></tr>
+        <tr><td style="font-weight:600">EPAM Systems</td><td>1,700</td><td>IT Consulting</td><td>30–39%</td><td><span class="badge badge-coral">Direct SAP competitor</span></td></tr>
+        <tr><td style="font-weight:600">ABB</td><td>1,000</td><td>Industrial Automation</td><td style="font-weight:700">42.0%</td><td><span class="badge badge-purple">GBS benchmark — best diversity</span></td></tr>
+      </tbody></table>
+    </div>
+    <div class="g2" style="margin-bottom:16px">
+      <div class="card">
+        <div class="ct">Community Dynamics</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+          <div><strong style="color:var(--text)">"Close-knit community."</strong> Kraków's tech scene operates on word-of-mouth and professional networks — employer reputation spreads fast, both positive and negative.</div>
+          <div><strong style="color:var(--text)">US company dominance.</strong> Over a third of the city's tech talent works for US companies, making BlackLine's American HQ a natural fit for this talent pool.</div>
+          <div><strong style="color:var(--text)">GBS evolution.</strong> Kraków has evolved from low-cost delivery to strategic competency hub — "co-creation" not just execution. ABB's choice of Kraków for its largest GBS center is testament to this.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ct">Employee Priorities — Kraków 2026</div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:var(--fs-body);color:var(--text-2)">
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Salary (still #1)</span><span style="font-weight:700">76%</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Organisational support for work-life balance</span><span style="font-weight:700">60%</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Job security</span><span style="font-weight:700">47%</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0"><span>Non-performance layoffs (2024)</span><span style="font-weight:700;color:var(--coral)">20% of companies</span></div>
+        </div>
+        <div style="margin-top:12px;font-size:var(--fs-label);color:var(--text-2)"><strong style="color:var(--purple)">Shift:</strong> Recent layoff waves have increased the value of stability — security is now a top-3 factor alongside salary.</div>
+      </div>
+    </div>
+    <div class="callout callout-accent"><strong>BlackLine positioning:</strong> As a US-headquartered product company with an established Kraków office, BlackLine naturally fits the dominant employer profile. The key differentiator against GBS centres is product ownership and "advancement beyond ABAP" — not just scale.</div>
+  </div>
+
+  <div class="rf" data-rfilter="mumbai">
+    <div class="g3" style="margin-bottom:16px">
+      <div class="stat" style="border-top:3px solid var(--teal)"><div class="lbl">Tech Sector Growth</div><div class="val up">+32.5%</div><div class="delta neutral">Outpaces other local industries</div></div>
+      <div class="stat" style="border-top:3px solid var(--teal)"><div class="lbl">Talent Pool</div><div class="val" style="color:var(--teal)">4,201</div><div class="delta neutral">SAP professionals in-market</div></div>
+      <div class="stat" style="border-top:3px solid var(--teal)"><div class="lbl">Net Talent Flow</div><div class="val down">Donor</div><div class="delta down">Losing talent to Bengaluru &amp; Hyderabad</div></div>
+    </div>
+    <div class="cc" style="margin-bottom:16px;overflow-x:auto">
+      <div class="ct">Key SAP Competitors — Mumbai</div>
+      <div class="cs">Mix of domestic consultancies and global SIs. "Blue Chip" preference favours Deloitte for CV prestige over technical depth.</div>
+      <table class="tbl"><thead><tr><th>Company</th><th>Market Tenure</th><th>Specialisation</th><th>Sentiment</th></tr></thead><tbody>
+        <tr><td style="font-weight:600">Persistent Systems</td><td>10,000+ employees</td><td>Cloud Consulting &amp; SAP BTP</td><td><span class="badge badge-teal">Scalable, global</span></td></tr>
+        <tr><td style="font-weight:600">SoftCore Solutions</td><td>20+ years</td><td>SAP Business One &amp; SME ERP</td><td><span class="badge badge-teal">Deep domain</span></td></tr>
+        <tr><td style="font-weight:600">TreadBinary</td><td>High-growth</td><td>S/4HANA &amp; Integrated DevOps</td><td><span class="badge badge-accent">Agile &amp; technical</span></td></tr>
+        <tr><td style="font-weight:600">Urteqi Technologies</td><td>Experienced partner</td><td>Digitalization &amp; AI-powered ERP</td><td><span class="badge badge-accent">Transformation focus</span></td></tr>
+        <tr><td style="font-weight:600">TCS</td><td>Global giant</td><td>Multi-module global rollouts</td><td><span class="badge badge-amber">Volume, varied quality</span></td></tr>
+        <tr><td style="font-weight:600">Deloitte India</td><td>Big 4 strategic</td><td>Business Transformation &amp; Strategy</td><td><span class="badge badge-purple">High prestige, less tech</span></td></tr>
+        <tr><td style="font-weight:600">Capgemini India</td><td>Global CoE</td><td>Sector-specific SAP Solutions</td><td><span class="badge badge-amber">Strong offshore, improvisation</span></td></tr>
+      </tbody></table>
+    </div>
+    <div class="g2" style="margin-bottom:16px">
+      <div class="card">
+        <div class="ct">Talent Migration Flows</div>
+        <div class="cs">Mumbai is a net donor — losing experienced talent to other Indian tech hubs.</div>
+        <table class="tbl"><thead><tr><th>Direction</th><th>Net Change</th><th>Driver</th></tr></thead><tbody>
+          <tr><td>Mumbai → Pune</td><td class="up">+9</td><td>Lower cost of living, proximity</td></tr>
+          <tr><td>Mumbai → Delhi</td><td class="up">+3</td><td>Expanding public sector SAP projects</td></tr>
+          <tr><td>Mumbai → Hyderabad</td><td class="down">-7</td><td>Competitive tech hub poaching</td></tr>
+          <tr><td>Mumbai → Bengaluru</td><td class="down">-11</td><td>Aggressive Big Tech recruitment</td></tr>
+        </tbody></table>
+      </div>
+      <div class="card">
+        <div class="ct">The RTO Paradox</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+          <div><strong style="color:var(--text)">80% lost talent</strong> to return-to-office mandates. Turnover costs from RTO exceed the real estate savings organisations point to.</div>
+          <div><strong style="color:var(--text)">25% salary sacrifice.</strong> Tech workers in India are willing to forego up to a quarter of their salary to maintain remote or hybrid arrangements.</div>
+          <div><strong style="color:var(--text)">"Hybrid creep."</strong> The gradual expansion of in-office requirements is the defining workplace trend of 2026 — only 7% of returning workers have genuine buy-in.</div>
+          <div><strong style="color:var(--text)">BlackLine advantage.</strong> Remote-first culture and health insurance are cited as positives, but "flexible PTO" is viewed as inflexible, and management changes create friction.</div>
+        </div>
+      </div>
+    </div>
+    <div class="callout callout-amber"><strong>Competitive positioning:</strong> The "Blue Chip" preference means Deloitte wins on CV prestige, while Capgemini's Indian operations are criticised for "improvisation" during execution. BlackLine should position against consulting fatigue — product stability and ownership as the alternative to project rotation.</div>
+  </div>
+
+  <div class="rf" data-rfilter="london">
+    <div class="g3" style="margin-bottom:16px">
+      <div class="stat" style="border-top:3px solid var(--accent)"><div class="lbl">SAP Architect Demand</div><div class="val up">+100.6%</div><div class="delta up">As firms re-engineer for cloud</div></div>
+      <div class="stat" style="border-top:3px solid var(--accent)"><div class="lbl">SAP Specialist Demand</div><div class="val down">-21.4%</div><div class="delta down">"Twilight of SAP ECC"</div></div>
+      <div class="stat" style="border-top:3px solid var(--accent)"><div class="lbl">EPAM SAP Hiring</div><div class="val up">+162.3%</div><div class="delta up">S/4HANA "conversion factory"</div></div>
+    </div>
+    <div class="g2" style="margin-bottom:16px">
+      <div class="cc">
+        <div class="ct">Sector Demand — London 2025</div>
+        <div class="cs">Hiring concentrated in tech and retail; financial services softened pre-budget.</div>
+        <table class="tbl"><thead><tr><th>Sector</th><th>SAP Demand Growth</th><th>Module Focus</th></tr></thead><tbody>
+          <tr><td><strong>Technology</strong></td><td class="up">+39.1%</td><td>BTP, Cloud Native, HANA</td></tr>
+          <tr><td><strong>Retail &amp; Consumer</strong></td><td class="up">+29.6%</td><td>Supply Chain, EWM, TM</td></tr>
+          <tr><td><strong>Accounting &amp; Consulting</strong></td><td class="up">+25.6%</td><td>S/4HANA Migration, GRC</td></tr>
+          <tr><td><strong>Financial Services</strong></td><td class="down">-13.0% (Q4)</td><td>ESG, CSRD, Finance</td></tr>
+        </tbody></table>
+      </div>
+      <div class="cc">
+        <div class="ct">Key Competitors Surging</div>
+        <div class="cs">Two firms have dramatically increased SAP hiring in the London market.</div>
+        <div style="display:flex;flex-direction:column;gap:14px;padding:12px 0">
+          <div style="border:1px solid var(--border);border-radius:var(--r);padding:16px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><strong style="font-size:1rem">EPAM Systems</strong><span class="badge badge-coral">+162.3% SAP hiring</span></div>
+            <div style="font-size:var(--fs-body);color:var(--text-2)">Specialized S/4HANA "conversion factory" model. 1,700 IT staff in Kraków alone — cross-market competitor.</div>
+          </div>
+          <div style="border:1px solid var(--border);border-radius:var(--r);padding:16px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><strong style="font-size:1rem">KPMG</strong><span class="badge badge-amber">+98.8% role expansion</span></div>
+            <div style="font-size:var(--fs-body);color:var(--text-2)">Expanding through IBM and SAP PartnerEdge partnerships. Big 4 prestige plus technical scale.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:16px">
+      <div class="card">
+        <div class="ct">Employee Sentiment — London</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+          <div><strong style="color:var(--text)">Work-life balance priority.</strong> SAP UK ranked #1 Best Place to Work in 2026, driven by flexible hours, constant learning, and supportive teams.</div>
+          <div><strong style="color:var(--text)">Burnout and distrust.</strong> The broader London market struggles with leadership distrust as macroeconomic and sociopolitical stressors escalate.</div>
+          <div><strong style="color:var(--text)">"Calculated risk" psychology.</strong> Contractors strongly prefer Outside IR35 for 20–30% more take-home pay, while viewing perm as offering false security in the first 2 years.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ct">Role Type Shift</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+          <div><strong style="color:var(--text)">Architects are king.</strong> +100.6% demand as firms must re-engineer entire ERP infrastructures for the cloud. Day rates at £900+.</div>
+          <div><strong style="color:var(--text)">Specialists are declining.</strong> -21.4% as automation and "clean core" principles displace manual reporting and custom coding.</div>
+          <div><strong style="color:var(--text)">The "Clean Core" bottleneck.</strong> Projects are delayed not by lack of generalists, but by absence of a few critical architects who can move custom code off-core and onto BTP.</div>
+        </div>
+      </div>
+    </div>
+    <div class="callout callout-accent"><strong>London is a "squeezed" market:</strong> The 2027 deadline drives massive demand for architects and program managers, but the broader UK market faces a 27.7% drop in general SAP vacancies. Only high-value, transformation-critical roles remain competitive. BlackLine should reserve London for these premium hires.</div>
+  </div>
 </div>
 
 <!-- ====================== INSIGHTS ====================== -->
 <div class="panel" id="panel-insights">
+  <div class="rtabs region-bar" id="rbar-insights"><button class="rtab active" data-region="all"><span class="dot" style="background:var(--text-3)"></span>All Regions</button><button class="rtab" data-region="krakow"><span class="dot" style="background:var(--purple)"></span>Kraków</button><button class="rtab" data-region="mumbai"><span class="dot" style="background:var(--teal)"></span>Mumbai</button><button class="rtab" data-region="london"><span class="dot" style="background:var(--accent)"></span>London</button></div>
+  <div class="rf active" data-rfilter="all">
   <div class="card takeaway" style="margin-bottom:24px">
     <div class="takeaway-head">
       <div>
@@ -510,6 +777,35 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
           <li>Use Mumbai as the secondary market for bench strength, follow-the-sun support, and lower-cost scale; use London sparingly for principal or stakeholder-heavy roles.</li>
           <li>Across every location, 90+ day fill times mean process speed, career narrative, and technical scope matter as much as cash.</li>
         </ul>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:24px;border-top:3px solid var(--purple);border-right:3px solid var(--teal)">
+    <div class="sl" style="text-align:left;margin-bottom:10px">Go-to-Market Focus</div>
+    <div class="takeaway-title">Kraków vs Mumbai: Two Complementary Plays</div>
+    <div style="font-size:var(--fs-body);color:var(--text-2);line-height:1.7;margin-bottom:20px">These are not competing options — they serve different strategic needs. Kraków is the <strong>quality-first engineering hub</strong> for core product work; Mumbai is the <strong>scale engine</strong> for bench strength and volume. The GtM approach differs fundamentally.</div>
+    <div class="g2">
+      <div style="border:2px solid var(--purple-bd);border-radius:var(--rl);padding:24px;background:linear-gradient(180deg,var(--purple-bg) 0%,#FFF 100%)">
+        <div style="font-size:1rem;font-weight:800;color:var(--purple);margin-bottom:14px">Kraków — Quality &amp; Integration</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+          <div><strong style="color:var(--text)">GtM motion:</strong> Position as "Co-Creation Hub" — product ownership, not delivery execution.</div>
+          <div><strong style="color:var(--text)">Win lever:</strong> CET timezone, established office, anti-consulting pitch (product stability vs project rotation).</div>
+          <div><strong style="color:var(--text)">Comp strategy:</strong> UoP for retention at 26k–30k PLN/mo; B2B at 30k–38k PLN/mo for speed. P50+ to compete.</div>
+          <div><strong style="color:var(--text)">Sourcing:</strong> Community-driven. Word-of-mouth in Kraków's close-knit tech scene. Referral networks over job boards.</div>
+          <div><strong style="color:var(--text)">Risk to manage:</strong> B2B legislative reclassification (2026 PIP inspections). Proactively transition to UoP.</div>
+          <div><strong style="color:var(--text)">Cost index:</strong> 0.70× London (UoP) / 0.84× London (B2B). Best quality-to-cost ratio.</div>
+        </div>
+      </div>
+      <div style="border:2px solid var(--teal-bd);border-radius:var(--rl);padding:24px;background:linear-gradient(180deg,var(--teal-bg) 0%,#FFF 100%)">
+        <div style="font-size:1rem;font-weight:800;color:var(--teal);margin-bottom:14px">Mumbai — Scale &amp; Volume</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+          <div><strong style="color:var(--text)">GtM motion:</strong> Lead with "Professional Leadership" branding — the #1 differentiator in a market driven by management quality.</div>
+          <div><strong style="color:var(--text)">Win lever:</strong> Remote-first culture (80% of companies lost talent to RTO). BlackLine's clearest competitive edge.</div>
+          <div><strong style="color:var(--text)">Comp strategy:</strong> Benchmark at Product/MNC rates (₹28–38 LPA), not IT services. Career path matters more than pay alone.</div>
+          <div><strong style="color:var(--text)">Sourcing:</strong> Target consulting-fatigued mid-level specialists. Position against Big 4 "project rotation" and "up-or-out" culture.</div>
+          <div><strong style="color:var(--text)">Risk to manage:</strong> Management perception — "constant belittling" and "backstabbing politics" in reviews. Fix before scaling.</div>
+          <div><strong style="color:var(--text)">Cost index:</strong> 0.21× London (IT services) / 0.36× London (MNC). Cheapest but highest attrition.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -577,6 +873,166 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
     <div class="g2" style="gap:24px;margin-top:16px"><div><div style="font-size:var(--fs-meta);font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Requirements</div><div style="font-size:var(--fs-body);color:var(--text-2);line-height:1.6"><p style="margin-bottom:8px">8+ years ABAP. S/4HANA + ECC6.0. ABAP OO with Eclipse/ADT. Fiori UI. SAP FI/CO + SD/MM.</p><p style="margin-bottom:8px">Product mindset — SOLID, service-model architecture, ABAP Unit Testing, UML.</p><p>Hybrid, Kraków office.</p></div></div>
     <div><div style="font-size:var(--fs-meta);font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Market alignment</div><div style="font-size:var(--fs-body);color:var(--text-2);line-height:1.6"><p style="margin-bottom:8px"><span class="badge badge-teal">Strong fit</span> 8+ yr requirement targets the sweet spot of highest demand.</p><p style="margin-bottom:8px"><span class="badge badge-amber">Comp pressure</span> Must land at P50+ (23–26.5k PLN/mo UoP). B2B critical.</p><p><span class="badge badge-accent">Differentiator</span> "Advancement beyond ABAP" is a strong retention hook.</p></div></div></div></div>
   </div>
+  </div><!-- /rf all -->
+
+  <div class="rf" data-rfilter="krakow">
+    <div class="card" style="border-top:3px solid var(--purple);border-left:3px solid var(--purple);margin-bottom:16px;padding:28px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px"><div class="takeaway-badge" style="background:var(--purple-bg);border-color:var(--purple-bd);color:var(--purple)">GtM Strategy</div><div style="font-size:1.2rem;font-weight:800;letter-spacing:-.03em">Kraków: The Co-Creation Hub Play</div></div>
+      <div style="font-size:var(--fs-body);color:var(--text-2);line-height:1.7;max-width:900px;margin-bottom:20px">Position Kraków not as a delivery centre but as a <strong>co-creation hub</strong> — where senior SAP engineers build product, not just execute tickets. This reframing is the single most important messaging shift to win in Kraków's close-knit tech community.</div>
+      <div class="g2" style="margin-bottom:20px">
+        <div style="border:1px solid var(--purple-bd);border-radius:var(--r);padding:20px;background:linear-gradient(180deg,#FFF 0%,#FBFBFD 100%)">
+          <h4 style="font-size:var(--fs-meta);font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px">Immediate Moves (0–3 months)</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--purple);font-weight:700">1</span><strong style="color:var(--text)">Dual-track contracting.</strong> Lead with UoP for retention-critical hires; keep B2B available for scarce 8+ year specialists who optimise for net income.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--purple);font-weight:700">2</span><strong style="color:var(--text)">Comp at P50+.</strong> Target 26k–30k PLN/month UoP core; 30k–38k PLN/month B2B for harder-to-close profiles. Kraków is classified Tier A for SAP earning potential.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--purple);font-weight:700">3</span><strong style="color:var(--text)">Compressed process.</strong> Two-stage pipeline with fast debriefs. In a 90+ day fill market, slow consensus signals weak intent.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--purple);font-weight:700">4</span><strong style="color:var(--text)">Office visibility early.</strong> Make the Kraków office, hybrid rhythm, and manager accessibility visible from first contact — not just in late-stage offer conversations.</li>
+          </ul>
+        </div>
+        <div style="border:1px solid var(--purple-bd);border-radius:var(--r);padding:20px;background:linear-gradient(180deg,#FFF 0%,#FBFBFD 100%)">
+          <h4 style="font-size:var(--fs-meta);font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px">Strategic Plays (3–12 months)</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--purple);font-weight:700">1</span><strong style="color:var(--text)">Proactive UoP transition.</strong> Migrate existing B2B contractors to employment contracts to mitigate 2026 PIP reclassification risk — retroactive social security penalties are the real threat.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--purple);font-weight:700">2</span><strong style="color:var(--text)">Community-driven sourcing.</strong> Kraków's "close-knit community" means word-of-mouth is exceptionally powerful. Invest in referral networks and local tech events rather than job board saturation.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--purple);font-weight:700">3</span><strong style="color:var(--text)">Diversity benchmark.</strong> Leverage ABB's 42% women-in-IT as the Kraków benchmark for BlackLine's local EDI goals. In a tight market, strong diversity positioning widens the pipe.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--purple);font-weight:700">4</span><strong style="color:var(--text)">Anti-consulting pitch.</strong> Source away from Big 4 and SI fatigue. Lead with product ownership, clean-core exposure, ESPP upside, and "advancement beyond ABAP" as the counter-narrative to project rotation.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout callout-teal"><strong>Kraków GtM in one line:</strong> Hire here as the primary European SAP engineering hub, keep B2B available to unlock scarce senior talent, and compete with clarity, speed, and product-story strength rather than pay alone.</div>
+    </div>
+    <div class="g3">
+      <div class="card"><div class="ct">What to Sell</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+          <div><strong style="color:var(--text)">Product ownership</strong> — build the product, not just customise someone else's implementation.</div>
+          <div><strong style="color:var(--text)">Advancement beyond ABAP</strong> — clean-core, BTP exposure, SAP ecosystem depth.</div>
+          <div><strong style="color:var(--text)">ESPP + equity upside</strong> — product company wealth-building that consulting can't match.</div>
+          <div><strong style="color:var(--text)">Stability</strong> — in a market where 20% of companies conducted layoffs in 2024, stability is a top-3 factor.</div>
+        </div>
+      </div>
+      <div class="card"><div class="ct">What to Fix</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+          <div><strong style="color:var(--coral)">RTO messaging</strong> — rigid office posture narrows an already-tight pool. Hybrid is the expectation.</div>
+          <div><strong style="color:var(--coral)">Glassdoor 3.6/5</strong> — cultural transition post-founder is visible. "Backstabbing politics" and management churn cited.</div>
+          <div><strong style="color:var(--coral)">Comp transparency</strong> — Kraków candidates respond to clear bands and contract-route openness. Opacity loses to competitors.</div>
+        </div>
+      </div>
+      <div class="card"><div class="ct">Risk Factors</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+          <div><strong style="color:var(--amber)">Small pool.</strong> Only 136 TAM / 42 TTD — sourcing will feel tighter than Mumbai.</div>
+          <div><strong style="color:var(--amber)">Legislative risk.</strong> B2B reclassification is the biggest operational risk in Poland for 2026.</div>
+          <div><strong style="color:var(--amber)">High demand density.</strong> 17.6% job-to-professional ratio means every candidate has multiple options.</div>
+          <div><strong style="color:var(--teal)">Mitigant:</strong> Poland remains a "Safe Harbor" with 3.8% GDP growth despite Ukraine war proximity.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rf" data-rfilter="mumbai">
+    <div class="card" style="border-top:3px solid var(--teal);border-left:3px solid var(--teal);margin-bottom:16px;padding:28px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px"><div class="takeaway-badge" style="background:var(--teal-bg);border-color:var(--teal-bd);color:var(--teal)">GtM Strategy</div><div style="font-size:1.2rem;font-weight:800;letter-spacing:-.03em">Mumbai: The Professional Leadership Play</div></div>
+      <div style="font-size:var(--fs-body);color:var(--text-2);line-height:1.7;max-width:900px;margin-bottom:20px">Mumbai is the volume market — 4,201 SAP professionals, 80% of BlackLine's addressable pool. But the GtM must lead with <strong>"Professional Leadership"</strong> as the differentiator. Sentiment data shows the primary vulnerability isn't pay — it's management quality and organisational trust.</div>
+      <div class="g2" style="margin-bottom:20px">
+        <div style="border:1px solid var(--teal-bd);border-radius:var(--r);padding:20px;background:linear-gradient(180deg,#FFF 0%,#FBFBFD 100%)">
+          <h4 style="font-size:var(--fs-meta);font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px">Immediate Moves (0–3 months)</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--teal);font-weight:700">1</span><strong style="color:var(--text)">Benchmark against Product/MNC.</strong> Anchor at ₹28–38 LPA for 8+ years. IT services rates (₹16–22 LPA) will not land the calibre BlackLine needs.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--teal);font-weight:700">2</span><strong style="color:var(--text)">Remote-first messaging.</strong> Lead with hybrid/remote as the headline value proposition. 80% of companies lost talent to RTO — this is BlackLine's clearest competitive edge in Mumbai.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--teal);font-weight:700">3</span><strong style="color:var(--text)">Target AI-literate mid-level.</strong> Pivot from high-volume junior hiring to specialists who combine ABAP with S/4HANA and AI/Joule awareness. The entry-level shortage (46.6%) means juniors are expensive relative to quality.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--teal);font-weight:700">4</span><strong style="color:var(--text)">Fix management perception.</strong> Glassdoor reviews cite "constant belittling behavior" and "backstabbing politics." Address this before scaling — in Mumbai, management quality is the primary lever for retention.</li>
+          </ul>
+        </div>
+        <div style="border:1px solid var(--teal-bd);border-radius:var(--r);padding:20px;background:linear-gradient(180deg,#FFF 0%,#FBFBFD 100%)">
+          <h4 style="font-size:var(--fs-meta);font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px">Strategic Plays (3–12 months)</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--teal);font-weight:700">1</span><strong style="color:var(--text)">Anti-consulting fatigue.</strong> Mumbai's "Blue Chip" culture means Deloitte wins on CV prestige. Counter with: product stability, ESPP equity, global product exposure, and freedom from project rotation.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--teal);font-weight:700">2</span><strong style="color:var(--text)">Career path narrative.</strong> Higher attrition (14–28% at competitors) means Mumbai talent is perpetually in market. Win retention by making the 2–3 year career path explicit and real.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--teal);font-weight:700">3</span><strong style="color:var(--text)">Talent pipeline for 2030.</strong> AI is absorbing junior roles, creating a "weakening of future talent pipelines." Invest now in apprenticeships to avoid a senior-level vacuum within 4 years.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--teal);font-weight:700">4</span><strong style="color:var(--text)">Competitive watch.</strong> Mumbai is losing talent to Bengaluru (-11 net) and Hyderabad (-7 net). Consider whether Pune (+9 net gain, lower cost) could supplement Mumbai sourcing.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout callout-amber"><strong>Mumbai GtM in one line:</strong> Use Mumbai for scale when volume matters, but lead with "Professional Leadership" branding and remote-first culture to differentiate against the consulting giants — pay alone won't win here.</div>
+    </div>
+    <div class="g3">
+      <div class="card"><div class="ct">What to Sell</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+          <div><strong style="color:var(--text)">Remote-first culture</strong> — the single strongest differentiator in a market where 80% of companies lost talent to RTO.</div>
+          <div><strong style="color:var(--text)">Global product exposure</strong> — work on the product itself, not a consulting implementation that ends when the project does.</div>
+          <div><strong style="color:var(--text)">ESPP + equity</strong> — wealth-building mechanism that consulting firms fundamentally cannot offer.</div>
+          <div><strong style="color:var(--text)">Professional management</strong> — if addressed, this becomes a differentiator vs firms criticised for "varied project quality."</div>
+        </div>
+      </div>
+      <div class="card"><div class="ct">What to Fix</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+          <div><strong style="color:var(--coral)">Management culture</strong> — "constant belittling behavior" and "lack of professional leadership" are the top negatives from Mumbai sentiment data.</div>
+          <div><strong style="color:var(--coral)">Flexible PTO perception</strong> — viewed as inflexible in practice. Close the gap between policy and lived experience.</div>
+          <div><strong style="color:var(--coral)">Management churn</strong> — constant changes create a political environment that repels the quality mid-senior talent BlackLine needs.</div>
+        </div>
+      </div>
+      <div class="card"><div class="ct">Risk Factors</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+          <div><strong style="color:var(--amber)">High attrition.</strong> 14–28% across competitors. Replacement cost at 2–3× annual salary makes each bad hire expensive.</div>
+          <div><strong style="color:var(--amber)">Brain drain.</strong> India's economy is vulnerable to "fierce brain drain" to Western markets despite 6.5% GDP growth.</div>
+          <div><strong style="color:var(--amber)">Timezone gap.</strong> IST to CET offset limits real-time collaboration for Europe-centric delivery.</div>
+          <div><strong style="color:var(--teal)">Mitigant:</strong> 6.5% annual GDP growth and stable government create a strong macro backdrop.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rf" data-rfilter="london">
+    <div class="card" style="border-top:3px solid var(--accent);border-left:3px solid var(--accent);margin-bottom:16px;padding:28px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px"><div class="takeaway-badge" style="background:var(--accent-bg);border-color:var(--accent-bd);color:var(--accent)">GtM Strategy</div><div style="font-size:1.2rem;font-weight:800;letter-spacing:-.03em">London: The Selective Premium Play</div></div>
+      <div style="font-size:var(--fs-body);color:var(--text-2);line-height:1.7;max-width:900px;margin-bottom:20px">London should be reserved for <strong>high-touch leadership, customer-proximate, or architectural roles</strong> where the premium cost is clearly justified. The market is "squeezed" — general SAP vacancies down 27.7%, but architects surging 100.6%. Target surgically, not broadly.</div>
+      <div class="g2" style="margin-bottom:20px">
+        <div style="border:1px solid var(--accent-bd);border-radius:var(--r);padding:20px;background:linear-gradient(180deg,#FFF 0%,#FBFBFD 100%)">
+          <h4 style="font-size:var(--fs-meta);font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px">Immediate Moves (0–3 months)</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">1</span><strong style="color:var(--text)">Outside IR35 where possible.</strong> For architectural and technical lead roles, Outside IR35 offers 20–30% more take-home pay — the single strongest lever to attract experienced London contractors.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">2</span><strong style="color:var(--text)">"Stability beyond 2 years."</strong> For permanent hires, counter market-wide redundancy fear by emphasising a clear 2-year+ product roadmap and SAP partnership depth.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">3</span><strong style="color:var(--text)">Focus on architects.</strong> SAP Architect demand surged 100.6%. This is the London role BlackLine should hire for — not general ABAP, which is better sourced from Kraków at 30% lower cost.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">4</span><strong style="color:var(--text)">Expect premium rates.</strong> Architect day rates are £900+. Permanent equivalent at £120k+. Budget accordingly or look to Kraków for the same quality at lower cost.</li>
+          </ul>
+        </div>
+        <div style="border:1px solid var(--accent-bd);border-radius:var(--r);padding:20px;background:linear-gradient(180deg,#FFF 0%,#FBFBFD 100%)">
+          <h4 style="font-size:var(--fs-meta);font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px">Strategic Plays (3–12 months)</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">1</span><strong style="color:var(--text)">Stop hiring legacy ECC.</strong> SAP Specialist demand has fallen 21.4% as "clean core" principles displace custom coding. Align all London JDs with BTP, RAP, and CAP requirements.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">2</span><strong style="color:var(--text)">Counter EPAM and KPMG.</strong> Both are aggressively expanding SAP hiring (+162% and +99% respectively). BlackLine's product-company narrative and SAP Platinum partnership are the differentiators.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">3</span><strong style="color:var(--text)">Sector targeting.</strong> Technology (+39.1%) and Retail (+29.6%) are highest-demand sectors. Source from Financial Services (-13.0%) where candidates may be more open to moves.</li>
+            <li style="font-size:var(--fs-body);color:var(--text-2);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">4</span><strong style="color:var(--text)">Macro awareness.</strong> Energy price surges, NCSC cyber warnings, and shelved interest rate cuts are impacting operational costs and candidate confidence. Factor this into offer timing.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout callout-accent"><strong>London GtM in one line:</strong> Use London sparingly for principal, architect, or stakeholder-heavy roles where the premium cost is justified — and deploy Outside IR35 or stability messaging as the primary levers to close.</div>
+    </div>
+    <div class="g3">
+      <div class="card"><div class="ct">What to Sell</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+          <div><strong style="color:var(--text)">SAP Platinum partnership</strong> — exclusive Solution Extension partner (1 of &lt;30), unmatched ecosystem depth.</div>
+          <div><strong style="color:var(--text)">Product roadmap stability</strong> — counter the "zero security in first 2 years" perm fear with a visible, long-horizon product plan.</div>
+          <div><strong style="color:var(--text)">Outside IR35 option</strong> — 20–30% more take-home pay than Inside blanket determinations at large financial institutions.</div>
+          <div><strong style="color:var(--text)">New CRO SAP leadership</strong> — decade of SAP experience signals genuine commitment to the ecosystem.</div>
+        </div>
+      </div>
+      <div class="card"><div class="ct">What to Fix</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+          <div><strong style="color:var(--coral)">Revenue deceleration</strong> — growth slowed from 10.7% to 7.2%. Sophisticated London candidates will notice. Have the narrative ready.</div>
+          <div><strong style="color:var(--coral)">Glassdoor 3.6/5</strong> — London talent researches employers thoroughly. Culture scores of 2.8–3.0 are a red flag for senior hires.</div>
+          <div><strong style="color:var(--coral)">Narrower career path</strong> — compared to Big 4, BlackLine offers depth but not breadth. Frame this as focus, not limitation.</div>
+        </div>
+      </div>
+      <div class="card"><div class="ct">Risk Factors</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+          <div><strong style="color:var(--amber)">Cost premium.</strong> London perm at 1.00× vs Kraków at 0.70×. Every London hire should justify the 30%+ premium.</div>
+          <div><strong style="color:var(--amber)">Shrinking pool.</strong> General SAP vacancies down 27.7%, but architect demand up 100.6% — a polarising market.</div>
+          <div><strong style="color:var(--amber)">Macro headwinds.</strong> Energy costs, pre-budget uncertainty, and NI changes all pressure London hiring budgets.</div>
+          <div><strong style="color:var(--teal)">Mitigant:</strong> Timezone alignment (GMT/CET) and proximity to European clients make London irreplaceable for certain roles.</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ====================== SOURCES ====================== -->
@@ -635,6 +1091,28 @@ function setupTabs(id,panelAttr){
 setupTabs('pt',null);
 setupTabs('ctabs','comp');
 setupTabs('itabs','insight');
+
+function setupRegionBar(barId){
+  var bar=document.getElementById(barId);
+  if(!bar)return;
+  bar.addEventListener('click',function(e){
+    var b=e.target.closest('.rtab');
+    if(!b)return;
+    var region=b.dataset.region;
+    bar.querySelectorAll('.rtab').forEach(function(t){t.classList.remove('active')});
+    b.classList.add('active');
+    var panel=bar.closest('.panel');
+    if(panel){
+      panel.querySelectorAll('[data-rfilter]').forEach(function(r){r.classList.remove('active')});
+      var target=panel.querySelector('[data-rfilter="'+region+'"]');
+      if(target)target.classList.add('active');
+    }
+    requestAnimationFrame(function(){syncVisibleCharts(true)});
+  });
+}
+setupRegionBar('rbar-salary');
+setupRegionBar('rbar-competitive');
+setupRegionBar('rbar-insights');
 
 const sourceCategories=['Salary & Compensation','Skills & Specialisations','Talent Demand, Shortage & Migration','Retention, Attrition & Employer Signals','BlackLine & SAP Ecosystem'];
 const sourceLibraryData = [
@@ -780,7 +1258,7 @@ function ensureChart(id){
 
 function syncVisibleCharts(replay=false){
   document.querySelectorAll('.panel.active canvas').forEach(canvas=>{
-    const gatedContainer=canvas.closest('.cr2,.ir,.src,.sr');
+    const gatedContainer=canvas.closest('.rf,.cr2,.ir,.src,.sr');
     if(gatedContainer && !gatedContainer.classList.contains('active')) return;
     if(replay && chartInstances[canvas.id]){
       chartInstances[canvas.id].destroy();
