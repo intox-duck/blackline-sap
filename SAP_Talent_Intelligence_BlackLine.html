@@ -564,7 +564,7 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 <div class="panel" id="panel-competitive">
   <div class="rtabs region-bar" id="rbar-competitive"><button class="rtab active" data-region="all"><span class="dot" style="background:var(--text-3)"></span>All Regions</button><button class="rtab" data-region="krakow"><span class="dot" style="background:var(--purple)"></span>Kraków</button><button class="rtab" data-region="mumbai"><span class="dot" style="background:var(--teal)"></span>Mumbai</button><button class="rtab" data-region="london"><span class="dot" style="background:var(--accent)"></span>London</button></div>
   <div class="rf active" data-rfilter="all">
-  <div class="rtabs" id="ctabs"><button class="rtab active" data-region="all"><span class="dot" style="background:var(--text-3)"></span>All employers</button><button class="rtab" data-region="skills"><span class="dot" style="background:var(--purple)"></span>Skills profile</button><button class="rtab" data-region="blackline"><span class="dot" style="background:var(--teal)"></span>BlackLine position</button></div>
+  <div class="rtabs" id="ctabs"><button class="rtab active" data-region="all"><span class="dot" style="background:var(--text-3)"></span>Competitors</button><button class="rtab" data-region="skills"><span class="dot" style="background:var(--purple)"></span>Skills profile</button><button class="rtab" data-region="blackline"><span class="dot" style="background:var(--teal)"></span>BlackLine position</button></div>
   <div class="cr2 active" data-comp="all">
     <div class="cc" style="margin-bottom:16px;overflow-x:auto"><div class="ct">Top Employers Competing for This Talent Pool</div><div class="cs">Across all 3 regions — ranked by headcount.</div>
       <table class="tbl"><thead><tr><th>Company</th><th>Headcount</th><th>1Y growth</th><th>Posts</th><th>Attrition</th></tr></thead><tbody>
@@ -594,141 +594,196 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
   </div><!-- /rf all -->
 
   <div class="rf" data-rfilter="krakow">
-    <div class="g3" style="margin-bottom:16px">
-      <div class="stat" style="border-top:3px solid var(--purple)"><div class="lbl">IT Specialists</div><div class="val" style="color:var(--purple)">60,000+</div><div class="delta neutral">Kraków total IT talent pool</div></div>
-      <div class="stat" style="border-top:3px solid var(--purple)"><div class="lbl">US Tech Dominance</div><div class="val" style="color:var(--purple)">33%+</div><div class="delta neutral">Share employed by US companies</div></div>
-      <div class="stat" style="border-top:3px solid var(--purple)"><div class="lbl">IT in Business Services</div><div class="val" style="color:var(--purple)">40%</div><div class="delta neutral">Business services roles dedicated to IT</div></div>
+    <div class="rtabs comp-subtabs"><button class="rtab active" data-stab="competitors"><span class="dot" style="background:var(--purple)"></span>Competitors</button><button class="rtab" data-stab="skills"><span class="dot" style="background:var(--accent)"></span>Skills profile</button><button class="rtab" data-stab="blackline"><span class="dot" style="background:var(--teal)"></span>BlackLine position</button></div>
+    <div class="cr2 active" data-stab-content="competitors">
+      <div class="g3" style="margin-bottom:16px">
+        <div class="stat" style="border-top:3px solid var(--purple)"><div class="lbl">IT Specialists</div><div class="val" style="color:var(--purple)">60,000+</div><div class="delta neutral">Kraków total IT talent pool</div></div>
+        <div class="stat" style="border-top:3px solid var(--purple)"><div class="lbl">US Tech Dominance</div><div class="val" style="color:var(--purple)">33%+</div><div class="delta neutral">Share employed by US companies</div></div>
+        <div class="stat" style="border-top:3px solid var(--purple)"><div class="lbl">IT in Business Services</div><div class="val" style="color:var(--purple)">40%</div><div class="delta neutral">Business services roles dedicated to IT</div></div>
+      </div>
+      <div class="cc" style="margin-bottom:16px;overflow-x:auto">
+        <div class="ct">Largest IT Employers in Kraków</div>
+        <div class="cs">Dominated by US tech and financial services — these GBS centres are BlackLine’s primary competition for SAP talent.</div>
+        <table class="tbl"><thead><tr><th>Company</th><th>IT Headcount</th><th>Industry</th><th>Women in IT</th><th>Key Signal</th></tr></thead><tbody>
+          <tr><td style="font-weight:600">HSBC</td><td>2,500</td><td>Financial Services</td><td>34.7%</td><td><span class="badge badge-accent">Largest IT employer</span></td></tr>
+          <tr><td style="font-weight:600">Comarch</td><td>2,300</td><td>Software (Polish)</td><td>—</td><td><span class="badge badge-teal">Local champion</span></td></tr>
+          <tr><td style="font-weight:600">Aptiv</td><td>2,200</td><td>Automotive / AI</td><td>30.0%</td><td><span class="badge badge-amber">AI/ML crossover</span></td></tr>
+          <tr><td style="font-weight:600">Cisco</td><td>1,800</td><td>Networking / Cloud</td><td>35–39%</td><td><span class="badge badge-teal">Strong diversity</span></td></tr>
+          <tr><td style="font-weight:600">Motorola Solutions</td><td>1,700</td><td>Telecomm</td><td>17.0%</td><td><span class="badge badge-amber">Low diversity</span></td></tr>
+          <tr><td style="font-weight:600">EPAM Systems</td><td>1,700</td><td>IT Consulting</td><td>30–39%</td><td><span class="badge badge-coral">Direct SAP competitor</span></td></tr>
+          <tr><td style="font-weight:600">ABB</td><td>1,000</td><td>Industrial Automation</td><td style="font-weight:700">42.0%</td><td><span class="badge badge-purple">GBS benchmark — best diversity</span></td></tr>
+        </tbody></table>
+      </div>
+      <div class="callout callout-accent"><strong>Community dynamics:</strong> Kraków’s tech scene operates on word-of-mouth and professional networks. Over a third of the city’s tech talent works for US companies, making BlackLine’s American HQ a natural fit. ABB’s choice of Kraków for its largest GBS center validates the city’s evolution from delivery to “co-creation” hub.</div>
     </div>
-    <div class="cc" style="margin-bottom:16px;overflow-x:auto">
-      <div class="ct">Largest IT Employers in Kraków</div>
-      <div class="cs">Dominated by US tech and financial services — these GBS centres are BlackLine's primary competition for SAP talent.</div>
-      <table class="tbl"><thead><tr><th>Company</th><th>IT Headcount</th><th>Industry</th><th>Women in IT</th><th>Key Signal</th></tr></thead><tbody>
-        <tr><td style="font-weight:600">HSBC</td><td>2,500</td><td>Financial Services</td><td>34.7%</td><td><span class="badge badge-accent">Largest IT employer</span></td></tr>
-        <tr><td style="font-weight:600">Comarch</td><td>2,300</td><td>Software (Polish)</td><td>—</td><td><span class="badge badge-teal">Local champion</span></td></tr>
-        <tr><td style="font-weight:600">Aptiv</td><td>2,200</td><td>Automotive / AI</td><td>30.0%</td><td><span class="badge badge-amber">AI/ML crossover</span></td></tr>
-        <tr><td style="font-weight:600">Cisco</td><td>1,800</td><td>Networking / Cloud</td><td>35–39%</td><td><span class="badge badge-teal">Strong diversity</span></td></tr>
-        <tr><td style="font-weight:600">Motorola Solutions</td><td>1,700</td><td>Telecomm</td><td>17.0%</td><td><span class="badge badge-amber">Low diversity</span></td></tr>
-        <tr><td style="font-weight:600">EPAM Systems</td><td>1,700</td><td>IT Consulting</td><td>30–39%</td><td><span class="badge badge-coral">Direct SAP competitor</span></td></tr>
-        <tr><td style="font-weight:600">ABB</td><td>1,000</td><td>Industrial Automation</td><td style="font-weight:700">42.0%</td><td><span class="badge badge-purple">GBS benchmark — best diversity</span></td></tr>
-      </tbody></table>
-    </div>
-    <div class="g2" style="margin-bottom:16px">
-      <div class="card">
-        <div class="ct">Community Dynamics</div>
-        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
-          <div><strong style="color:var(--text)">"Close-knit community."</strong> Kraków's tech scene operates on word-of-mouth and professional networks — employer reputation spreads fast, both positive and negative.</div>
-          <div><strong style="color:var(--text)">US company dominance.</strong> Over a third of the city's tech talent works for US companies, making BlackLine's American HQ a natural fit for this talent pool.</div>
-          <div><strong style="color:var(--text)">GBS evolution.</strong> Kraków has evolved from low-cost delivery to strategic competency hub — "co-creation" not just execution. ABB's choice of Kraków for its largest GBS center is testament to this.</div>
+    <div class="cr2" data-stab-content="skills">
+      <div class="g2" style="margin-bottom:16px">
+        <div class="card"><div class="ct">Skills Landscape — Kraków</div><div class="cs">60,000+ IT specialists with 40% of business services roles in IT functions</div><div>
+          <span class="chip chip-hl">SAP BTP <span class="pct">Growing</span></span><span class="chip chip-hl">ABAP Cloud / RAP <span class="pct">Emerging</span></span><span class="chip chip-hl">SAP Fiori <span class="pct">Core</span></span><span class="chip">ABAP <span class="pct">Established</span></span><span class="chip">SAP HANA <span class="pct">Established</span></span><span class="chip">S/4HANA <span class="pct">High demand</span></span>
+        </div><div class="callout callout-teal" style="margin-top:16px"><strong>Kraków signal:</strong> Classified as Tier A by ITCompare.pl for SAP earning potential. The city’s GBS ecosystem means many SAP professionals have deep exposure to global process standards — a quality indicator beyond just technical skills.</div></div>
+        <div class="card"><div class="ct">Title &amp; Seniority Profile</div><div class="cs">Kraków’s SAP talent skews toward mid-senior GBS roles</div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+            <div><strong style="color:var(--text)">GBS-heavy seniority.</strong> Most SAP professionals in Kraków sit in GBS centres at senior or lead level, with strong process and cross-functional exposure.</div>
+            <div><strong style="color:var(--text)">8–12 year sweet spot.</strong> The target band for BlackLine’s role is the most contested — these engineers typically have multiple options from HSBC, EPAM, and ABB.</div>
+            <div><strong style="color:var(--text)">Fiori premium.</strong> Fiori/UI5 pays 8–10% above base ABAP locally. 79% of employers planned salary increases in 2025.</div>
+          </div>
         </div>
       </div>
       <div class="card">
         <div class="ct">Employee Priorities — Kraków 2026</div>
-        <div style="display:flex;flex-direction:column;gap:8px;font-size:var(--fs-body);color:var(--text-2)">
-          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Salary (still #1)</span><span style="font-weight:700">76%</span></div>
-          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Organisational support for work-life balance</span><span style="font-weight:700">60%</span></div>
-          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Job security</span><span style="font-weight:700">47%</span></div>
-          <div style="display:flex;justify-content:space-between;padding:8px 0"><span>Non-performance layoffs (2024)</span><span style="font-weight:700;color:var(--coral)">20% of companies</span></div>
+        <div class="cs">Sentiment is shifting toward stability after 2024 layoff waves</div>
+        <div class="g2" style="margin-top:12px">
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:var(--fs-body);color:var(--text-2)">
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Salary (still #1)</span><span style="font-weight:700">76%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Organisational support for work-life balance</span><span style="font-weight:700">60%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)"><span>Job security</span><span style="font-weight:700">47%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0"><span>Non-performance layoffs (2024)</span><span style="font-weight:700;color:var(--coral)">20% of companies</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+            <div><strong style="color:var(--purple)">Stability is now top-3.</strong> Recent layoff waves increased the value of job security — BlackLine’s product stability is a genuine differentiator.</div>
+            <div><strong style="color:var(--text)">Flexibility expected.</strong> Hybrid and remote norms in the Polish SAP market mean rigid office posture will narrow an already-tight pool.</div>
+            <div><strong style="color:var(--text)">Comp transparency.</strong> In a market with multiple options per candidate, clear bands and contract-route openness create trust.</div>
+          </div>
         </div>
-        <div style="margin-top:12px;font-size:var(--fs-label);color:var(--text-2)"><strong style="color:var(--purple)">Shift:</strong> Recent layoff waves have increased the value of stability — security is now a top-3 factor alongside salary.</div>
       </div>
     </div>
-    <div class="callout callout-accent"><strong>BlackLine positioning:</strong> As a US-headquartered product company with an established Kraków office, BlackLine naturally fits the dominant employer profile. The key differentiator against GBS centres is product ownership and "advancement beyond ABAP" — not just scale.</div>
+    <div class="cr2" data-stab-content="blackline">
+      <div class="card" style="margin-bottom:16px"><div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;justify-content:center"><div style="background:var(--purple-bg);border:1px solid var(--purple-bd);border-radius:var(--r);padding:10px 16px;font-weight:800;color:var(--purple);font-size:1.1rem">BL</div><div style="text-align:left"><div style="font-weight:700;font-size:1rem">BlackLine in Kraków</div><div style="font-size:var(--fs-label);color:var(--text-3)">Established office · Hybrid model · US-HQ product company competing against GBS centres</div></div></div>
+      <div class="pc"><div class="pros"><h4>Kraków Attractors</h4><ul><li>US-HQ product company — natural fit in a market where 33%+ work for US firms</li><li>Established Kraków office gives local credibility vs remote-only competitors</li><li>Product ownership and “advancement beyond ABAP” as anti-consulting pitch</li><li>ESPP + equity upside unavailable from consulting firms</li><li>CET timezone alignment for European collaboration</li><li>Dual-track UoP/B2B contracting flexibility</li></ul></div><div class="cons"><h4>Kraków Headwinds</h4><ul><li>Pool is tiny: 136 TAM / 42 TTD — every missed candidate hurts</li><li>17.6% job-to-professional ratio — most competitive per capita</li><li>B2B legislative reclassification risk (2026 PIP inspections)</li><li>Glassdoor 3.6/5 reputation travels fast in close-knit community</li><li>Competing against HSBC (2,500 IT), EPAM (1,700 IT), ABB (1,000 IT)</li><li>Management churn / “backstabbing politics” sentiment from reviews</li></ul></div></div></div>
+    </div>
   </div>
 
   <div class="rf" data-rfilter="mumbai">
-    <div class="g3" style="margin-bottom:16px">
-      <div class="stat" style="border-top:3px solid var(--teal)"><div class="lbl">Tech Sector Growth</div><div class="val up">+32.5%</div><div class="delta neutral">Outpaces other local industries</div></div>
-      <div class="stat" style="border-top:3px solid var(--teal)"><div class="lbl">Talent Pool</div><div class="val" style="color:var(--teal)">4,201</div><div class="delta neutral">SAP professionals in-market</div></div>
-      <div class="stat" style="border-top:3px solid var(--teal)"><div class="lbl">Net Talent Flow</div><div class="val down">Donor</div><div class="delta down">Losing talent to Bengaluru &amp; Hyderabad</div></div>
-    </div>
-    <div class="cc" style="margin-bottom:16px;overflow-x:auto">
-      <div class="ct">Key SAP Competitors — Mumbai</div>
-      <div class="cs">Mix of domestic consultancies and global SIs. "Blue Chip" preference favours Deloitte for CV prestige over technical depth.</div>
-      <table class="tbl"><thead><tr><th>Company</th><th>Market Tenure</th><th>Specialisation</th><th>Sentiment</th></tr></thead><tbody>
-        <tr><td style="font-weight:600">Persistent Systems</td><td>10,000+ employees</td><td>Cloud Consulting &amp; SAP BTP</td><td><span class="badge badge-teal">Scalable, global</span></td></tr>
-        <tr><td style="font-weight:600">SoftCore Solutions</td><td>20+ years</td><td>SAP Business One &amp; SME ERP</td><td><span class="badge badge-teal">Deep domain</span></td></tr>
-        <tr><td style="font-weight:600">TreadBinary</td><td>High-growth</td><td>S/4HANA &amp; Integrated DevOps</td><td><span class="badge badge-accent">Agile &amp; technical</span></td></tr>
-        <tr><td style="font-weight:600">Urteqi Technologies</td><td>Experienced partner</td><td>Digitalization &amp; AI-powered ERP</td><td><span class="badge badge-accent">Transformation focus</span></td></tr>
-        <tr><td style="font-weight:600">TCS</td><td>Global giant</td><td>Multi-module global rollouts</td><td><span class="badge badge-amber">Volume, varied quality</span></td></tr>
-        <tr><td style="font-weight:600">Deloitte India</td><td>Big 4 strategic</td><td>Business Transformation &amp; Strategy</td><td><span class="badge badge-purple">High prestige, less tech</span></td></tr>
-        <tr><td style="font-weight:600">Capgemini India</td><td>Global CoE</td><td>Sector-specific SAP Solutions</td><td><span class="badge badge-amber">Strong offshore, improvisation</span></td></tr>
-      </tbody></table>
-    </div>
-    <div class="g2" style="margin-bottom:16px">
-      <div class="card">
-        <div class="ct">Talent Migration Flows</div>
-        <div class="cs">Mumbai is a net donor — losing experienced talent to other Indian tech hubs.</div>
-        <table class="tbl"><thead><tr><th>Direction</th><th>Net Change</th><th>Driver</th></tr></thead><tbody>
-          <tr><td>Mumbai → Pune</td><td class="up">+9</td><td>Lower cost of living, proximity</td></tr>
-          <tr><td>Mumbai → Delhi</td><td class="up">+3</td><td>Expanding public sector SAP projects</td></tr>
-          <tr><td>Mumbai → Hyderabad</td><td class="down">-7</td><td>Competitive tech hub poaching</td></tr>
-          <tr><td>Mumbai → Bengaluru</td><td class="down">-11</td><td>Aggressive Big Tech recruitment</td></tr>
+    <div class="rtabs comp-subtabs"><button class="rtab active" data-stab="competitors"><span class="dot" style="background:var(--teal)"></span>Competitors</button><button class="rtab" data-stab="skills"><span class="dot" style="background:var(--accent)"></span>Skills profile</button><button class="rtab" data-stab="blackline"><span class="dot" style="background:var(--teal)"></span>BlackLine position</button></div>
+    <div class="cr2 active" data-stab-content="competitors">
+      <div class="g3" style="margin-bottom:16px">
+        <div class="stat" style="border-top:3px solid var(--teal)"><div class="lbl">Tech Sector Growth</div><div class="val up">+32.5%</div><div class="delta neutral">Outpaces other local industries</div></div>
+        <div class="stat" style="border-top:3px solid var(--teal)"><div class="lbl">Talent Pool</div><div class="val" style="color:var(--teal)">4,201</div><div class="delta neutral">SAP professionals in-market</div></div>
+        <div class="stat" style="border-top:3px solid var(--teal)"><div class="lbl">Net Talent Flow</div><div class="val down">Donor</div><div class="delta down">Losing talent to Bengaluru &amp; Hyderabad</div></div>
+      </div>
+      <div class="cc" style="margin-bottom:16px;overflow-x:auto">
+        <div class="ct">Key SAP Competitors — Mumbai</div>
+        <div class="cs">Mix of domestic consultancies and global SIs. “Blue Chip” preference favours Deloitte for CV prestige over technical depth.</div>
+        <table class="tbl"><thead><tr><th>Company</th><th>Market Tenure</th><th>Specialisation</th><th>Sentiment</th></tr></thead><tbody>
+          <tr><td style="font-weight:600">Persistent Systems</td><td>10,000+ employees</td><td>Cloud Consulting &amp; SAP BTP</td><td><span class="badge badge-teal">Scalable, global</span></td></tr>
+          <tr><td style="font-weight:600">SoftCore Solutions</td><td>20+ years</td><td>SAP Business One &amp; SME ERP</td><td><span class="badge badge-teal">Deep domain</span></td></tr>
+          <tr><td style="font-weight:600">TreadBinary</td><td>High-growth</td><td>S/4HANA &amp; Integrated DevOps</td><td><span class="badge badge-accent">Agile &amp; technical</span></td></tr>
+          <tr><td style="font-weight:600">Urteqi Technologies</td><td>Experienced partner</td><td>Digitalization &amp; AI-powered ERP</td><td><span class="badge badge-accent">Transformation focus</span></td></tr>
+          <tr><td style="font-weight:600">TCS</td><td>Global giant</td><td>Multi-module global rollouts</td><td><span class="badge badge-amber">Volume, varied quality</span></td></tr>
+          <tr><td style="font-weight:600">Deloitte India</td><td>Big 4 strategic</td><td>Business Transformation &amp; Strategy</td><td><span class="badge badge-purple">High prestige, less tech</span></td></tr>
+          <tr><td style="font-weight:600">Capgemini India</td><td>Global CoE</td><td>Sector-specific SAP Solutions</td><td><span class="badge badge-amber">Strong offshore, improvisation</span></td></tr>
         </tbody></table>
       </div>
+      <div class="callout callout-amber"><strong>“Blue Chip” dynamics:</strong> Deloitte wins on CV prestige; Capgemini’s Indian operations are criticised for “improvisation” during execution. TCS is the volume play but attrition reached 14.7%. The SAP Activate methodology shift (TreadBinary, Urteqi) signals demand moving toward strategic “Discover” and “Prepare” phases.</div>
+    </div>
+    <div class="cr2" data-stab-content="skills">
+      <div class="g2" style="margin-bottom:16px">
+        <div class="card"><div class="ct">Skills Landscape — Mumbai</div><div class="cs">Implementation-heavy market with severe shortages at entry and mid-level</div><div>
+          <span class="chip">ABAP <span class="pct">Core</span></span><span class="chip">SAP Implementation <span class="pct">Dominant</span></span><span class="chip">SAP FICO <span class="pct">Strong</span></span><span class="chip">SAP SD/MM <span class="pct">Strong</span></span><span class="chip chip-hl">S/4HANA <span class="pct">Scarce</span></span><span class="chip chip-hl">SAP Fiori <span class="pct">Growing</span></span><span class="chip chip-hl">SAP BTP <span class="pct">Emerging</span></span><span class="chip chip-hl">AI / Joule <span class="pct">Nascent</span></span>
+        </div><div class="callout callout-coral" style="margin-top:16px"><strong>Talent shortage crisis:</strong> Entry-level shortage at 46.6%, mid-level at 33.9%. AI is absorbing routine junior tasks, creating a “weakening of future talent pipelines” — a senior-level vacuum is projected by 2030 without apprenticeship investment.</div></div>
+        <div class="card"><div class="ct">Talent Migration Flows</div><div class="cs">Mumbai is a net donor — losing experienced talent to other Indian tech hubs</div>
+          <table class="tbl"><thead><tr><th>Direction</th><th>Net Change</th><th>Driver</th></tr></thead><tbody>
+            <tr><td>Mumbai → Pune</td><td class="up">+9</td><td>Lower cost of living, proximity</td></tr>
+            <tr><td>Mumbai → Delhi</td><td class="up">+3</td><td>Expanding public sector SAP</td></tr>
+            <tr><td>Mumbai → Hyderabad</td><td class="down">-7</td><td>Competitive tech hub poaching</td></tr>
+            <tr><td>Mumbai → Bengaluru</td><td class="down">-11</td><td>Aggressive Big Tech recruitment</td></tr>
+          </tbody></table>
+        </div>
+      </div>
       <div class="card">
-        <div class="ct">The RTO Paradox</div>
-        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
-          <div><strong style="color:var(--text)">80% lost talent</strong> to return-to-office mandates. Turnover costs from RTO exceed the real estate savings organisations point to.</div>
-          <div><strong style="color:var(--text)">25% salary sacrifice.</strong> Tech workers in India are willing to forego up to a quarter of their salary to maintain remote or hybrid arrangements.</div>
-          <div><strong style="color:var(--text)">"Hybrid creep."</strong> The gradual expansion of in-office requirements is the defining workplace trend of 2026 — only 7% of returning workers have genuine buy-in.</div>
-          <div><strong style="color:var(--text)">BlackLine advantage.</strong> Remote-first culture and health insurance are cited as positives, but "flexible PTO" is viewed as inflexible, and management changes create friction.</div>
+        <div class="ct">Employee Priorities &amp; Sentiment — Mumbai</div>
+        <div class="cs">The “Turnover Paradox” and “Hybrid Creep” define the 2026 Mumbai market</div>
+        <div class="g2" style="margin-top:12px">
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+            <div><strong style="color:var(--text)">80% lost talent</strong> to return-to-office mandates. Turnover costs from RTO exceed real estate savings.</div>
+            <div><strong style="color:var(--text)">25% salary sacrifice.</strong> Tech workers in India will forego up to a quarter of salary for remote/hybrid.</div>
+            <div><strong style="color:var(--text)">“Hybrid creep.”</strong> Gradual expansion of in-office mandates — only 7% of returning workers have genuine buy-in.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+            <div><strong style="color:var(--text)">“Professional management”</strong> is the primary differentiator when Mumbai SAP professionals switch employers.</div>
+            <div><strong style="color:var(--text)">Employer reputation &amp; management quality</strong> are the primary levers for retention — ahead of salary.</div>
+            <div><strong style="color:var(--text)">“Disconnected” workforce:</strong> productivity may be high but loyalty is minimal after forced RTO compliance.</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="callout callout-amber"><strong>Competitive positioning:</strong> The "Blue Chip" preference means Deloitte wins on CV prestige, while Capgemini's Indian operations are criticised for "improvisation" during execution. BlackLine should position against consulting fatigue — product stability and ownership as the alternative to project rotation.</div>
+    <div class="cr2" data-stab-content="blackline">
+      <div class="card" style="margin-bottom:16px"><div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;justify-content:center"><div style="background:var(--teal-bg);border:1px solid var(--teal-bd);border-radius:var(--r);padding:10px 16px;font-weight:800;color:var(--teal);font-size:1.1rem">BL</div><div style="text-align:left"><div style="font-weight:700;font-size:1rem">BlackLine in Mumbai</div><div style="font-size:var(--fs-label);color:var(--text-3)">Remote-first · Competing against Big 4 prestige and high-volume SIs</div></div></div>
+      <div class="pc"><div class="pros"><h4>Mumbai Attractors</h4><ul><li>Remote-first culture — strongest differentiator in a market where 80% lost talent to RTO</li><li>Global product exposure vs consulting implementation cycles</li><li>ESPP + equity upside that consulting firms cannot offer</li><li>Competitive health insurance cited as a positive</li><li>Product company stability vs consulting project rotation</li><li>Direct SAP financial close ecosystem exposure</li></ul></div><div class="cons"><h4>Mumbai Headwinds</h4><ul><li>“Constant belittling behavior” from management — top negative in reviews</li><li>“Flexible PTO” viewed as inflexible in practice</li><li>Constant management changes create “backstabbing” political environment</li><li>High attrition market: 14–28% across competitors, 2–3× replacement cost</li><li>Timezone gap (IST to CET) limits Europe-centric collaboration</li><li>Brain drain to Bengaluru (-11 net) and Western markets</li></ul></div></div></div>
+    </div>
   </div>
 
   <div class="rf" data-rfilter="london">
-    <div class="g3" style="margin-bottom:16px">
-      <div class="stat" style="border-top:3px solid var(--accent)"><div class="lbl">SAP Architect Demand</div><div class="val up">+100.6%</div><div class="delta up">As firms re-engineer for cloud</div></div>
-      <div class="stat" style="border-top:3px solid var(--accent)"><div class="lbl">SAP Specialist Demand</div><div class="val down">-21.4%</div><div class="delta down">"Twilight of SAP ECC"</div></div>
-      <div class="stat" style="border-top:3px solid var(--accent)"><div class="lbl">EPAM SAP Hiring</div><div class="val up">+162.3%</div><div class="delta up">S/4HANA "conversion factory"</div></div>
-    </div>
-    <div class="g2" style="margin-bottom:16px">
-      <div class="cc">
-        <div class="ct">Sector Demand — London 2025</div>
-        <div class="cs">Hiring concentrated in tech and retail; financial services softened pre-budget.</div>
-        <table class="tbl"><thead><tr><th>Sector</th><th>SAP Demand Growth</th><th>Module Focus</th></tr></thead><tbody>
-          <tr><td><strong>Technology</strong></td><td class="up">+39.1%</td><td>BTP, Cloud Native, HANA</td></tr>
-          <tr><td><strong>Retail &amp; Consumer</strong></td><td class="up">+29.6%</td><td>Supply Chain, EWM, TM</td></tr>
-          <tr><td><strong>Accounting &amp; Consulting</strong></td><td class="up">+25.6%</td><td>S/4HANA Migration, GRC</td></tr>
-          <tr><td><strong>Financial Services</strong></td><td class="down">-13.0% (Q4)</td><td>ESG, CSRD, Finance</td></tr>
-        </tbody></table>
+    <div class="rtabs comp-subtabs"><button class="rtab active" data-stab="competitors"><span class="dot" style="background:var(--accent)"></span>Competitors</button><button class="rtab" data-stab="skills"><span class="dot" style="background:var(--purple)"></span>Skills profile</button><button class="rtab" data-stab="blackline"><span class="dot" style="background:var(--teal)"></span>BlackLine position</button></div>
+    <div class="cr2 active" data-stab-content="competitors">
+      <div class="g3" style="margin-bottom:16px">
+        <div class="stat" style="border-top:3px solid var(--accent)"><div class="lbl">SAP Architect Demand</div><div class="val up">+100.6%</div><div class="delta up">As firms re-engineer for cloud</div></div>
+        <div class="stat" style="border-top:3px solid var(--accent)"><div class="lbl">SAP Specialist Demand</div><div class="val down">-21.4%</div><div class="delta down">“Twilight of SAP ECC”</div></div>
+        <div class="stat" style="border-top:3px solid var(--accent)"><div class="lbl">EPAM SAP Hiring</div><div class="val up">+162.3%</div><div class="delta up">S/4HANA “conversion factory”</div></div>
       </div>
-      <div class="cc">
-        <div class="ct">Key Competitors Surging</div>
-        <div class="cs">Two firms have dramatically increased SAP hiring in the London market.</div>
-        <div style="display:flex;flex-direction:column;gap:14px;padding:12px 0">
-          <div style="border:1px solid var(--border);border-radius:var(--r);padding:16px">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><strong style="font-size:1rem">EPAM Systems</strong><span class="badge badge-coral">+162.3% SAP hiring</span></div>
-            <div style="font-size:var(--fs-body);color:var(--text-2)">Specialized S/4HANA "conversion factory" model. 1,700 IT staff in Kraków alone — cross-market competitor.</div>
+      <div class="g2" style="margin-bottom:16px">
+        <div class="cc">
+          <div class="ct">Sector Demand — London 2025</div>
+          <div class="cs">Hiring concentrated in tech and retail; financial services softened pre-budget.</div>
+          <table class="tbl"><thead><tr><th>Sector</th><th>SAP Demand Growth</th><th>Module Focus</th></tr></thead><tbody>
+            <tr><td><strong>Technology</strong></td><td class="up">+39.1%</td><td>BTP, Cloud Native, HANA</td></tr>
+            <tr><td><strong>Retail &amp; Consumer</strong></td><td class="up">+29.6%</td><td>Supply Chain, EWM, TM</td></tr>
+            <tr><td><strong>Accounting &amp; Consulting</strong></td><td class="up">+25.6%</td><td>S/4HANA Migration, GRC</td></tr>
+            <tr><td><strong>Financial Services</strong></td><td class="down">-13.0% (Q4)</td><td>ESG, CSRD, Finance</td></tr>
+          </tbody></table>
+        </div>
+        <div class="cc">
+          <div class="ct">Key Competitors Surging</div>
+          <div class="cs">Two firms have dramatically increased SAP hiring in the London market.</div>
+          <div style="display:flex;flex-direction:column;gap:14px;padding:12px 0">
+            <div style="border:1px solid var(--border);border-radius:var(--r);padding:16px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><strong style="font-size:1rem">EPAM Systems</strong><span class="badge badge-coral">+162.3% SAP hiring</span></div>
+              <div style="font-size:var(--fs-body);color:var(--text-2)">Specialized S/4HANA “conversion factory” model. 1,700 IT staff in Kraków alone — cross-market competitor.</div>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:var(--r);padding:16px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><strong style="font-size:1rem">KPMG</strong><span class="badge badge-amber">+98.8% role expansion</span></div>
+              <div style="font-size:var(--fs-body);color:var(--text-2)">Expanding through IBM and SAP PartnerEdge partnerships. Big 4 prestige plus technical scale.</div>
+            </div>
           </div>
-          <div style="border:1px solid var(--border);border-radius:var(--r);padding:16px">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><strong style="font-size:1rem">KPMG</strong><span class="badge badge-amber">+98.8% role expansion</span></div>
-            <div style="font-size:var(--fs-body);color:var(--text-2)">Expanding through IBM and SAP PartnerEdge partnerships. Big 4 prestige plus technical scale.</div>
+        </div>
+      </div>
+      <div class="callout callout-accent"><strong>Market polarisation:</strong> General SAP vacancies down 27.7%, but architect demand surged 100.6%. London is splitting into a premium architect market and a shrinking generalist one. EPAM and KPMG are the fastest-growing competitors in this space.</div>
+    </div>
+    <div class="cr2" data-stab-content="skills">
+      <div class="g2" style="margin-bottom:16px">
+        <div class="card"><div class="ct">Skills Landscape — London</div><div class="cs">The “Twilight of SAP ECC” is reshaping which skills command premiums</div><div>
+          <span class="chip chip-hl">SAP Architect <span class="pct">+100.6%</span></span><span class="chip chip-hl">SAP BTP <span class="pct">+15–25% prem</span></span><span class="chip chip-hl">S/4HANA <span class="pct">+10–30% prem</span></span><span class="chip chip-hl">SAP Fiori <span class="pct">+8–15% prem</span></span><span class="chip">SAP FICO <span class="pct">+5–15% prem</span></span><span class="chip">SAP SD/MM <span class="pct">+3–8% prem</span></span><span class="chip" style="opacity:.5">SAP Specialist <span class="pct">-21.4%</span></span><span class="chip" style="opacity:.5">Legacy ECC <span class="pct">Declining</span></span>
+        </div><div class="callout callout-amber" style="margin-top:16px"><strong>“Clean Core” bottleneck:</strong> Projects are delayed not by lack of generalists, but by absence of critical architects who can move custom code off-core onto BTP. This drives day rates to £900+ even as general market demand cools.</div></div>
+        <div class="card"><div class="ct">Role Type Shift</div><div class="cs">London is pivoting from volume ABAP to premium architectural roles</div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+            <div><strong style="color:var(--text)">Architects are king.</strong> +100.6% demand. Day rates at £900+. Tasked with re-engineering entire ERP infrastructures for cloud.</div>
+            <div><strong style="color:var(--text)">Specialists declining.</strong> -21.4% as automation and “clean core” principles displace manual reporting and custom coding.</div>
+            <div><strong style="color:var(--text)">BTP at 50% adoption</strong> compounds demand on the same small pool of architects who understand both legacy and cloud.</div>
+            <div><strong style="color:var(--text)">IR35 shapes availability.</strong> Many senior contractors only engage Outside IR35, so Inside-only mandates artificially narrow the already-scarce pool.</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ct">Employee Sentiment — London 2026</div>
+        <div class="cs">“Calculated risk” psychology defines the contractor-heavy market</div>
+        <div class="g2" style="margin-top:12px">
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+            <div><strong style="color:var(--text)">Work-life balance priority.</strong> SAP UK ranked #1 Best Place to Work in 2026 — flexible hours, constant learning, supportive teams.</div>
+            <div><strong style="color:var(--text)">Burnout and distrust.</strong> Broader London market struggles with leadership distrust as macro stressors escalate.</div>
+            <div><strong style="color:var(--text)">Holiday time matters.</strong> London SAP professionals increasingly prioritize time off alongside compensation.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+            <div><strong style="color:var(--text)">Outside IR35 preference.</strong> 20–30% more take-home pay through tax efficiencies and expense ability.</div>
+            <div><strong style="color:var(--text)">Perm “false security.”</strong> Zero job security for first 2 years, plus a 25% pay cut vs Inside contract rates.</div>
+            <div><strong style="color:var(--text)">Financial services softening.</strong> Pre-budget uncertainty and global volatility tempered City hiring in late 2025.</div>
           </div>
         </div>
       </div>
     </div>
-    <div class="g2" style="margin-bottom:16px">
-      <div class="card">
-        <div class="ct">Employee Sentiment — London</div>
-        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
-          <div><strong style="color:var(--text)">Work-life balance priority.</strong> SAP UK ranked #1 Best Place to Work in 2026, driven by flexible hours, constant learning, and supportive teams.</div>
-          <div><strong style="color:var(--text)">Burnout and distrust.</strong> The broader London market struggles with leadership distrust as macroeconomic and sociopolitical stressors escalate.</div>
-          <div><strong style="color:var(--text)">"Calculated risk" psychology.</strong> Contractors strongly prefer Outside IR35 for 20–30% more take-home pay, while viewing perm as offering false security in the first 2 years.</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="ct">Role Type Shift</div>
-        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
-          <div><strong style="color:var(--text)">Architects are king.</strong> +100.6% demand as firms must re-engineer entire ERP infrastructures for the cloud. Day rates at £900+.</div>
-          <div><strong style="color:var(--text)">Specialists are declining.</strong> -21.4% as automation and "clean core" principles displace manual reporting and custom coding.</div>
-          <div><strong style="color:var(--text)">The "Clean Core" bottleneck.</strong> Projects are delayed not by lack of generalists, but by absence of a few critical architects who can move custom code off-core and onto BTP.</div>
-        </div>
-      </div>
+    <div class="cr2" data-stab-content="blackline">
+      <div class="card" style="margin-bottom:16px"><div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;justify-content:center"><div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:var(--r);padding:10px 16px;font-weight:800;color:var(--accent);font-size:1.1rem">BL</div><div style="text-align:left"><div style="font-weight:700;font-size:1rem">BlackLine in London</div><div style="font-size:var(--fs-label);color:var(--text-3)">Premium market · Reserve for architect, customer-facing, and stakeholder-heavy roles</div></div></div>
+      <div class="pc"><div class="pros"><h4>London Attractors</h4><ul><li>SAP Platinum Partner — exclusive Solution Extension partner (1 of &lt;30)</li><li>Product roadmap stability vs contractor market’s “2-year fear”</li><li>Outside IR35 option — 20–30% more take-home than Inside blanket determinations</li><li>New CRO with decade of SAP leadership signals ecosystem commitment</li><li>GMT/CET timezone alignment for European client proximity</li><li>ESPP + equity upside for permanent hires</li></ul></div><div class="cons"><h4>London Headwinds</h4><ul><li>Cost premium: 1.00× vs Kraków’s 0.70× — every hire must justify the 30%+ delta</li><li>Revenue deceleration (10.7% → 7.2%) — sophisticated London candidates will notice</li><li>Glassdoor 3.6/5 — London talent researches employers thoroughly</li><li>Culture scores 2.8–3.0/5 are a red flag for senior hires</li><li>Narrower career path vs Big 4 breadth</li><li>Competing against EPAM (+162%), KPMG (+99%) for the same architects</li></ul></div></div></div>
     </div>
-    <div class="callout callout-accent"><strong>London is a "squeezed" market:</strong> The 2027 deadline drives massive demand for architects and program managers, but the broader UK market faces a 27.7% drop in general SAP vacancies. Only high-value, transformation-critical roles remain competitive. BlackLine should reserve London for these premium hires.</div>
   </div>
 </div>
 
@@ -1113,6 +1168,22 @@ function setupRegionBar(barId){
 setupRegionBar('rbar-salary');
 setupRegionBar('rbar-competitive');
 setupRegionBar('rbar-insights');
+
+document.querySelectorAll('.comp-subtabs').forEach(function(bar){
+  bar.addEventListener('click',function(e){
+    var b=e.target.closest('.rtab');
+    if(!b)return;
+    var key=b.dataset.stab;
+    if(!key)return;
+    bar.querySelectorAll('.rtab').forEach(function(t){t.classList.remove('active')});
+    b.classList.add('active');
+    var container=bar.parentElement;
+    container.querySelectorAll('[data-stab-content]').forEach(function(r){r.classList.remove('active')});
+    var target=container.querySelector('[data-stab-content="'+key+'"]');
+    if(target)target.classList.add('active');
+    requestAnimationFrame(function(){syncVisibleCharts(true)});
+  });
+});
 
 const sourceCategories=['Salary & Compensation','Skills & Specialisations','Talent Demand, Shortage & Migration','Retention, Attrition & Employer Signals','BlackLine & SAP Ecosystem'];
 const sourceLibraryData = [
