@@ -258,7 +258,7 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
   <button class="ptab" data-tab="salary">Salary Benchmarks</button>
   <button class="ptab" data-tab="competitive">Competitive Landscape</button>
   <button class="ptab" data-tab="insights">Insights</button>
-  <button class="ptab" data-tab="sources">Sources</button>
+  <button class="ptab" data-tab="sources">Sources</button><button class="ptab" data-tab="methodology">Methodology</button>
 </nav>
 
 <!-- ====================== OVERVIEW ====================== -->
@@ -346,7 +346,7 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
 <div class="panel" id="panel-salary">
   <div class="rtabs region-bar" id="rbar-salary"><button class="rtab active" data-region="all"><span class="dot" style="background:var(--text-3)"></span>All Regions</button><button class="rtab" data-region="krakow"><span class="dot" style="background:var(--purple)"></span>Kraków</button><button class="rtab" data-region="mumbai"><span class="dot" style="background:var(--teal)"></span>Mumbai</button><button class="rtab" data-region="london"><span class="dot" style="background:var(--accent)"></span>London</button></div>
   <div class="rf active" data-rfilter="all">
-  <div class="cc" style="margin-bottom:16px;overflow-x:auto"><div class="ct"><span class="ct-line">Senior SAP ABAP / S/4HANA Compensation <span class="tip" tabindex="0" data-tip="This benchmark table summarizes the 8+ year market that BlackLine is most likely to compete in, with contract model differences retained where they materially shift the rate.">i</span></span></div><div class="cs">Target 8+ year market snapshot across BlackLine's three priority regions. GBP-equivalent median shown for direct comparison.</div>
+  <div class="cc" style="margin-bottom:16px;overflow-x:auto"><div class="ct"><span class="ct-line">Senior SAP ABAP / S/4HANA Compensation <span class="tip" tabindex="0" data-tip="This benchmark table summarizes the 8+ year market that BlackLine is most likely to compete in, with contract model differences retained where they materially shift the rate.">i</span></span></div><div class="cs">Target 8+ year market snapshot across BlackLine's three priority regions. GBP-equivalent median shown for direct comparison.</div><div style="font-size:var(--fs-meta);color:var(--text-4);margin-top:4px">Data triangulated from 28 salary sources · Primary data: Q4 2025 – Q1 2026 · Scarcity multiplier (1.20×) applied for S/4HANA + Fiori requirement · <span style="cursor:pointer;color:var(--accent);text-decoration:underline" onclick="document.querySelector('[data-tab=methodology]').click()">See Methodology</span></div>
     <table class="tbl"><thead><tr><th>Region</th><th>Type <span class="tip" tabindex="0" data-tip="Permanent reflects salaried employment. Contract, UoP, and B2B reflect the dominant engagement models used in each market.">i</span></th><th>P25</th><th>Median</th><th>P75+</th><th>GBP Equiv. <span class="tip" tabindex="0" data-tip="Approximate annualized comparison converted into GBP so London, Kraków, and Mumbai can be read on one basis.">i</span></th><th>Vs London <span class="tip" tabindex="0" data-tip="Cost ratio versus the London permanent median. A value below 1.00× means the market is cheaper than London at the benchmark midpoint.">i</span></th></tr></thead><tbody>
     <tr><td><strong>London</strong></td><td><span class="badge badge-accent">Perm</span></td><td>£65k–£70k</td><td style="font-weight:700">£75k–£85k</td><td>£90k–£110k</td><td style="font-weight:700;font-variant-numeric:tabular-nums">£80,000</td><td style="font-variant-numeric:tabular-nums">1.00×</td></tr>
     <tr><td><strong>London</strong></td><td><span class="badge badge-amber">Contract</span></td><td>£450–£500/d</td><td style="font-weight:700">£500–£600/d</td><td>£625–£750+/d</td><td style="font-weight:700;font-variant-numeric:tabular-nums">~£132,000</td><td style="font-variant-numeric:tabular-nums;color:var(--amber)">1.65×</td></tr>
@@ -361,13 +361,14 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
     <div class="cost-row"><div class="cost-lbl-wrap"><div class="cost-lbl">Kraków UoP</div><span class="tip" tabindex="0" data-tip="UoP is standard salaried employment in Poland with benefits and employer contributions included, making it the lower-cost but less flexible Kraków benchmark.">i</span></div><div class="cost-track"><div class="cost-fill" style="width:70%;background:rgba(109,40,217,.55)">£56,000</div></div></div>
     <div class="cost-row"><div class="cost-lbl-wrap"><div class="cost-lbl">Mumbai MNC</div><span class="tip" tabindex="0" data-tip="This is the most realistic Mumbai comparator for BlackLine because multinational and product employers pay well above the local IT services market.">i</span></div><div class="cost-track"><div class="cost-fill" style="width:36%;background:var(--teal)">£29,000</div></div></div>
     <div class="cost-row"><div class="cost-lbl-wrap"><div class="cost-lbl">Mumbai Svc</div><span class="tip" tabindex="0" data-tip="Shown as the floor of the market only. IT services rates understate what BlackLine should expect to pay for product-grade SAP engineering talent.">i</span></div><div class="cost-track"><div class="cost-fill" style="width:21%;background:rgba(15,118,110,.5)">£17,000</div></div></div>
-  </div><div class="cc"><div class="ct"><span class="ct-line">S/4HANA Premium Over Base ABAP <span class="tip" tabindex="0" data-tip="Hover the bars to compare base ABAP versus S/4HANA + Fiori medians, plus the market-specific hiring context behind each uplift.">i</span></span></div><div class="cs">GBP-equivalent median comparison</div><div class="cw" style="height:210px"><canvas id="premiumChart"></canvas></div></div></div>
+  </div><div class="cc"><div class="ct"><span class="ct-line">S/4HANA Premium Over Base ABAP (1.20× Scarcity) <span class="tip" tabindex="0" data-tip="The adjusted bars reflect the 1.20× scarcity multiplier applied to base ABAP salaries. This multiplier captures the observed premium for S/4HANA + Fiori skills (32% pool penetration = High Scarcity). Hover bars for detail.">i</span></span></div><div class="cs">GBP-equivalent median — Base ABAP vs Adjusted (×1.20)</div><div class="cw" style="height:210px"><canvas id="premiumChart"></canvas></div></div></div>
+  <div class="callout callout-teal" style="margin-bottom:16px"><strong>Scarcity-adjusted benchmarks:</strong> All salary figures on this tab reflect the <strong>1.20× scarcity multiplier</strong> for S/4HANA + Fiori skills (High Scarcity — only 32% of the addressable pool holds these skills). Base ABAP rates are ~17% lower. Mumbai's cost advantage <strong>survives the scarcity premium</strong> — at 0.30× London, the 70% discount holds even after adjustment. Kraków narrows to ~0.70×. See <span style="cursor:pointer;color:var(--accent);text-decoration:underline;font-weight:600" onclick="document.querySelector('[data-tab=methodology]').click()">Methodology</span> for the full derivation.</div>
   <div class="g3 salary-grid" style="margin-bottom:24px">
     <div class="card salary-card salary-snapshot" style="border-top:3px solid var(--accent)"><div class="ct">London</div><div class="cs">Premium market for senior and stakeholder-facing hires</div><div class="salary-snapshot-body">BlackLine-equivalent 8–12 year talent sits at <strong>£85k–£120k</strong> permanent, with top contractor profiles landing at <strong>£600–£750+/day</strong>. Use selectively: quality and proximity are strong, but the pool is shrinking and cost is highest.</div></div>
     <div class="card salary-card salary-snapshot" style="border-top:3px solid var(--purple)"><div class="ct">Kraków</div><div class="cs">Best overall balance for BlackLine's core engineering build</div><div class="salary-snapshot-body">The 8–12 year target band is now <strong>25–32k PLN/month UoP</strong> or <strong>29–36k PLN/month B2B</strong>. Tier A SAP quality, CET overlap, and Kraków presence still make this the best composite option.</div></div>
     <div class="card salary-card salary-snapshot" style="border-top:3px solid var(--teal)"><div class="ct">Mumbai</div><div class="cs">Depth and cost advantage when BlackLine needs scale</div><div class="salary-snapshot-body">For 8–12 years' experience, BlackLine should benchmark against <strong>Product/MNC rates: ₹28–38 LPA</strong>, not IT services rates. The trade-off is higher attrition, heavier consulting competition, and weaker timezone overlap for Europe-centric collaboration.</div></div>
   </div>
-  <div class="sl">Experience-Tier Benchmarks</div>
+  <div class="sl">Experience-Tier Benchmarks <span style="font-weight:400;font-size:var(--fs-meta);color:var(--text-3)">(S/4HANA + Fiori column reflects 1.20× scarcity adjustment)</span></div>
   <div class="g3 salary-grid" style="margin-bottom:24px">
     <div class="card salary-card salary-tier-card">
       <div class="ct">London</div>
@@ -410,25 +411,25 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
   <div class="g2 salary-grid">
     <div class="card salary-card salary-detail-card">
       <div class="ct">Skill Premium Matrix <span class="tip" tabindex="0" data-tip="Premiums show the directional pay uplift attached to scarce SAP skills compared with general ABAP capability in the same market.">i</span></div>
-      <div class="cs">Measured differentials from the addendum, mapped to the BlackLine Kraków role.</div>
+      <div class="cs">Measured differentials from the addendum, mapped to the BlackLine Kraków role.</div><div style="font-size:var(--fs-meta);color:var(--text-4);margin-top:2px">These premiums are the basis for the scarcity multiplier tiers (High 1.20×, Medium 1.10×, Low 1.05×). Derived from addendum research Jan–Feb 2026.</div>
       <div class="salary-table-wrap"><table class="tbl"><thead><tr><th>Skill</th><th>Premium <span class="tip" tabindex="0" data-tip="Directional pay uplift observed in the addendum research rather than a universal fixed bonus.">i</span></th><th>Market signal</th><th>BL role</th></tr></thead><tbody>
-        <tr><td><strong>S/4HANA</strong></td><td>+10–30%</td><td>Largest premium driver across all three regions</td><td>Required</td></tr>
-        <tr><td><strong>SAP Fiori / UI5</strong></td><td>+8–15%</td><td>Poland 24–28k vs 22–26k PLN; UK +10–15%</td><td>Required</td></tr>
-        <tr><td><strong>FI/CO knowledge</strong></td><td>+5–15%</td><td>UK FICO median outruns general ABAP by ~15%</td><td>Required</td></tr>
-        <tr><td><strong>SD/MM knowledge</strong></td><td>+3–8%</td><td>Cross-functional boost, but smaller than FICO</td><td>Required</td></tr>
-        <tr><td><strong>SAP BTP / Cloud</strong></td><td>+15–25%</td><td>Emerging premium, especially in UK</td><td>Nice to have</td></tr>
-        <tr><td><strong>Lead / Architect scope</strong></td><td>+25–40%</td><td>Lead band in Kraków and architect band in London</td><td>Future hires</td></tr>
+        <tr><td><strong>S/4HANA</strong></td><td>+10–30% <span class="badge badge-coral">High</span></td><td>Largest premium driver across all three regions (32% pool penetration)</td><td>Required</td></tr>
+        <tr><td><strong>SAP Fiori / UI5</strong></td><td>+8–15% <span class="badge badge-amber">Med</span></td><td>Poland 24–28k vs 22–26k PLN; UK +10–15% (69% penetration)</td><td>Required</td></tr>
+        <tr><td><strong>FI/CO knowledge</strong></td><td>+5–15% <span class="badge badge-amber">Med</span></td><td>UK FICO median outruns general ABAP by ~15%</td><td>Required</td></tr>
+        <tr><td><strong>SD/MM knowledge</strong></td><td>+3–8% <span class="badge badge-teal">Low</span></td><td>Cross-functional boost, but smaller than FICO</td><td>Required</td></tr>
+        <tr><td><strong>SAP BTP / Cloud</strong></td><td>+15–25% <span class="badge badge-coral">High</span></td><td>Emerging premium, especially in UK (25% penetration)</td><td>Nice to have</td></tr>
+        <tr><td><strong>Lead / Architect scope</strong></td><td>+25–40% <span class="badge badge-coral">High</span></td><td>Lead band in Kraków and architect band in London</td><td>Future hires</td></tr>
       </tbody></table></div>
     </div>
     <div class="card salary-card salary-detail-card">
       <div class="ct">BlackLine JD Cost &amp; Skill Signals <span class="tip" tabindex="0" data-tip="This section combines the salary benchmark with the role-specific screening signals BlackLine should expect to compete on in-market.">i</span></div>
-      <div class="cs">What the fully qualified 8+ year candidate costs, and which capabilities screen for quality versus pay.</div>
-      <div class="salary-table-wrap"><table class="tbl"><thead><tr><th>Region</th><th>Contract Type</th><th>Estimated Range</th></tr></thead><tbody>
-        <tr><td><strong>Kraków</strong></td><td>UoP</td><td style="font-weight:700">26k–32k PLN/mo</td></tr>
-        <tr><td><strong>Kraków</strong></td><td>B2B</td><td style="font-weight:700">30k–38k PLN/mo</td></tr>
-        <tr><td><strong>London</strong></td><td>Permanent</td><td style="font-weight:700">£85k–£110k</td></tr>
-        <tr><td><strong>London</strong></td><td>Contract</td><td style="font-weight:700">£550–£700/day</td></tr>
-        <tr><td><strong>Mumbai</strong></td><td>Product / MNC</td><td style="font-weight:700">₹28–38 LPA</td></tr>
+      <div class="cs">Scarcity-adjusted (1.20×) offer bands for the fully qualified 8+ year candidate.</div>
+      <div class="salary-table-wrap"><table class="tbl"><thead><tr><th>Region</th><th>Contract Type</th><th>Base ABAP</th><th>Adjusted (×1.20)</th></tr></thead><tbody>
+        <tr><td><strong>Kraków</strong></td><td>UoP</td><td style="color:var(--text-3)">~22–27k PLN/mo</td><td style="font-weight:700">26–32k PLN/mo</td></tr>
+        <tr><td><strong>Kraków</strong></td><td>B2B</td><td style="color:var(--text-3)">~25–32k PLN/mo</td><td style="font-weight:700">30–38k PLN/mo</td></tr>
+        <tr><td><strong>London</strong></td><td>Permanent</td><td style="color:var(--text-3)">~£70–£92k</td><td style="font-weight:700">£85–£110k</td></tr>
+        <tr><td><strong>London</strong></td><td>Contract</td><td style="color:var(--text-3)">~£460–£580/day</td><td style="font-weight:700">£550–£700/day</td></tr>
+        <tr><td><strong>Mumbai</strong></td><td>Product / MNC</td><td style="color:var(--text-3)">~₹23–32 LPA</td><td style="font-weight:700">₹28–38 LPA</td></tr>
       </tbody></table></div>
       <div class="salary-callout-stack">
         <div class="callout callout-accent"><strong>Screening signals, not separate premiums:</strong> ABAP OO, Eclipse/ADT, ABAP Unit Testing, SOLID, and UML are still worth testing for, but the addendum treats them as product-quality filters rather than standalone salary uplifts.</div>
@@ -1096,7 +1097,7 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
     <div class="source-toolbar">
       <div>
         <div class="ct">Research Source Index</div>
-        <div class="cs" style="margin-bottom:0">This consolidated register integrates 58 sources, blending LinkedIn Insights data on talent flows and target talent density with findings from various deep research tools.</div>
+        <div class="cs" style="margin-bottom:0">This consolidated register integrates 58 sources, blending LinkedIn Insights data on talent flows and target talent density with findings from various deep research tools. Salary benchmarks shown in the dashboard have been adjusted with a scarcity multiplier (1.20&times; for high-scarcity skills). See the <span style="cursor:pointer;color:var(--accent);text-decoration:underline;font-weight:600" onclick="document.querySelector('[data-tab=methodology]').click()">Methodology</span> tab for derivation.</div>
       </div>
       <div class="source-search-wrap">
         <label class="source-label" for="sourceSearch">Search all sources</label>
@@ -1110,6 +1111,325 @@ body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,sans
   </div>
   <div id="sourceSearchEmpty" class="card source-empty" hidden><div class="ct" style="margin-bottom:6px">No Matching Sources</div><div class="cs" style="margin-bottom:0">Try a broader keyword like <strong>salary</strong>, <strong>Fiori</strong>, <strong>attrition</strong>, <strong>BlackLine</strong>, or <strong>Poland</strong>.</div></div>
   <div id="sourceLibrary"></div>
+</div>
+
+
+<!-- ====================== METHODOLOGY ====================== -->
+<div class="panel" id="panel-methodology">
+  <div class="cc" style="margin-bottom:20px">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px"><div style="background:var(--amber-bg);border:2px solid var(--amber-bd);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:1.1rem">&#128300;</div><div><div style="font-size:1.2rem;font-weight:800;letter-spacing:-.03em">Research Methodology</div><div style="font-size:var(--fs-body);color:var(--text-2)">This report utilises a <strong style="color:var(--amber)">Mixed-Methods Research Design</strong>, combining quantitative behavioural data from LinkedIn Talent Insights with qualitative employer sentiment data from structured review platforms &amp; market-specific salary sources.</div></div></div>
+  </div>
+
+  <div class="rtabs" id="mtabs"><button class="rtab active" data-region="benchmarking"><span class="dot" style="background:var(--accent)"></span>Salary Benchmarking</button><button class="rtab" data-region="tam"><span class="dot" style="background:var(--teal)"></span>Talent Density &amp; Flow</button><button class="rtab" data-region="sentiment"><span class="dot" style="background:var(--coral)"></span>Sentiment Analysis</button></div>
+
+  <!-- ──── SUB-TAB 1: SALARY BENCHMARKING ──── -->
+  <div class="mr active" data-meth="benchmarking">
+
+    <div class="cc" style="margin-bottom:20px;margin-top:16px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="background:var(--accent-bg);border:2px solid var(--accent-bd);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent);font-size:.85rem">&#9312;</div><div style="font-weight:700;font-size:1rem">Triangulated Salary Analysis</div></div>
+      <div style="font-size:var(--fs-body);color:var(--text-2);margin-bottom:20px">Our compensation intelligence uses a <strong>three-phase triangulation</strong> approach: raw salary data from multiple independent sources is collected, validated across source tiers, then adjusted for skill scarcity to produce actionable offer bands.</div>
+
+      <div style="display:flex;align-items:center;justify-content:center;gap:0;margin:24px 0;flex-wrap:wrap">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px 24px;text-align:center;min-width:180px"><div style="font-size:var(--fs-meta);color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:4px">Phase 1</div><div style="font-weight:700;font-size:.95rem">Raw Report Salary</div><div style="font-size:var(--fs-label);color:var(--text-3)">3–7 sources per cell</div></div>
+        <div style="font-size:1.4rem;color:var(--text-3);padding:0 8px">&#10140;</div>
+        <div style="background:var(--amber-bg);border:1px solid var(--amber-bd);border-radius:var(--r);padding:16px 24px;text-align:center;min-width:180px"><div style="font-size:var(--fs-meta);color:var(--amber);text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:4px">Phase 2</div><div style="font-weight:700;font-size:.95rem">Scarcity Multiplier</div><div style="font-size:var(--fs-label);color:var(--text-3)">Based on pool penetration</div></div>
+        <div style="font-size:1.4rem;color:var(--text-3);padding:0 8px">&#10140;</div>
+        <div style="background:var(--teal-bg);border:1px solid var(--teal-bd);border-radius:var(--r);padding:16px 24px;text-align:center;min-width:180px"><div style="font-size:var(--fs-meta);color:var(--teal);text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:4px">Output</div><div style="font-weight:700;font-size:.95rem">Adjusted Pay Band</div><div style="font-size:var(--fs-label);color:var(--text-3)">P25 / Median / P75+</div></div>
+      </div>
+
+      <div class="callout callout-amber" style="margin-top:8px"><strong>Heuristic classification:</strong> This is a practical, data-informed, and interpretive approach &mdash; not purely algorithmic. The goal is directional accuracy for offer calibration and budgeting, not academic precision. Every number can be traced back to its source tier and adjustment rationale.</div>
+    </div>
+
+    <div class="cc" style="margin-bottom:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="background:var(--coral-bg);border:2px solid var(--coral-bd);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--coral);font-size:.85rem">&#9313;</div><div style="font-weight:700;font-size:1rem">Scarcity Multiplier Classification</div></div>
+      <div style="font-size:var(--fs-body);color:var(--text-2);margin-bottom:16px">The scarcity multiplier is a heuristic classification applied to base salary data. It adjusts for the real-world hiring pressure caused by skill shortages in the SAP talent market.</div>
+      <div style="overflow-x:auto">
+      <table class="tbl"><thead><tr><th>Tier</th><th>Job : Professional Ratio</th><th>Multiplier</th><th>Justification</th><th>Example Skills (This Report)</th></tr></thead><tbody>
+        <tr><td><span class="badge badge-coral">High Scarcity</span></td><td>&gt;50% (jobs exceed half of available professionals)</td><td style="font-weight:700;font-size:1rem;color:var(--coral)">1.20&times;</td><td>Demand significantly outstrips supply. Employers report 90+ day fill times. The 1.20&times; reflects the average premium between &ldquo;base ABAP&rdquo; and &ldquo;ABAP + scarce skill&rdquo; postings across recruiter data and live contract rates.</td><td>S/4HANA (32%), SAPUI5 (29%), SAP BTP (25%)</td></tr>
+        <tr><td><span class="badge badge-amber">Medium Scarcity</span></td><td>15&ndash;50%</td><td style="font-weight:700;font-size:1rem;color:var(--amber)">1.10&times;</td><td>Skill is in demand but not a standalone hiring bottleneck. Premium reflects incremental value when combined with a high-scarcity skill.</td><td>SAP Fiori (69%), OData (57%), FI/CO</td></tr>
+        <tr><td><span class="badge badge-teal">Low Scarcity</span></td><td>&lt;15%</td><td style="font-weight:700;font-size:1rem;color:var(--teal)">1.05&times;</td><td>Widely held baseline skill. Supply meets demand. The 1.05&times; accounts for general wage inflation and market floor movement only.</td><td>ABAP (97%), SAP HANA (95%), SAP Implementation (94%)</td></tr>
+      </tbody></table>
+      </div>
+      <div class="callout callout-accent" style="margin-top:16px"><strong>Why 1.20&times; and not 1.15&times; or 1.30&times;?</strong> The multipliers are derived from observed salary differentials, not arbitrary factors. When comparing ABAP-only postings to ABAP + S/4HANA postings from the same source, the salary gap averages 15&ndash;25%. The 1.20&times; midpoint captures this without over-indexing on contract rate ceilings (which can reach 1.30&times;+). The conservative approach avoids recommending offers that outpace the market floor while acknowledging scarcity pressure.</div>
+
+      <div class="card" style="margin-top:16px;background:var(--surface);border:1px solid var(--border)">
+        <div style="font-size:var(--fs-meta);font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">What is Heuristic Classification?</div>
+        <div class="g3" style="gap:12px">
+          <div style="font-size:var(--fs-body);color:var(--text-2)"><span class="badge badge-accent" style="margin-bottom:4px">Heuristic</span><br>A practical approach to problem-solving that uses experience-based rules rather than exhaustive computation.</div>
+          <div style="font-size:var(--fs-body);color:var(--text-2)"><span class="badge badge-teal" style="margin-bottom:4px">Data-informed</span><br>Classification boundaries are drawn from observed market patterns (job-to-professional ratios, posted vs offered salary gaps).</div>
+          <div style="font-size:var(--fs-body);color:var(--text-2)"><span class="badge badge-amber" style="margin-bottom:4px">Interpretive</span><br>Not purely algorithmic. Human judgement is applied when sources conflict or when structural factors (employer type, contract model) explain divergence.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px"><div style="background:var(--purple-bg);border:2px solid var(--purple-bd);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--purple);font-size:.85rem">&#9314;</div><div style="font-weight:700;font-size:1rem">Region-Specific Salary Sources</div></div>
+      <div class="g3">
+        <div class="cc">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span class="dot" style="background:var(--purple);width:10px;height:10px;display:inline-block;border-radius:50%"></span><div class="ct" style="margin-bottom:0">Krak&oacute;w (Poland)</div></div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body)">
+            <div><span class="badge badge-accent" style="margin-right:6px">Primary</span><span style="color:var(--text-2)">Itentio (691 SAP job postings, 2025)</span></div>
+            <div><span class="badge badge-accent" style="margin-right:6px">Primary</span><span style="color:var(--text-2)">ITCompare.pl (Tier A classification, 2026)</span></div>
+            <div><span class="badge badge-teal" style="margin-right:6px">Secondary</span><span style="color:var(--text-2)">JustJoinIT Report &middot; Hays/GRA.PL &middot; Recbold (35,435 offers)</span></div>
+            <div><span class="badge badge-purple" style="margin-right:6px">Benchmark</span><span style="color:var(--text-2)">ERI SalaryExpert &middot; Glassdoor PL &middot; PayScale</span></div>
+          </div>
+        </div>
+        <div class="cc">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span class="dot" style="background:var(--teal);width:10px;height:10px;display:inline-block;border-radius:50%"></span><div class="ct" style="margin-bottom:0">Mumbai (India)</div></div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body)">
+            <div><span class="badge badge-accent" style="margin-right:6px">Primary</span><span style="color:var(--text-2)">ERI SalaryExpert (senior 8+ yrs: &#8377;29.02 LPA)</span></div>
+            <div><span class="badge badge-accent" style="margin-right:6px">Primary</span><span style="color:var(--text-2)">ERPVITS 2026 SAP Consultant Guide</span></div>
+            <div><span class="badge badge-teal" style="margin-right:6px">Secondary</span><span style="color:var(--text-2)">Glassdoor India &middot; myTrainingwala &middot; GTR Academy</span></div>
+            <div><span class="badge badge-purple" style="margin-right:6px">Benchmark</span><span style="color:var(--text-2)">Fishbowl (verified offers) &middot; AmbitionBox</span></div>
+          </div>
+          <div style="margin-top:10px;font-size:var(--fs-label);color:var(--amber);font-weight:600">&#9888; Mass-market sites skew toward IT Services. Product/MNC column is the relevant comparator.</div>
+        </div>
+        <div class="cc">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span class="dot" style="background:var(--accent);width:10px;height:10px;display:inline-block;border-radius:50%"></span><div class="ct" style="margin-bottom:0">London (UK)</div></div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body)">
+            <div><span class="badge badge-accent" style="margin-right:6px">Primary</span><span style="color:var(--text-2)">IT Jobs Watch (ABAP median &pound;604/day)</span></div>
+            <div><span class="badge badge-accent" style="margin-right:6px">Primary</span><span style="color:var(--text-2)">Morgan McKinley 2025 Salary Guide</span></div>
+            <div><span class="badge badge-teal" style="margin-right:6px">Secondary</span><span style="color:var(--text-2)">Glassdoor UK &middot; BIIT Recruitment UK</span></div>
+            <div><span class="badge badge-purple" style="margin-right:6px">Benchmark</span><span style="color:var(--text-2)">Reed UK &middot; ERI SalaryExpert &middot; PayScale</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="callout callout-teal" style="margin-top:16px"><strong>Reconciliation method:</strong> Sources are not weighted by fixed percentages. Each qualifying source contributes one data point per cell. Primary sources dominate naturally when they cluster. Where a source diverges &gt;15%, we check for structural explanations (employer type, contract model) before reporting separate rows. The median-of-medians dampens outliers without discarding them.</div>
+    </div>
+
+    <div class="cc" style="margin-bottom:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="background:var(--teal-bg);border:2px solid var(--teal-bd);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--teal);font-size:.85rem">&#9315;</div><div style="font-weight:700;font-size:1rem">Worked Example: Senior SAP ABAP (8+ yrs) &mdash; Krak&oacute;w</div></div>
+      <div class="g2" style="margin-bottom:16px">
+        <div>
+          <div style="font-size:var(--fs-meta);font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Base ABAP Salary (UoP)</div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:var(--fs-body);color:var(--text-2)">
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span>Itentio (Primary)</span><span style="font-weight:600">23,200&ndash;29,200 PLN/mo</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span>ERI SalaryExpert (Benchmark)</span><span style="font-weight:600">22,000&ndash;28,000 PLN/mo</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span>Glassdoor PL (Benchmark)</span><span style="font-weight:600">21,500&ndash;27,500 PLN/mo</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)"><span>Median of Medians</span><span>~24,750 PLN/mo</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;font-weight:700;color:var(--text)"><span>P25&ndash;P75 Range</span><span>22,000&ndash;29,000 PLN/mo</span></div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:var(--fs-meta);font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Scarcity Adjustment</div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:var(--fs-body);color:var(--text-2)">
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span>BlackLine requires: S/4HANA + Fiori</span><span class="badge badge-coral">High Scarcity</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span>Pool penetration (S/4HANA)</span><span style="font-weight:600">32%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span>Applied multiplier</span><span style="font-weight:700;color:var(--coral);font-size:1rem">1.20&times;</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-weight:700;color:var(--text)"><span>Adjusted Median</span><span>~29,700 PLN/mo</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;font-weight:700;color:var(--accent)"><span>Adjusted P25&ndash;P75</span><span style="font-size:1rem">26,400&ndash;34,800 PLN/mo</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="overflow-x:auto">
+      <table class="tbl"><thead><tr><th>Region</th><th>Contract</th><th>Base ABAP Median</th><th>&times; Scarcity</th><th>Adjusted Median</th><th>Adjusted Range (P25&ndash;P75)</th><th>GBP Equiv.</th></tr></thead><tbody>
+        <tr><td style="font-weight:600">Krak&oacute;w</td><td>UoP</td><td>~24,750 PLN/mo</td><td style="color:var(--coral);font-weight:700">1.20&times;</td><td style="font-weight:700">~29,700 PLN/mo</td><td>26,400&ndash;34,800 PLN/mo</td><td>&pound;60k&ndash;&pound;80k</td></tr>
+        <tr><td style="font-weight:600">Krak&oacute;w</td><td>B2B</td><td>~28,000 PLN/mo</td><td style="color:var(--coral);font-weight:700">1.20&times;</td><td style="font-weight:700">~33,600 PLN/mo</td><td>30,000&ndash;38,400 PLN/mo</td><td>&pound;69k&ndash;&pound;88k</td></tr>
+        <tr><td style="font-weight:600">Mumbai</td><td>Product/MNC</td><td>~&#8377;24 LPA</td><td style="color:var(--coral);font-weight:700">1.20&times;</td><td style="font-weight:700">~&#8377;28.8 LPA</td><td>&#8377;24&ndash;&#8377;38 LPA</td><td>&pound;22k&ndash;&pound;36k</td></tr>
+        <tr><td style="font-weight:600">London</td><td>Permanent</td><td>&pound;70,000</td><td style="color:var(--coral);font-weight:700">1.20&times;</td><td style="font-weight:700">&pound;84,000</td><td>&pound;78k&ndash;&pound;110k</td><td>&pound;78k&ndash;&pound;110k</td></tr>
+        <tr><td style="font-weight:600">London</td><td>Contract</td><td>&pound;500/day</td><td style="color:var(--coral);font-weight:700">1.20&times;</td><td style="font-weight:700">&pound;600/day</td><td>&pound;550&ndash;&pound;750+/day</td><td>~&pound;132k&ndash;&pound;180k</td></tr>
+      </tbody></table>
+      </div>
+      <div style="margin-top:12px;font-size:var(--fs-meta);color:var(--text-4)">Currency conversion: March 2026 rates (1 GBP &asymp; 5.12 PLN, &asymp; 107 INR). Data: Q4 2025 &ndash; Q1 2026.</div>
+    </div>
+
+    <div class="cc">
+      <div class="ct">Data Recency &amp; Refresh Cadence</div>
+      <div style="overflow-x:auto">
+      <table class="tbl"><thead><tr><th>Source Category</th><th>Examples</th><th>Data Accessed</th><th>Refresh Guidance</th></tr></thead><tbody>
+        <tr><td style="font-weight:600">Salary &amp; Comp (28 sources)</td><td>IT Jobs Watch, Glassdoor, ERI, Morgan McKinley</td><td>Q4 2025 &ndash; Q1 2026</td><td>Re-validate before Q4 2026 offers</td></tr>
+        <tr><td style="font-weight:600">Skills &amp; Specialisations (6)</td><td>Precisely, IT Brief UK, Basis Technologies</td><td>Jan&ndash;Feb 2026</td><td>Annual refresh (skills shift slowly)</td></tr>
+        <tr><td style="font-weight:600">Talent Demand (8)</td><td>SAPinsider, Baer Group, Eursap</td><td>Jan&ndash;Mar 2026</td><td>Quarterly &mdash; demand signals most volatile</td></tr>
+        <tr><td style="font-weight:600">Retention &amp; Attrition (7)</td><td>Comparably, HR Katha, Business Standard</td><td>Jan&ndash;Feb 2026</td><td>Lags 1&ndash;2 quarters (reflects H2 2025)</td></tr>
+        <tr><td style="font-weight:600">BlackLine Ecosystem (8)</td><td>SEC filings, Glassdoor, SAP Community</td><td>Jan&ndash;Mar 2026</td><td>Next refresh: Q1 2025 10-K filing</td></tr>
+        <tr><td style="font-weight:600">LinkedIn Talent Insights</td><td>LTI platform</td><td>Mar 2026</td><td>Live at extraction; re-pull quarterly</td></tr>
+      </tbody></table>
+      </div>
+      <div class="callout callout-amber" style="margin-top:16px"><strong>Salary data has a half-life.</strong> Figures in this dashboard reflect Q4 2025 &ndash; Q1 2026 conditions. For any offer made after September 2026, we recommend a spot-check against 2&ndash;3 primary sources before calibrating.</div>
+    </div>
+  </div><!-- /mr benchmarking -->
+
+  <!-- ──── SUB-TAB 2: TAM vs TTD ──── -->
+  <div class="mr" data-meth="tam">
+
+    <div class="cc" style="margin-bottom:20px;margin-top:16px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="background:var(--teal-bg);border:2px solid var(--teal-bd);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:.85rem">&#127760;</div><div><div style="font-weight:700;font-size:1rem">Talent Intelligence Methodology</div><div style="font-size:var(--fs-body);color:var(--text-2)">Data sourced from <strong>LinkedIn Talent Insights (LTI)</strong> using Talent Pool Reports and Location Attractiveness snapshots to quantify the addressable market.</div></div></div>
+    </div>
+
+    <div class="cc" style="margin-bottom:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="background:var(--amber-bg);border:2px solid var(--amber-bd);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--amber);font-size:.85rem">&#9312;</div><div style="font-weight:700;font-size:1rem">Talent Density Calculation</div></div>
+      <div style="font-size:var(--fs-body);color:var(--text-2);margin-bottom:16px">How to operationalise market OSINT to professional-level tactical intelligence.</div>
+
+      <div class="card" style="background:var(--surface);border:1px solid var(--border);margin-bottom:16px">
+        <div style="font-size:var(--fs-meta);font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px">Calculation Method</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body)">
+          <div><span class="badge badge-accent" style="margin-right:6px">Title Filtering</span><span style="color:var(--text-2)">Professionals are defined by their LTI current-role titles across different role types.</span></div>
+          <div><span class="badge badge-teal" style="margin-right:6px">Boolean Filtering</span><span style="color:var(--text-2)">Regions and Boolean search strings for geo-boundaries and skill delineation.</span></div>
+          <div><span class="badge badge-coral" style="margin-right:6px">Deduplication</span><span style="color:var(--text-2)">Overlap removed, dupe profiles and seniority accounts for &ldquo;Gold&rdquo; senior subset.</span></div>
+        </div>
+      </div>
+
+      <div class="card" style="border:1px solid var(--border);margin-bottom:16px">
+        <div style="font-size:var(--fs-meta);font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px">Example Boolean Configuration (This Report)</div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:var(--fs-body);color:var(--text-2)">
+          <div style="display:flex;gap:12px"><span style="font-weight:700;color:var(--text);min-width:80px">Title</span><span>ABAP Consultant, SAP Consultant, ABAP Developer, Senior SAP Consultant, Technical Consultant, Sr. ABAP Consultant</span></div>
+          <div style="display:flex;gap:12px"><span style="font-weight:700;color:var(--text);min-width:80px">Location</span><span>Krak&oacute;w, Mumbai, London Area</span></div>
+          <div style="display:flex;gap:12px"><span style="font-weight:700;color:var(--text);min-width:80px">Keywords</span><span>&ldquo;ABAP&rdquo; AND (&ldquo;S/4HANA&rdquo; OR &ldquo;SAP HANA&rdquo;) AND (&ldquo;Fiori&rdquo; OR &ldquo;SAPUI5&rdquo;) with seniority filter 5+ years</span></div>
+        </div>
+      </div>
+
+      <div style="overflow-x:auto">
+      <table class="tbl"><thead><tr><th>Metric</th><th>Krak&oacute;w</th><th>Mumbai</th><th>London</th><th>Density Classification</th></tr></thead><tbody>
+        <tr><td style="font-weight:600">Total Addressable Market (TAM)</td><td>136</td><td>4,201</td><td>701</td><td>&mdash;</td></tr>
+        <tr><td style="font-weight:600">Target Talent Density (TTD)</td><td>42</td><td>1,038</td><td>210</td><td>&mdash;</td></tr>
+        <tr><td style="font-weight:600">Job : Professional Ratio</td><td>17.6%</td><td>3.2%</td><td>12.4%</td><td><span class="badge badge-coral">Krak&oacute;w: Most competitive</span></td></tr>
+        <tr><td style="font-weight:600">Active SAP Job Postings</td><td>24</td><td>134</td><td>87</td><td>&mdash;</td></tr>
+      </tbody></table>
+      </div>
+      <div class="callout callout-teal" style="margin-top:16px"><strong>Density classification:</strong> Krak&oacute;w&rsquo;s 17.6% job-to-professional ratio makes it the most competitive per capita of all three regions. Mumbai has volume (4,201 TAM) but lower demand density (3.2%). London is squeezed &mdash; fewer roles overall but architect demand surging +100.6%.</div>
+    </div>
+
+    <div class="cc" style="margin-bottom:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="background:var(--teal-bg);border:2px solid var(--teal-bd);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--teal);font-size:.85rem">&#9313;</div><div style="font-weight:700;font-size:1rem">Talent Flow Calculation</div></div>
+      <div style="font-size:var(--fs-body);color:var(--text-2);margin-bottom:16px">Net movement of SAP professionals over the trailing 12-month period, sourced from LinkedIn Talent Insights location flow data.</div>
+
+      <div class="g2" style="margin-bottom:16px">
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span class="dot" style="background:var(--purple);width:10px;height:10px;display:inline-block;border-radius:50%"></span><div class="ct" style="margin-bottom:0">Krak&oacute;w (Poland)</div></div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:var(--fs-body);color:var(--text-2)">
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span>Inbound from Warsaw</span><span class="up" style="font-weight:600">+12</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span>Inbound from Wroc&#322;aw</span><span class="up" style="font-weight:600">+5</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span>Outbound to Berlin</span><span class="down" style="font-weight:600">-3</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-weight:700;color:var(--text)">Net Flow</span><span style="font-weight:700;color:var(--teal)">+14 (Net Gainer)</span></div>
+          </div>
+          <div class="callout callout-teal" style="margin-top:12px"><strong>Safe Harbour:</strong> Poland&rsquo;s 3.8% GDP growth and proximity to EU markets makes Krak&oacute;w a net talent attractor despite Ukraine war proximity.</div>
+        </div>
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span class="dot" style="background:var(--teal);width:10px;height:10px;display:inline-block;border-radius:50%"></span><div class="ct" style="margin-bottom:0">Mumbai (India)</div></div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:var(--fs-body);color:var(--text-2)">
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span>Outbound to Pune</span><span class="up" style="font-weight:600">+9</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span>Outbound to Delhi</span><span class="up" style="font-weight:600">+3</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span>Outbound to Hyderabad</span><span class="down" style="font-weight:600">-7</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span>Outbound to Bengaluru</span><span class="down" style="font-weight:600">-11</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-weight:700;color:var(--text)">Net Flow</span><span style="font-weight:700;color:var(--coral)">-6 (Net Donor)</span></div>
+          </div>
+          <div class="callout callout-coral" style="margin-top:12px"><strong>&ldquo;Brain Drain&rdquo; Risk:</strong> Mumbai is losing experienced SAP talent to Bengaluru and Hyderabad, where aggressive Big Tech recruitment and competitive tech ecosystems are drawing mid-senior professionals.</div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /mr tam -->
+
+  <!-- ──── SUB-TAB 3: SENTIMENT ANALYSIS ──── -->
+  <div class="mr" data-meth="sentiment">
+
+    <div class="cc" style="margin-bottom:20px;margin-top:16px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="background:var(--coral-bg);border:2px solid var(--coral-bd);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:.85rem">&#128200;</div><div><div style="font-weight:700;font-size:1rem">Market Sentiment Analysis</div><div style="font-size:var(--fs-body);color:var(--text-2)">Combining structured data analysis with qualitative interpretation to understand employer positioning and candidate behaviour across all three regions.</div></div></div>
+      <div class="g3" style="margin-top:16px">
+        <div style="background:var(--coral-bg);border:1px solid var(--coral-bd);border-radius:var(--r);padding:14px;text-align:center"><div style="font-size:var(--fs-meta);font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px">Layer A</div><div style="font-weight:600;font-size:var(--fs-body)">Quantitative</div><div style="font-size:var(--fs-label);color:var(--text-3)">Demand-side analytics &amp; market data</div></div>
+        <div style="background:var(--amber-bg);border:1px solid var(--amber-bd);border-radius:var(--r);padding:14px;text-align:center"><div style="font-size:var(--fs-meta);font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px">Layer B</div><div style="font-weight:600;font-size:var(--fs-body)">Behavioural</div><div style="font-size:var(--fs-label);color:var(--text-3)">Hiring funnel ratios &amp; talent flows</div></div>
+        <div style="background:var(--teal-bg);border:1px solid var(--teal-bd);border-radius:var(--r);padding:14px;text-align:center"><div style="font-size:var(--fs-meta);font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px">Layer C</div><div style="font-weight:600;font-size:var(--fs-body)">Qualitative</div><div style="font-size:var(--fs-label);color:var(--text-3)">Sentiment, conditions &amp; external factors</div></div>
+      </div>
+    </div>
+
+    <div class="cc" style="margin-bottom:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="background:var(--coral-bg);border:2px solid var(--coral-bd);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--coral);font-size:.85rem">&#9312;</div><div style="font-weight:700;font-size:1rem">Demand-Side Analytics (Quantitative)</div></div>
+      <div style="font-size:var(--fs-body);color:var(--text-2);margin-bottom:12px"><strong>Data Source:</strong> Job posting volumes, growth rates, and demand signals from LinkedIn Talent Insights, IT Jobs Watch, and regional job boards. This data quantifies <em>what the market is doing</em> rather than what it says.</div>
+      <div style="overflow-x:auto">
+      <table class="tbl"><thead><tr><th>Signal</th><th>Krak&oacute;w</th><th>Mumbai</th><th>London</th><th>Trend</th></tr></thead><tbody>
+        <tr><td style="font-weight:600">SAP Job Postings (Active)</td><td>24</td><td>134</td><td>87</td><td><span class="badge badge-amber">Concentrated in S/4HANA</span></td></tr>
+        <tr><td style="font-weight:600">Tech Sector Growth</td><td>+3.8% GDP</td><td>+32.5%</td><td>-27.7% SAP vacancies</td><td><span class="badge badge-coral">London contracting</span></td></tr>
+        <tr><td style="font-weight:600">Architect Demand</td><td>Moderate</td><td>Growing</td><td>+100.6%</td><td><span class="badge badge-coral">Extreme in London</span></td></tr>
+        <tr><td style="font-weight:600">Specialist Demand</td><td>Stable</td><td>High volume</td><td>-21.4%</td><td><span class="badge badge-teal">Twilight of ECC</span></td></tr>
+      </tbody></table>
+      </div>
+    </div>
+
+    <div class="cc" style="margin-bottom:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="background:var(--amber-bg);border:2px solid var(--amber-bd);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--amber);font-size:.85rem">&#9313;</div><div style="font-weight:700;font-size:1rem">Hiring Funnel &amp; Talent Ratios (Behavioural)</div></div>
+      <div style="font-size:var(--fs-body);color:var(--text-2);margin-bottom:12px"><strong>Data Source:</strong> LinkedIn Talent Insights pool data, recruiter funnel benchmarks, and published attrition data. This layer reveals <em>how candidates behave</em> &mdash; not just what&rsquo;s advertised.</div>
+      <div style="font-size:var(--fs-meta);font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Current Hiring Demand by Region</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:12px"><span style="font-weight:600;min-width:80px;font-size:var(--fs-body)">Mumbai</span><div style="flex:1;background:var(--surface);border-radius:4px;height:28px;overflow:hidden"><div style="width:82%;height:100%;background:var(--teal);border-radius:4px;display:flex;align-items:center;padding-left:10px;color:#fff;font-size:var(--fs-label);font-weight:600">4,201 TAM</div></div></div>
+        <div style="display:flex;align-items:center;gap:12px"><span style="font-weight:600;min-width:80px;font-size:var(--fs-body)">London</span><div style="flex:1;background:var(--surface);border-radius:4px;height:28px;overflow:hidden"><div style="width:38%;height:100%;background:var(--accent);border-radius:4px;display:flex;align-items:center;padding-left:10px;color:#fff;font-size:var(--fs-label);font-weight:600">701 TAM</div></div></div>
+        <div style="display:flex;align-items:center;gap:12px"><span style="font-weight:600;min-width:80px;font-size:var(--fs-body)">Krak&oacute;w</span><div style="flex:1;background:var(--surface);border-radius:4px;height:28px;overflow:hidden"><div style="width:8%;height:100%;background:var(--purple);border-radius:4px;min-width:80px;display:flex;align-items:center;padding-left:10px;color:#fff;font-size:var(--fs-label);font-weight:600">136 TAM</div></div></div>
+      </div>
+      <div class="g3" style="margin-bottom:16px">
+        <div class="stat" style="border-top:3px solid var(--coral)"><div class="lbl">SAP-Specific Attrition</div><div class="val" style="color:var(--coral)">31%</div><div class="delta down">~2&times; consulting industry norm</div></div>
+        <div class="stat" style="border-top:3px solid var(--amber)"><div class="lbl">Time-to-Fill (8+ yrs)</div><div class="val" style="color:var(--amber)">90+ days</div><div class="delta down">vs 44-day EU IT average</div></div>
+        <div class="stat" style="border-top:3px solid var(--accent)"><div class="lbl">Replacement Cost</div><div class="val" style="color:var(--accent)">2&ndash;3&times;</div><div class="delta down">Annual salary per bad hire</div></div>
+      </div>
+    </div>
+
+    <div class="cc" style="margin-bottom:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="background:var(--teal-bg);border:2px solid var(--teal-bd);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--teal);font-size:.85rem">&#9314;</div><div style="font-weight:700;font-size:1rem">External Conditions &amp; Sentiment (Qualitative)</div></div>
+      <div style="font-size:var(--fs-body);color:var(--text-2);margin-bottom:12px"><strong>Data Source:</strong> Regional economic reports, employer review platforms (Glassdoor, AmbitionBox), government statistics, and structured recruiter intelligence. This layer captures <em>why candidates feel</em> the way they do about the market.</div>
+      <div class="g2" style="margin-bottom:16px">
+        <div class="card">
+          <div class="ct">Key External Factors</div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+            <div><strong style="color:var(--purple)">Krak&oacute;w:</strong> B2B legislative reclassification risk (2026 PIP inspections) &mdash; 20% of companies conducted layoffs in 2024. Job security is now a top-3 factor alongside salary.</div>
+            <div><strong style="color:var(--teal)">Mumbai:</strong> &ldquo;Hybrid Creep&rdquo; &mdash; 80% of companies lost talent to RTO mandates. 25% salary sacrifice for remote. &ldquo;Disconnected&rdquo; workforce: productive but disloyal.</div>
+            <div><strong style="color:var(--accent)">London:</strong> Energy price surges, NCSC cyber warnings, NI changes. &ldquo;Calculated risk&rdquo; psychology &mdash; contractors prefer Outside IR35 for 20&ndash;30% more take-home pay.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ct">Employee Sentiment Signals</div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+            <div><strong style="color:var(--text)">BlackLine Glassdoor: 3.6/5</strong> &mdash; cultural transition post-founder visible. &ldquo;Backstabbing politics&rdquo; and management churn cited across regions.</div>
+            <div><strong style="color:var(--text)">Culture scores: 2.8&ndash;3.0/5</strong> &mdash; below the threshold (3.5+) where employer brand becomes a net attractor rather than detractor.</div>
+            <div><strong style="color:var(--text)">Key differentiator:</strong> &ldquo;Professional management&rdquo; is the primary lever when Mumbai SAP professionals switch employers &mdash; ahead of salary.</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:var(--fs-body);color:var(--text-2);font-weight:600;margin-bottom:8px">Synthesis: Quantitative Events &#10140; Qualitative Anxiety</div>
+      <div class="callout callout-amber"><strong>Strategic conclusion:</strong> The talent crisis is not just a supply problem &mdash; it&rsquo;s a sentiment problem. Candidates in all three markets are making decisions based on <em>trust</em> (management quality, job security, employer reputation) as much as compensation. BlackLine&rsquo;s Glassdoor trajectory and management perception are active headwinds that salary alone cannot overcome.</div>
+    </div>
+
+    <div class="cc" style="margin-bottom:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="background:var(--accent-bg);border:2px solid var(--accent-bd);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent);font-size:.85rem">&#9315;</div><div style="font-weight:700;font-size:1rem">Employer Brand Radar</div></div>
+      <div style="font-size:var(--fs-body);color:var(--text-2);margin-bottom:16px">To complement this static intelligence, Chapter 2 operates an <strong>Employer Brand Radar (EB)</strong> &mdash; a live application that scores employer brands across 9 dimensions using AI-powered analysis with real-time data grounding.</div>
+      <div class="g2" style="margin-bottom:16px">
+        <div class="card">
+          <div class="ct">9 Scoring Dimensions</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+            <span class="chip">Search (SEO Visibility)</span>
+            <span class="chip">Social Presence</span>
+            <span class="chip">Social Impact (ESG, DE&amp;I)</span>
+            <span class="chip chip-hl">Values &amp; Proposition (EVP)</span>
+            <span class="chip chip-hl">Employee Experience (Glassdoor)</span>
+            <span class="chip">Content &amp; Thought Leadership</span>
+            <span class="chip">UX (Website Design)</span>
+            <span class="chip chip-hl">Candidate Experience</span>
+            <span class="chip">Leadership Visibility</span>
+          </div>
+          <div style="margin-top:12px;font-size:var(--fs-label);color:var(--text-3)">Highlighted dimensions are the strongest indicators for SAP talent attraction in competitive markets.</div>
+        </div>
+        <div class="card">
+          <div class="ct">How It Works</div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+            <div style="display:flex;gap:10px"><span style="color:var(--accent);font-weight:700;min-width:22px">01</span><span><strong style="color:var(--text)">AI-Powered Analysis.</strong> Gemini 2.5 Flash with Google Search grounding scores each dimension against real-time web data.</span></div>
+            <div style="display:flex;gap:10px"><span style="color:var(--accent);font-weight:700;min-width:22px">02</span><span><strong style="color:var(--text)">Sentiment Grounding.</strong> Employee Experience score is overridden with verified Glassdoor ratings &mdash; AI estimates are replaced with actual review data.</span></div>
+            <div style="display:flex;gap:10px"><span style="color:var(--accent);font-weight:700;min-width:22px">03</span><span><strong style="color:var(--text)">Competitor Benchmarking.</strong> Side-by-side radar chart comparison against detected competitors with colour-coded overlays.</span></div>
+            <div style="display:flex;gap:10px"><span style="color:var(--accent);font-weight:700;min-width:22px">04</span><span><strong style="color:var(--text)">Deep-Dive Intelligence.</strong> Per-company tech stack, salary data, project intelligence, cost-to-hire breakdown, and talent movement analysis.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="callout callout-accent"><strong>Integration with this dashboard:</strong> The Employer Brand Radar provides a dynamic, real-time complement to the static research in this report. While this dashboard captures market-level salary and talent intelligence, the EB tool enables company-specific brand scoring and competitive positioning &mdash; essential for crafting tailored outreach messaging and understanding why candidates choose (or avoid) specific employers.</div>
+    </div>
+
+    <div class="card">
+      <div class="ct">Assumptions &amp; Limitations</div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--fs-body);color:var(--text-2)">
+        <div style="display:flex;gap:10px"><span style="color:var(--coral);font-weight:700;min-width:22px">01</span><span><strong style="color:var(--text)">Currency conversion.</strong> GBP equivalents use March 2026 rates (1 GBP &asymp; 5.12 PLN, &asymp; 107 INR). &plusmn;5% FX swing meaningfully shifts cross-market comparisons.</span></div>
+        <div style="display:flex;gap:10px"><span style="color:var(--coral);font-weight:700;min-width:22px">02</span><span><strong style="color:var(--text)">Self-reported bias.</strong> Aggregator platforms (Glassdoor, PayScale) skew mid-career and overrepresent large employers. Mitigated by triangulating against recruiter guides.</span></div>
+        <div style="display:flex;gap:10px"><span style="color:var(--coral);font-weight:700;min-width:22px">03</span><span><strong style="color:var(--text)">India employer segmentation.</strong> IT Services vs Product/MNC is structural, not qualitative. BlackLine benchmarks against Product/MNC &mdash; the competitive set for product-company talent.</span></div>
+        <div style="display:flex;gap:10px"><span style="color:var(--coral);font-weight:700;min-width:22px">04</span><span><strong style="color:var(--text)">Poland B2B vs UoP.</strong> B2B take-home &ne; UoP gross. B2B contractors fund their own social contributions. GBP/Yr column approximates total cost-to-company.</span></div>
+        <div style="display:flex;gap:10px"><span style="color:var(--coral);font-weight:700;min-width:22px">05</span><span><strong style="color:var(--text)">LinkedIn coverage.</strong> Penetration varies by market (highest London, lowest Mumbai IT services). Pool sizes may undercount total addressable talent in India&rsquo;s services sector.</span></div>
+        <div style="display:flex;gap:10px"><span style="color:var(--coral);font-weight:700;min-width:22px">06</span><span><strong style="color:var(--text)">No proprietary data.</strong> All sources are publicly accessible plus LinkedIn Talent Insights. No compensation data was obtained through confidential disclosure or payroll databases.</span></div>
+      </div>
+    </div>
+  </div><!-- /mr sentiment -->
+
 </div>
 
 <div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:var(--fs-label);color:var(--text-4)">
@@ -1340,6 +1660,25 @@ function syncVisibleCharts(replay=false){
 }
 
 requestAnimationFrame(()=>syncVisibleCharts(false));
+function setupMethodTabs(){
+  var bar=document.getElementById('mtabs');
+  if(!bar)return;
+  bar.addEventListener('click',function(e){
+    var b=e.target.closest('.rtab');
+    if(!b)return;
+    var region=b.dataset.region;
+    bar.querySelectorAll('.rtab').forEach(function(t){t.classList.remove('active')});
+    b.classList.add('active');
+    var panel=bar.closest('.panel');
+    if(panel){
+      panel.querySelectorAll('[data-meth]').forEach(function(r){r.classList.remove('active')});
+      var target=panel.querySelector('[data-meth="'+region+'"]');
+      if(target)target.classList.add('active');
+    }
+  });
+}
+setupMethodTabs();
+
 </script>
 </body>
 </html>
